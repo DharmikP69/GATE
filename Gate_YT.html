@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GATE CS 2026 — YouTube Channel Guide</title>
+  <meta name="description" content="Curated, ranked YouTube channels for every GATE CS subject with playlist links, usage strategy, and channel comparisons.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === Design Tokens === */
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #F7F7F5;
+      --color-text-primary: #1a1a1a;
+      --color-text-secondary: #6b6b6b;
+      --color-text-tertiary: #999;
+      --color-border-tertiary: #e5e5e3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-background-primary: #1e1e1e;
+        --color-background-secondary: #272727;
+        --color-text-primary: #e8e8e8;
+        --color-text-secondary: #a0a0a0;
+        --color-text-tertiary: #777;
+        --color-border-tertiary: #383838;
+      }
+    }
+    /* === Global Reset === */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:18px}
+    body{
+      font-family:var(--font-sans);
+      background:var(--color-background-secondary);
+      color:var(--color-text-primary);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    /* === Page Header === */
+    .page-header{
+      text-align:center;
+      padding:clamp(2rem,5vw,3.5rem) 1.25rem clamp(1.5rem,3vw,2.5rem);
+      background:linear-gradient(135deg,#FAEEDA 0%,#EEEDFE 50%,#E1F5EE 100%);
+    }
+    .page-header h1{
+      font-size:clamp(1.4rem,4vw,2.1rem);
+      font-weight:700;
+      color:var(--color-text-primary);
+      margin-bottom:0.4rem;
+    }
+    .page-header p{
+      font-size:clamp(0.8rem,2vw,1rem);
+      color:var(--color-text-secondary);
+      max-width:580px;
+      margin:0 auto;
+    }
+    /* === Container === */
+    .container{
+      max-width:960px;
+      margin:0 auto;
+      padding:0 clamp(0.75rem,2vw,1.5rem);
+    }
+    /* === Page Footer === */
+    .page-footer{
+      text-align:center;
+      padding:1.5rem 1rem;
+      font-size:0.75rem;
+      color:var(--color-text-tertiary);
+      border-top:1px solid var(--color-border-tertiary);
+    }
+    /* === Content Styles === */
+    .root{padding:1rem 0}
+
+/* Filter tabs */
+.ftabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.2rem}
+.ftab{padding:7px 13px;border-radius:20px;font-size:14px;font-weight:500;cursor:pointer;border:1.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all .15s}
+.ftab.on{background:#EEEDFE;border-color:#534AB7;color:#3C3489}
+
+/* Summary cards at top */
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.4rem}
+.scard{border-radius:11px;padding:.85rem 1rem}
+.sc0{background:#EEEDFE;border:0.5px solid #C5C2F5}
+.sc1{background:#E1F5EE;border:0.5px solid #9FE1CB}
+.sc2{background:#FAEEDA;border:0.5px solid #F5D08A}
+.sc-label{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+.sc0 .sc-label{color:#534AB7}.sc1 .sc-label{color:#0F6E56}.sc2 .sc-label{color:#854F0B}
+.sc-name{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.sc-why{font-size:14px;color:var(--color-text-secondary);line-height:1.5}
+
+/* Channel cards */
+.grid{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;overflow:hidden}
+.card-head{padding:.85rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;cursor:pointer}
+.ch-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.subj-badge{font-size:13px;font-weight:600;padding:3px 9px;border-radius:8px;white-space:nowrap;flex-shrink:0}
+.ch-title{font-size:15px;font-weight:500;color:var(--color-text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch-subs{font-size:13px;color:var(--color-text-secondary);white-space:nowrap}
+.marks-tag{font-size:13px;font-weight:600;padding:2px 8px;border-radius:8px;flex-shrink:0}
+.expand-icon{font-size:14px;color:var(--color-text-tertiary);flex-shrink:0;transition:transform .2s}
+.card.open .expand-icon{transform:rotate(180deg)}
+
+.card-body{display:none;border-top:0.5px solid var(--color-border-tertiary);padding:.85rem 1rem}
+.card.open .card-body{display:block}
+
+.channels-wrap{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.ch-entry{border-radius:9px;padding:.7rem .9rem;border:0.5px solid var(--color-border-tertiary)}
+.ch-rank-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.rank-badge{font-size:12px;font-weight:600;padding:2px 7px;border-radius:6px}
+.r1{background:#EEEDFE;color:#3C3489}.r2{background:#E6F1FB;color:#0C447C}.r3{background:#F0EFEA;color:#5C5A53}
+.ch-name{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.ch-meta-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.tag{font-size:12px;font-weight:500;padding:2px 7px;border-radius:6px}
+.tag-pyq{background:#E8F5E9;color:#1B5E20}
+.tag-complete{background:#E3F2FD;color:#0D47A1}
+.tag-hindi{background:#FFF8E6;color:#7A5700}
+.tag-english{background:#F3E5F5;color:#6A1B9A}
+.tag-depth{background:#FFEBEE;color:#B71C1C}
+.tag-beginner{background:#E0F7FA;color:#006064}
+.ch-why{font-size:14px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:6px}
+.playlist-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:500;color:#C00;text-decoration:none;padding:3px 9px;background:#FFF0F0;border-radius:6px;border:0.5px solid #FFB3B3}
+.playlist-link:hover{background:#FFE0E0}
+.playlist-icon{font-size:12px}
+
+.strategy{background:var(--color-background-secondary);border-radius:9px;padding:.85rem 1rem;font-size:14px;color:var(--color-text-primary);line-height:1.7;border-left:3px solid #534AB7}
+.strategy strong{color:var(--color-text-primary)}
+
+/* Channel overview pills */
+.overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.2rem}
+.ov-card{border-radius:10px;padding:.7rem .85rem;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.ov-name{font-size:14px;font-weight:600;color:var(--color-text-primary);margin-bottom:3px}
+.ov-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.5}
+.ov-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}
+
+.tip{background:var(--color-background-secondary);border-left:3px solid #534AB7;border-radius:0 8px 8px 0;padding:.75rem 1rem;font-size:14px;line-height:1.7;margin-top:10px;color:var(--color-text-primary)}
+
+    @media(max-width:500px){.summary,.overview-grid{grid-template-columns:1fr}.ch-left{flex-wrap:wrap}}
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>GATE CS 2026 — YouTube Channel Guide</h1>
+    <p>Curated, ranked YouTube channels for every GATE CS subject · playlist links · usage strategies</p>
+  </header>
+
+  <main class="container">
+  <div class="root">
+
+<!-- Summary cards -->
+<div class="summary">
+  <div class="scard sc0">
+    <div class="sc-label">🏆 Best Overall (All Subjects)</div>
+    <div class="sc-name">Gate Smashers</div>
+    <div class="sc-why">Only channel with structured complete playlists for ALL 11 GATE CS subjects in one place. 2.45M+ learners. Hindi medium.</div>
+  </div>
+  <div class="scard sc1">
+    <div class="sc-label">💡 Best for Concepts (English)</div>
+    <div class="sc-name">Neso Academy</div>
+    <div class="sc-why">Unmatched clarity for Digital Logic, CN, OS, Compiler. Slow-paced, whiteboard style. Best for first-time learners in English.</div>
+  </div>
+  <div class="scard sc2">
+    <div class="sc-label">📝 Best for PYQs + Depth</div>
+    <div class="sc-name">KnowledgeGATE (Sanchit Sir)</div>
+    <div class="sc-why">Solves hundreds of PYQs with approach explanation. Best for exam-oriented revision across all CS subjects.</div>
+  </div>
+</div>
+
+<!-- Channel Overview -->
+<div style="font-size:11px;font-weight:600;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px">Channel Quick Reference</div>
+<div class="overview-grid">
+  <div class="ov-card">
+    <div class="ov-name">🔴 Gate Smashers</div>
+    <div class="ov-desc">Varun Singla. Complete GATE CS syllabus. All subjects. 2.45M subs.</div>
+    <div class="ov-tags"><span class="tag tag-hindi">Hindi</span><span class="tag tag-complete">Complete</span><span class="tag tag-pyq">PYQs</span></div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-name">🔵 Neso Academy</div>
+    <div class="ov-desc">Multi-author. Best for DL, CN, OS, Compiler. Crystal clear.</div>
+    <div class="ov-tags"><span class="tag tag-english">English</span><span class="tag tag-complete">Complete</span><span class="tag tag-beginner">Beginner-friendly</span></div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-name">🟢 KnowledgeGATE (Sanchit Sir)</div>
+    <div class="ov-desc">Sanchit Jain. GATE + NET focused. Heavy on PYQ discussion.</div>
+    <div class="ov-tags"><span class="tag tag-hindi">Hindi</span><span class="tag tag-pyq">PYQs</span><span class="tag tag-depth">GATE-depth</span></div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-name">🟠 Abdul Bari</div>
+    <div class="ov-desc">Best Algorithms + DS conceptual channel on YouTube. Clear English.</div>
+    <div class="ov-tags"><span class="tag tag-english">English</span><span class="tag tag-depth">Deep</span><span class="tag tag-complete">Complete</span></div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-name">🟣 Ravindrababu Ravula</div>
+    <div class="ov-desc">IISc M.Tech. GATE toppers' choice. TOC + Compiler = unmatched.</div>
+    <div class="ov-tags"><span class="tag tag-english">English</span><span class="tag tag-depth">Deep</span><span class="tag tag-pyq">PYQs</span></div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-name">🔶 Dr. Gajendra Purohit</div>
+    <div class="ov-desc">20+ yrs experience. Best Engg. Math. 345M+ views. GATE+JAM focus.</div>
+    <div class="ov-tags"><span class="tag tag-hindi">Hindi</span><span class="tag tag-complete">Complete</span><span class="tag tag-pyq">PYQs</span></div>
+  </div>
+</div>
+
+<!-- Filter -->
+<div class="ftabs" id="ftabs">
+  <div class="ftab on" onclick="filter('all')">All Subjects</div>
+  <div class="ftab" onclick="filter('math')">Mathematics</div>
+  <div class="ftab" onclick="filter('cs')">Core CS</div>
+  <div class="ftab" onclick="filter('systems')">Systems</div>
+  <div class="ftab" onclick="filter('theory')">Theory</div>
+</div>
+
+<div class="grid" id="grid">
+
+<!-- 1. ENGG MATH -->
+<div class="card" data-cat="math">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#E6F1FB;color:#0C447C">Engg. Mathematics</span>
+      <span class="ch-title">Dr. Gajendra Purohit (GP Sir) + GATE Wallah</span>
+    </div>
+    <span class="marks-tag" style="background:#185FA5;color:#fff">7–10 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary</span><span class="ch-name">Dr. Gajendra Purohit (GP Sir)</span><span class="ch-subs">2.7M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-complete">Full Syllabus</span><span class="tag tag-pyq">GATE PYQs</span><span class="tag tag-depth">20+ yrs exp.</span></div>
+        <div class="ch-why">Only pure-mathematics educator on YouTube with PhD-level depth AND GATE focus. Covers all GATE Maths topics: Linear Algebra (eigenvalues, rank, system of equations), Probability & Statistics (Bayes, distributions), Calculus, Numerical Methods, and Complex Analysis. Solves actual GATE paper questions with short tricks. 345M+ total views confirms teaching quality. No other channel matches his combination of conceptual depth + exam-oriented delivery for Engg. Math.</div>
+        <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLU6SqdYcYsfLPxjd-k-MaoG7qgRQ-2fKc" target="_blank"><span class="playlist-icon">▶</span>Engineering Mathematics Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">GATE Wallah (PW)</span><span class="ch-subs">1M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-pyq">GATE-focused</span><span class="tag tag-complete">Crash Course</span></div>
+        <div class="ch-why">Structured GATE-specific maths crash course. Covers all branches' maths in compact form. Best used for revision after GP Sir's deep study. Includes GATE 2024/2025 analysis videos.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GATEWallah/playlists" target="_blank"><span class="playlist-icon">▶</span>GATE Wallah – Engineering Maths Playlists</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> Watch GP Sir for concept clarity and problem solving. Use GATE Wallah crash course for final revision. Solve GATE PYQs from GATE Overflow after each topic.</div>
+  </div>
+</div>
+
+<!-- 2. DISCRETE MATH -->
+<div class="card" data-cat="math">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#EEEDFE;color:#3C3489">Discrete Mathematics</span>
+      <span class="ch-title">Gate Smashers + KnowledgeGATE + Neso Academy</span>
+    </div>
+    <span class="marks-tag" style="background:#534AB7;color:#fff">10–13 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary</span><span class="ch-name">Gate Smashers</span><span class="ch-subs">2.45M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-complete">Full Syllabus</span><span class="tag tag-pyq">PYQs Included</span></div>
+        <div class="ch-why">Complete Discrete Maths playlist covering all GATE topics: Propositional Logic, Predicate Logic, Set Theory, Relations, Functions, Graph Theory (very thorough), Combinatorics, and Algebraic Structures. Real-life examples make abstract topics intuitive. Consistently recommended by GATE toppers for DM coverage.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateSmashers/playlists" target="_blank"><span class="playlist-icon">▶</span>Gate Smashers – Discrete Maths Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">KnowledgeGATE by Sanchit Sir</span><span class="ch-subs">600K+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-pyq">Heavy PYQ Focus</span><span class="tag tag-depth">GATE depth</span></div>
+        <div class="ch-why">Sanchit Sir solves hundreds of GATE PYQs for Discrete Maths with full explanation of approach and common traps. Use alongside Gate Smashers for exam-level problem solving. Especially strong for Logic, Relations, and Graph Theory PYQs.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@KnowledgeGATEbySanchitSir/playlists" target="_blank"><span class="playlist-icon">▶</span>KnowledgeGATE – Discrete Maths Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r3">#3 Bonus</span><span class="ch-name">Neso Academy</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-beginner">Clear explanations</span></div>
+        <div class="ch-why">Best English-medium option for Discrete Maths. Particularly strong for Set Theory, Relations, and Graph Theory with very clean whiteboard-style teaching. Use if Hindi is not preferred.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@nesoacademy/playlists" target="_blank"><span class="playlist-icon">▶</span>Neso Academy – Discrete Maths Playlist</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> Gate Smashers for concept learning → KnowledgeGATE for PYQ practice. For English medium: Neso Academy throughout.</div>
+  </div>
+</div>
+
+<!-- 3. DATA STRUCTURES -->
+<div class="card" data-cat="cs">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#E1F5EE;color:#085041">Data Structures</span>
+      <span class="ch-title">Abdul Bari + Jenny's Lectures</span>
+    </div>
+    <span class="marks-tag" style="background:#0F6E56;color:#fff">8–12 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary</span><span class="ch-name">Abdul Bari</span><span class="ch-subs">1.5M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-complete">Full Coverage</span><span class="tag tag-depth">Deep Concepts</span></div>
+        <div class="ch-why">The single best channel for Data Structures and Algorithms conceptual clarity on all of YouTube. Abdul Bari teaches with whiteboard diagrams, step-by-step trace-throughs, and real examples. Covers all GATE DS topics: Arrays, Linked Lists, Stacks, Queues, Trees (Binary, BST, AVL, B-trees, Heaps), Hashing, and Graphs. His AVL rotation explanations and hashing collision resolution lectures are considered definitive references. Used by GATE AIR toppers consistently.</div>
+        <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O" target="_blank"><span class="playlist-icon">▶</span>Abdul Bari – Data Structures & Algorithms Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">Jenny's Lectures CS/IT NET&JRF</span><span class="ch-subs">1M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-complete">Complete DS</span><span class="tag tag-beginner">Beginner-friendly</span></div>
+        <div class="ch-why">122+ video DS playlist covering all structures with C language implementation. Very structured, topic-by-topic coverage. Excellent secondary resource for topics where more examples are needed after Abdul Bari. Strong for Trees and Graphs.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@JennyslecturesCSITNETJRF/playlists" target="_blank"><span class="playlist-icon">▶</span>Jenny's Lectures – Data Structures Playlist</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> Abdul Bari is self-sufficient for GATE DS. Use Jenny's for additional examples on difficult topics. Supplement with Gate Smashers for Hindi + PYQs.</div>
+  </div>
+</div>
+
+<!-- 4. ALGORITHMS -->
+<div class="card" data-cat="cs">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#FFF3E0;color:#E65100">Algorithms</span>
+      <span class="ch-title">Abdul Bari + Ravindrababu Ravula</span>
+    </div>
+    <span class="marks-tag" style="background:#E65100;color:#fff">7–10 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary</span><span class="ch-name">Abdul Bari</span><span class="ch-subs">1.5M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-complete">Full Algorithms</span><span class="tag tag-depth">Trace-through style</span></div>
+        <div class="ch-why">Abdul Bari's Algorithms playlist is the most-recommended algorithms resource on YouTube for GATE preparation — period. Covers Asymptotic Analysis, Recurrences (Master Theorem), ALL sorting algorithms with complexity proof, Graph Algorithms (Dijkstra, Bellman-Ford, Floyd-Warshall, Prim, Kruskal), Dynamic Programming (10+ classic problems each traced through manually), Greedy Algorithms, Divide & Conquer, and P/NP. His DP trace-throughs (matrix chain, LCS, 0-1 knapsack) are the clearest available. Over 60 dedicated algorithm lectures.</div>
+        <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O" target="_blank"><span class="playlist-icon">▶</span>Abdul Bari – Algorithms Full Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">Ravindrababu Ravula</span><span class="ch-subs">400K+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-pyq">GATE-depth</span><span class="tag tag-depth">IISc trained</span></div>
+        <div class="ch-why">IISc M.Tech graduate, GATE 99.67 percentile scorer. His algorithms videos are extremely GATE-exam-oriented — he specifically teaches what GATE tests and how. Best for Recurrences, Amortised Analysis, and NP-completeness where depth matters. Some content behind paywall but significant free content available.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateLectures/playlists" target="_blank"><span class="playlist-icon">▶</span>Ravindrababu Ravula – GATE Algorithms Playlist</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> Abdul Bari for primary coverage (self-sufficient). Ravindrababu for GATE-specific depth on recurrences and NP. Solve Abdul Bari lecture → immediately practice PYQ on GATE Overflow.</div>
+  </div>
+</div>
+
+<!-- 5. DIGITAL LOGIC -->
+<div class="card" data-cat="systems">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#F3E5F5;color:#6A1B9A">Digital Logic</span>
+      <span class="ch-title">Neso Academy (clear #1) + Gate Smashers</span>
+    </div>
+    <span class="marks-tag" style="background:#7B1FA2;color:#fff">6–9 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary (Best on YouTube)</span><span class="ch-name">Neso Academy</span><span class="ch-subs">5M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-complete">Full Syllabus</span><span class="tag tag-pyq">DRDO/ISRO PYQs</span><span class="tag tag-beginner">Crystal clear</span></div>
+        <div class="ch-why">Neso Academy's Digital Electronics playlist is the gold standard for this subject — it is universally recommended as the single best resource for Digital Logic across all platforms (Quora, Reddit, GATE forums). Covers 100% of GATE DL syllabus: Number Systems (Binary, BCD, Gray, Excess-3, IEEE 754), Boolean Algebra, all K-map variants (2 to 5 variable, don't cares), all Combinational Circuits (MUX/DEMUX/Encoder/Decoder/Adder/Subtractor), all Flip-Flops (SR/JK/D/T with excitation tables), Counters, Shift Registers, Mealy/Moore machines. 130+ videos. Whiteboard style with animations — unmatched clarity in English.</div>
+        <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm" target="_blank"><span class="playlist-icon">▶</span>Neso Academy – Digital Electronics Complete Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">Gate Smashers</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-pyq">GATE PYQs</span></div>
+        <div class="ch-why">Good Hindi alternative with GATE PYQ discussion. Use for exam-oriented practice after completing Neso Academy for concepts.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateSmashers/playlists" target="_blank"><span class="playlist-icon">▶</span>Gate Smashers – Digital Logic Playlist</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> Neso Academy is completely self-sufficient for Digital Logic — it's the only channel you need. Use Gate Smashers PYQ videos as add-on practice.</div>
+  </div>
+</div>
+
+<!-- 6. COA -->
+<div class="card" data-cat="systems">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#E8F5E9;color:#2E7D32">CO & Architecture</span>
+      <span class="ch-title">Neso Academy + Gate Smashers</span>
+    </div>
+    <span class="marks-tag" style="background:#2E7D32;color:#fff">8–12 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary</span><span class="ch-name">Neso Academy</span><span class="ch-subs">5M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-complete">Full COA</span><span class="tag tag-depth">Deep numericals</span></div>
+        <div class="ch-why">Neso Academy's Computer Organisation and Architecture playlist (100+ videos) covers the entire GATE COA syllabus with exceptional clarity. Particularly excellent for Pipelining (hazard types, stall calculation, forwarding), Cache Memory (all mapping techniques, replacement policies, AMAT calculation — the most important GATE topic), and Addressing Modes. Numerical examples are worked through step-by-step, which is essential for GATE-style questions. Consistently rated the best COA resource in English.</div>
+        <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLBlnK6fEyqRjG3TGJL2kXPeWonXPEF3OK" target="_blank"><span class="playlist-icon">▶</span>Neso Academy – Computer Organisation Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">Gate Smashers</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-pyq">GATE PYQs</span><span class="tag tag-complete">Full Coverage</span></div>
+        <div class="ch-why">Complete Hindi-medium COA playlist. Strong for Pipeline and Cache numerical problems. Good for PYQ discussion and quick revision.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateSmashers/playlists" target="_blank"><span class="playlist-icon">▶</span>Gate Smashers – COA Playlist</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> Neso Academy for complete coverage (DL prerequisite must be done first). Focus extra time on Pipeline + Cache topics — they yield 6–8 marks combined.</div>
+  </div>
+</div>
+
+<!-- 7. OS -->
+<div class="card" data-cat="systems">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#FBE9E7;color:#BF360C">Operating Systems</span>
+      <span class="ch-title">Gate Smashers + Neso Academy + KnowledgeGATE</span>
+    </div>
+    <span class="marks-tag" style="background:#BF360C;color:#fff">10–14 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary</span><span class="ch-name">Gate Smashers</span><span class="ch-subs">2.45M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-complete">Full Syllabus</span><span class="tag tag-pyq">PYQs</span><span class="tag tag-depth">Numericals</span></div>
+        <div class="ch-why">Most complete free OS playlist on YouTube for GATE. Covers all high-weightage numerical topics: CPU Scheduling (all algorithms, Gantt charts), Process Synchronisation (semaphore solutions, classical problems), Deadlock (Banker's algorithm with multiple worked examples), Memory Management (multi-level paging, TLB, EAT), Page Replacement (FIFO/LRU/Optimal trace-throughs), and File Systems. Consistently recommended for OS in GATE prep communities. Numerical focus exactly matches GATE question style.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateSmashers/playlists" target="_blank"><span class="playlist-icon">▶</span>Gate Smashers – Operating Systems Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">Neso Academy</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-complete">Full OS</span><span class="tag tag-beginner">Conceptual clarity</span></div>
+        <div class="ch-why">Best English-medium OS playlist. Exceptionally clear for Process Management, Synchronisation (semaphore logic), and Memory Management concepts. Use for first-time learners who need concept clarity before numericals.</div>
+        <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O" target="_blank"><span class="playlist-icon">▶</span>Neso Academy – Operating Systems Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r3">#3 PYQ Specialist</span><span class="ch-name">KnowledgeGATE (Sanchit Sir)</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-pyq">Heavy PYQs</span></div>
+        <div class="ch-why">Best for GATE OS PYQ practice. Sanchit Sir's approach of solving past paper questions with full explanation is especially valuable for OS where GATE question patterns are predictable.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@KnowledgeGATEbySanchitSir/playlists" target="_blank"><span class="playlist-icon">▶</span>KnowledgeGATE – OS Playlist</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> Gate Smashers for primary coverage (Hindi). Neso Academy for English preference. Use KnowledgeGATE for final exam-oriented PYQ revision. OS requires solving 5+ numericals per topic — don't just watch lectures.</div>
+  </div>
+</div>
+
+<!-- 8. DBMS -->
+<div class="card" data-cat="systems">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#E3F2FD;color:#0D47A1">DBMS</span>
+      <span class="ch-title">Gate Smashers + KnowledgeGATE</span>
+    </div>
+    <span class="marks-tag" style="background:#0D47A1;color:#fff">10–13 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary</span><span class="ch-name">Gate Smashers</span><span class="ch-subs">2.45M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-complete">Full Syllabus</span><span class="tag tag-pyq">PYQs</span></div>
+        <div class="ch-why">Most comprehensive free DBMS playlist for GATE. 90+ video series covering ER Model, Relational Model, Relational Algebra (all operators), complete SQL (JOINs, subqueries, aggregates), Normalisation (FDs, closure, canonical cover, 1NF to BCNF decomposition with full examples), B+ Trees (insertion/deletion/height), Transactions (ACID, schedules, conflict serializability — precedence graph), and 2PL protocol. Varun Sir's normalisation videos are particularly well-regarded — most complete treatment available free.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateSmashers/playlists" target="_blank"><span class="playlist-icon">▶</span>Gate Smashers – DBMS Complete Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">KnowledgeGATE by Sanchit Sir</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-pyq">Heavy PYQs</span><span class="tag tag-depth">GATE-depth</span></div>
+        <div class="ch-why">Sanchit Sir solves GATE DBMS PYQs exhaustively. Strongest for Normalisation PYQs and Transaction serializability questions — the two toughest DBMS topics in GATE. Best used as PYQ practice companion after Gate Smashers concepts.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@KnowledgeGATEbySanchitSir/playlists" target="_blank"><span class="playlist-icon">▶</span>KnowledgeGATE – DBMS Playlist</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> Gate Smashers for complete concept learning. KnowledgeGATE for PYQ practice (especially Normalisation + Transactions). Practice finding ALL candidate keys manually on 20+ FD sets before exam.</div>
+  </div>
+</div>
+
+<!-- 9. CN -->
+<div class="card" data-cat="systems">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#E0F7FA;color:#006064">Computer Networks</span>
+      <span class="ch-title">Gate Smashers + Neso Academy</span>
+    </div>
+    <span class="marks-tag" style="background:#006064;color:#fff">9–12 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary</span><span class="ch-name">Gate Smashers</span><span class="ch-subs">2.45M+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-complete">Full Syllabus</span><span class="tag tag-pyq">PYQs</span><span class="tag tag-depth">Numerical focus</span></div>
+        <div class="ch-why">Complete CN playlist with strong focus on numerically tested topics. Covers OSI/TCP-IP models, Data Link Layer (CRC calculation, Hamming code, ALL sliding window protocols with efficiency formulas, ALOHA throughput), Network Layer (IPv4 subnetting, VLSM, CIDR, routing algorithms), Transport Layer (TCP congestion control state machine, flow control), Application Layer (HTTP, DNS, FTP). The sliding window protocol videos are particularly detailed — exactly the format GATE tests.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateSmashers/playlists" target="_blank"><span class="playlist-icon">▶</span>Gate Smashers – Computer Networks Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">Neso Academy</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-complete">Full CN</span><span class="tag tag-beginner">Layer-by-layer</span></div>
+        <div class="ch-why">Best English-medium CN resource. Neso Academy's CN series goes through each OSI layer methodically with exceptional clarity. CRC and Hamming code explanations are especially clear. Use for concept building before tackling numericals.</div>
+        <a class="playlist-link" href="https://www.youtube.com/playlist?list=PLBlnK6fEyqRgJU3EsOYDTW7m6SUmW6kII" target="_blank"><span class="playlist-icon">▶</span>Neso Academy – Computer Networks Playlist</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> Neso Academy for English/concept clarity. Gate Smashers for numerical practice. Master subnetting + sliding window protocols first — they cover 5–6 marks alone.</div>
+  </div>
+</div>
+
+<!-- 10. TOC -->
+<div class="card" data-cat="theory">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#EDE7F6;color:#4527A0">Theory of Computation</span>
+      <span class="ch-title">Ravindrababu Ravula + Gate Smashers + KnowledgeGATE</span>
+    </div>
+    <span class="marks-tag" style="background:#4527A0;color:#fff">8–11 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary (Best for TOC on YouTube)</span><span class="ch-name">Ravindrababu Ravula</span><span class="ch-subs">400K+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-depth">IISc level depth</span><span class="tag tag-pyq">GATE-focused</span><span class="tag tag-complete">Full TOC</span></div>
+        <div class="ch-why">Ravindrababu Ravula's TOC playlist is the most cited resource for TOC among GATE CS top rankers — his DFA/NFA lectures, subset construction, minimisation, and CFG lectures are considered the best available. He brings genuine IISc-level rigor while staying exam-oriented. His approach to Decidability (Rice's theorem, reductions) is uniquely clear — a topic most channels handle poorly. Multiple GATE AIR &lt;50 rankers credit his TOC lectures specifically. Free content available; covers essentially the full GATE TOC syllabus.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateLectures/playlists" target="_blank"><span class="playlist-icon">▶</span>Ravindrababu Ravula – TOC Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">Gate Smashers</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-complete">Full TOC</span><span class="tag tag-pyq">PYQs</span></div>
+        <div class="ch-why">Complete Hindi TOC playlist. Covers all topics from DFA to Turing Machines with PYQ discussion. Good as Hindi supplement or as primary channel if Ravindrababu's pace feels slow.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateSmashers/playlists" target="_blank"><span class="playlist-icon">▶</span>Gate Smashers – TOC Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r3">#3 PYQ Specialist</span><span class="ch-name">KnowledgeGATE (Sanchit Sir)</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-pyq">Heavy PYQs</span></div>
+        <div class="ch-why">Best for GATE TOC PYQ practice. Sanchit Sir's DFA/NFA PYQ solutions and Decidability question approach are particularly useful for exam preparation.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@KnowledgeGATEbySanchitSir/playlists" target="_blank"><span class="playlist-icon">▶</span>KnowledgeGATE – TOC Playlist</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> Ravindrababu Ravula for concept depth (English) → KnowledgeGATE for PYQ practice. TOC requires multiple revisions — plan 2 full revisits before GATE. DFA/NFA must be mastered before CFG/PDA/TM.</div>
+  </div>
+</div>
+
+<!-- 11. COMPILER DESIGN -->
+<div class="card" data-cat="theory">
+  <div class="card-head" onclick="tog(this)">
+    <div class="ch-left">
+      <span class="subj-badge" style="background:#F9FBE7;color:#558B2F">Compiler Design</span>
+      <span class="ch-title">Ravindrababu Ravula + Neso Academy + Gate Smashers</span>
+    </div>
+    <span class="marks-tag" style="background:#558B2F;color:#fff">5–8 marks</span>
+    <span class="expand-icon">▾</span>
+  </div>
+  <div class="card-body">
+    <div class="channels-wrap">
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r1">#1 Primary (Best on YouTube)</span><span class="ch-name">Ravindrababu Ravula</span><span class="ch-subs">400K+ subs</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-depth">IISc depth</span><span class="tag tag-pyq">GATE-exam level</span><span class="tag tag-complete">Full Compiler</span></div>
+        <div class="ch-why">Ravindrababu Ravula's Compiler Design playlist is unanimously rated the best on YouTube. His FIRST/FOLLOW set computation, LL(1) parsing table construction, and LALR(1) parser videos are used by nearly all serious GATE aspirants. His treatment is mathematically rigorous yet exam-focused — he specifically explains what GATE tests and how parsing questions are framed. His CLR vs LALR difference explanation is the clearest available anywhere. TOC must be completed first (prerequisite dependency is direct).</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateLectures/playlists" target="_blank"><span class="playlist-icon">▶</span>Ravindrababu Ravula – Compiler Design Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r2">#2 Secondary</span><span class="ch-name">Neso Academy</span></div>
+        <div class="ch-meta-row"><span class="tag tag-english">English</span><span class="tag tag-complete">Full Compiler</span><span class="tag tag-beginner">Clear examples</span></div>
+        <div class="ch-why">Neso Academy's Compiler Design playlist covers all phases clearly. Best English alternative to Ravindrababu. Particularly good for Lexical Analysis and Syntax-Directed Translation concepts.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@nesoacademy/playlists" target="_blank"><span class="playlist-icon">▶</span>Neso Academy – Compiler Design Playlist</a>
+      </div>
+      <div class="ch-entry">
+        <div class="ch-rank-row"><span class="rank-badge r3">#3 Hindi Option</span><span class="ch-name">Gate Smashers</span></div>
+        <div class="ch-meta-row"><span class="tag tag-hindi">Hindi</span><span class="tag tag-pyq">PYQs</span><span class="tag tag-complete">Full Coverage</span></div>
+        <div class="ch-why">Complete Hindi Compiler Design playlist. Good for FIRST/FOLLOW PYQ practice and LL(1)/LALR(1) parsing table construction numericals.</div>
+        <a class="playlist-link" href="https://www.youtube.com/@GateSmashers/playlists" target="_blank"><span class="playlist-icon">▶</span>Gate Smashers – Compiler Design Playlist</a>
+      </div>
+    </div>
+    <div class="strategy"><strong>Suggested Use:</strong> TOC must be complete before starting Compiler Design. Ravindrababu is self-sufficient for GATE. Master FIRST/FOLLOW computation manually before attempting any parsing table — it is the prerequisite for ALL parsing questions.</div>
+  </div>
+</div>
+
+</div><!-- /grid -->
+
+<div class="tip">
+  <strong>Universal Principle:</strong> No YouTube channel alone is sufficient for GATE. The optimal workflow for every subject is: <strong>(1) Watch lecture</strong> to understand concept → <strong>(2) Solve PYQs on GATE Overflow</strong> for that topic within 3 days → <strong>(3) Revisit weak topics</strong> after mock tests. The channels above provide the knowledge. GATE Overflow (<strong>gateoverflow.in</strong>) provides the exam-level application. Both together produce the score.
+</div>
+
+</div>
+  </main>
+
+  <footer class="page-footer">
+    GATE CS 2026 YouTube Channel Guide · Built for focused, structured preparation.
+  </footer>
+
+  <script>
+  function tog(head){
+    const card=head.parentElement;
+    card.classList.toggle('open');
+  }
+  function filter(cat){
+    document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('on'));
+    event.target.classList.add('on');
+    document.querySelectorAll('.card').forEach(c=>{
+      if(cat==='all')c.style.display='';
+      else c.style.display=c.dataset.cat===cat?'':'none';
+    });
+  }
+  </script>
+</body>
+</html>

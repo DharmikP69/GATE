@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GATE CS 2026 — Optimal Preparation Roadmap</title>
+  <meta name="description" content="Complete GATE CS 2026 preparation roadmap with subject analysis, dependency mapping, study order, optimal pairings, and alternative strategies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === Design Tokens === */
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #F7F7F5;
+      --color-text-primary: #1a1a1a;
+      --color-text-secondary: #6b6b6b;
+      --color-text-tertiary: #999;
+      --color-border-tertiary: #e5e5e3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-background-primary: #1e1e1e;
+        --color-background-secondary: #272727;
+        --color-text-primary: #e8e8e8;
+        --color-text-secondary: #a0a0a0;
+        --color-text-tertiary: #777;
+        --color-border-tertiary: #383838;
+      }
+    }
+    /* === Global Reset === */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:18px}
+    body{
+      font-family:var(--font-sans);
+      background:var(--color-background-secondary);
+      color:var(--color-text-primary);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    /* === Page Header === */
+    .page-header{
+      text-align:center;
+      padding:clamp(2rem,5vw,3.5rem) 1.25rem clamp(1.5rem,3vw,2.5rem);
+      background:linear-gradient(135deg,#EEEDFE 0%,#E6F1FB 50%,#E1F5EE 100%);
+    }
+    .page-header h1{
+      font-size:clamp(1.4rem,4vw,2.1rem);
+      font-weight:700;
+      color:var(--color-text-primary);
+      margin-bottom:0.4rem;
+    }
+    .page-header p{
+      font-size:clamp(0.8rem,2vw,1rem);
+      color:var(--color-text-secondary);
+      max-width:580px;
+      margin:0 auto;
+    }
+    /* === Container === */
+    .container{
+      max-width:920px;
+      margin:0 auto;
+      padding:0 clamp(0.75rem,2vw,1.5rem);
+    }
+    /* === Page Footer === */
+    .page-footer{
+      text-align:center;
+      padding:1.5rem 1rem;
+      font-size:0.75rem;
+      color:var(--color-text-tertiary);
+      border-top:1px solid var(--color-border-tertiary);
+    }
+.wrap{padding:1.5rem 0}
+.nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem}
+.tab{padding:8px 14px;border-radius:20px;font-size:14px;font-weight:500;cursor:pointer;border:1.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all .2s;white-space:nowrap}
+.tab.on{background:#EEEDFE;border-color:#534AB7;color:#3C3489}
+.sec{display:none}.sec.on{display:block;animation:fi .22s ease}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.banner{border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem}
+.bp{background:#EEEDFE}.bt{background:#E1F5EE}.ba{background:#FAEEDA}.bc{background:#FAECE7}.bb{background:#E6F1FB}
+.blbl{font-size:13px;font-weight:500;letter-spacing:.06em;margin-bottom:3px}
+.bp .blbl{color:#534AB7}.bt .blbl{color:#0F6E56}.ba .blbl{color:#854F0B}.bc .blbl{color:#993C1D}.bb .blbl{color:#185FA5}
+.btit{font-size:20px;font-weight:500;color:var(--color-text-primary)}.bsub{font-size:15px;color:var(--color-text-secondary);margin-top:2px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:1rem 1.25rem;margin-bottom:12px}
+.card:last-child{margin-bottom:0}
+.ct{font-size:13px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.li{list-style:none}
+.li li{font-size:15px;color:var(--color-text-primary);padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.li li:last-child{border-bottom:none}
+.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.dp{background:#534AB7}.dt{background:#0F6E56}.da{background:#854F0B}.dc{background:#993C1D}.db{background:#185FA5}.dg{background:#888780}
+.badge{font-size:13px;font-weight:500;padding:2px 8px;border-radius:10px;flex-shrink:0;white-space:nowrap}
+.easy{background:#E1F5EE;color:#085041}.mod{background:#E6F1FB;color:#0C447C}.hard{background:#FAECE7;color:#712B13}
+.hi{background:#EEEDFE;color:#3C3489}.mid{background:#FAEEDA;color:#633806}.lo{background:#F1EFE8;color:#444441}
+.row{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:15px;line-height:1.5}
+.row:last-child{border-bottom:none}
+.scard{display:flex;flex-direction:column;gap:6px;padding:.85rem 1rem;border-radius:10px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary)}
+.sname{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.smeta{display:flex;gap:6px;flex-wrap:wrap}
+.sdesc{font-size:14px;color:var(--color-text-secondary);line-height:1.5}
+.spre{font-size:14px;color:var(--color-text-tertiary)}
+.step{display:flex;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.step:last-child{border-bottom:none}
+.snum{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;background:#EEEDFE;color:#534AB7}
+.stxt{flex:1}
+.stitle{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.sdescb{font-size:14px;color:var(--color-text-secondary);line-height:1.6}
+.pair-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:1rem 1.25rem;margin-bottom:10px}
+.pair-head{display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.pair-num{width:26px;height:26px;border-radius:50%;background:#EEEDFE;color:#534AB7;font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pair-title{font-size:16px;font-weight:500;color:var(--color-text-primary);flex:1}
+.pair-num{width:26px;height:26px;border-radius:50%;background:#EEEDFE;color:#534AB7;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pair-title{font-size:19px;font-weight:500;color:var(--color-text-primary);flex:1}
+.pair-months{font-size:16px;color:var(--color-text-secondary);background:var(--color-background-secondary);padding:2px 8px;border-radius:8px}
+.pair-subjects{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.psub{border-radius:8px;padding:.6rem .8rem}
+.psub-e{background:#E1F5EE;border:0.5px solid #9FE1CB}.psub-h{background:#FAECE7;border:0.5px solid #F5C4B3}
+.psub-name{font-size:18px;font-weight:500;margin-bottom:2px}
+.psub-e .psub-name{color:#085041}.psub-h .psub-name{color:#712B13}
+.psub-tag{font-size:14px;}.psub-e .psub-tag{color:#0F6E56}.psub-h .psub-tag{color:#993C1D}
+.pair-reason{font-size:17px;color:var(--color-text-secondary);line-height:1.6;padding-top:8px;border-top:0.5px solid var(--color-border-tertiary)}
+.alt-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:1rem 1.25rem;margin-bottom:10px}
+.alt-head{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.alt-badge{font-size:14px;font-weight:500;padding:3px 10px;border-radius:10px}
+.alt-title{font-size:19px;font-weight:500;color:var(--color-text-primary)}
+.alt-order{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.ot{font-size:13px;padding:3px 9px;border-radius:8px;font-weight:500}
+.tip{background:var(--color-background-secondary);border-left:3px solid;border-radius:0 8px 8px 0;padding:.85rem 1.1rem;font-size:15px;color:var(--color-text-primary);margin-top:4px;line-height:1.7}
+.tp{border-color:#534AB7}.tt{border-color:#0F6E56}.ta{border-color:#854F0B}.tb{border-color:#185FA5}
+.dep-row{padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:15px;line-height:1.6}
+.dep-row:last-child{border-bottom:none}
+.dep-arrow{color:#534AB7;font-weight:500;margin:0 6px}
+.dep-strong{font-weight:500;color:var(--color-text-primary)}
+.dep-why{color:var(--color-text-secondary);font-size:14px;margin-top:2px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.flow:last-child{border-bottom:none}
+.fn{background:#EEEDFE;color:#3C3489;border-radius:8px;padding:4px 10px;font-size:14px;font-weight:500}
+.fa{color:#534AB7;font-size:14px}
+.fwhy{font-size:14px;color:var(--color-text-secondary);width:100%;margin-top:3px}
+    @media(max-width:500px){.g2,.g3,.pair-subjects{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>GATE CS 2026 — Preparation Roadmap</h1>
+    <p>Subject analysis · dependency mapping · optimal study order · smart pairings · alternative strategies</p>
+  </header>
+
+  <main class="container">
+  <div class="wrap">
+<h2 class="sr-only">GATE CS Optimal Preparation Strategy — Complete Analysis</h2>
+
+<div class="nav">
+  <div class="tab on" onclick="show(0)">1 · Subject Analysis</div>
+  <div class="tab" onclick="show(1)">2 · Dependencies</div>
+  <div class="tab" onclick="show(2)">3 · Prep Order</div>
+  <div class="tab" onclick="show(3)">4 · Study Pairs</div>
+  <div class="tab" onclick="show(4)">5 · Alt Strategies</div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="sec on" id="s0">
+  <div class="banner bp"><div class="blbl">Section 1</div><div class="btit">Subject-wise Analysis</div><div class="bsub">Difficulty · Importance · What it covers · Prerequisites</div></div>
+
+  <div class="g3">
+    <div class="scard">
+      <div class="sname">Digital Logic</div>
+      <div class="smeta"><span class="badge easy">Easy</span><span class="badge hi">High Imp.</span></div>
+      <div class="sdesc">Boolean algebra, logic gates, K-maps, combinational & sequential circuits, flip-flops, counters.</div>
+      <div class="spre">Prerequisites: None</div>
+    </div>
+    <div class="scard">
+      <div class="sname">Engineering Mathematics</div>
+      <div class="smeta"><span class="badge mod">Moderate</span><span class="badge mid">Medium Imp.</span></div>
+      <div class="sdesc">Linear algebra, calculus, probability, statistics, numerical methods. Underlies many CS subjects.</div>
+      <div class="spre">Prerequisites: High school math</div>
+    </div>
+    <div class="scard">
+      <div class="sname">Discrete Mathematics</div>
+      <div class="smeta"><span class="badge mod">Moderate</span><span class="badge hi">High Imp.</span></div>
+      <div class="sdesc">Propositional logic, set theory, relations, functions, graph theory, combinatorics, group theory.</div>
+      <div class="spre">Prerequisites: Engg. Maths (light)</div>
+    </div>
+    <div class="scard">
+      <div class="sname">Computer Org. & Arch.</div>
+      <div class="smeta"><span class="badge mod">Moderate</span><span class="badge hi">High Imp.</span></div>
+      <div class="sdesc">CPU design, ALU, memory hierarchy, I/O, instruction sets, pipelining, cache, performance.</div>
+      <div class="spre">Prerequisites: Digital Logic</div>
+    </div>
+    <div class="scard">
+      <div class="sname">Data Structures & Algorithms</div>
+      <div class="smeta"><span class="badge hard">Hard</span><span class="badge hi">High Imp.</span></div>
+      <div class="sdesc">Arrays, trees, graphs, sorting, hashing, DP, greedy, divide & conquer, complexity analysis.</div>
+      <div class="spre">Prerequisites: Discrete Maths, Programming</div>
+    </div>
+    <div class="scard">
+      <div class="sname">Operating Systems</div>
+      <div class="smeta"><span class="badge hard">Hard</span><span class="badge hi">High Imp.</span></div>
+      <div class="sdesc">Process scheduling, synchronization, deadlock, virtual memory, paging, segmentation, file systems.</div>
+      <div class="spre">Prerequisites: COA, basic programming</div>
+    </div>
+    <div class="scard">
+      <div class="sname">DBMS</div>
+      <div class="smeta"><span class="badge mod">Moderate</span><span class="badge hi">High Imp.</span></div>
+      <div class="sdesc">ER model, relational algebra, SQL, normalization (1NF–BCNF), transactions, ACID, indexing, B+ trees.</div>
+      <div class="spre">Prerequisites: Discrete Maths (set theory, relations)</div>
+    </div>
+    <div class="scard">
+      <div class="sname">Computer Networks</div>
+      <div class="smeta"><span class="badge mod">Moderate</span><span class="badge hi">High Imp.</span></div>
+      <div class="sdesc">OSI & TCP/IP models, data link, network layer (routing algorithms), transport layer, HTTP, DNS, security.</div>
+      <div class="spre">Prerequisites: Engg. Maths (probability), OS (helpful)</div>
+    </div>
+    <div class="scard">
+      <div class="sname">Theory of Computation</div>
+      <div class="smeta"><span class="badge hard">Hard</span><span class="badge hi">High Imp.</span></div>
+      <div class="sdesc">Finite automata, regular expressions, CFGs, PDAs, Turing machines, decidability, P vs NP complexity.</div>
+      <div class="spre">Prerequisites: Discrete Maths (essential)</div>
+    </div>
+    <div class="scard">
+      <div class="sname">Compiler Design</div>
+      <div class="smeta"><span class="badge hard">Hard</span><span class="badge mid">Medium Imp.</span></div>
+      <div class="sdesc">Lexical analysis, LL/LR parsing, syntax-directed translation, symbol tables, code gen. & optimization.</div>
+      <div class="spre">Prerequisites: TOC + DSA (both essential)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct">Marks Distribution in GATE CS (Approximate)</div>
+    <div class="g2" style="margin-bottom:0">
+      <ul class="li">
+        <li><span class="dot dp"></span><div><strong>DSA + Algorithms</strong> — 15–20 marks (highest single section)</div></li>
+        <li><span class="dot dp"></span><div><strong>OS</strong> — 10–14 marks</div></li>
+        <li><span class="dot dp"></span><div><strong>DBMS</strong> — 10–13 marks</div></li>
+        <li><span class="dot dp"></span><div><strong>Discrete Mathematics</strong> — 10–13 marks</div></li>
+        <li><span class="dot dp"></span><div><strong>CN</strong> — 9–12 marks</div></li>
+      </ul>
+      <ul class="li">
+        <li><span class="dot dg"></span><div><strong>TOC</strong> — 8–11 marks</div></li>
+        <li><span class="dot dg"></span><div><strong>COA</strong> — 8–11 marks</div></li>
+        <li><span class="dot dg"></span><div><strong>Engg. Maths</strong> — 7–10 marks</div></li>
+        <li><span class="dot dg"></span><div><strong>Digital Logic</strong> — 6–9 marks</div></li>
+        <li><span class="dot dg"></span><div><strong>Compiler Design</strong> — 5–8 marks</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="sec" id="s1">
+  <div class="banner bt"><div class="blbl">Section 2</div><div class="btit">Dependency Relationships</div><div class="bsub">Which subjects must come before which — and why</div></div>
+
+  <div class="card">
+    <div class="ct">Direct Dependency Chains</div>
+    <div class="dep-row"><span class="dep-strong">Digital Logic</span><span class="dep-arrow">→</span><span class="dep-strong">Computer Organisation & Architecture</span><div class="dep-why">COA is a direct extension of DL. Boolean circuits, registers, flip-flops, ALU design, and bus structures all originate in Digital Logic. Studying COA without DL means memorizing without understanding.</div></div>
+    <div class="dep-row"><span class="dep-strong">Discrete Mathematics</span><span class="dep-arrow">→</span><span class="dep-strong">Theory of Computation</span><div class="dep-why">TOC is essentially applied formal mathematics. Finite automata are defined over sets and relations, CFGs use formal grammar from DM, and the P vs NP section needs combinatorial reasoning. Without DM, TOC becomes rote memorization.</div></div>
+    <div class="dep-row"><span class="dep-strong">Theory of Computation</span><span class="dep-arrow">→</span><span class="dep-strong">Compiler Design</span><div class="dep-why">Lexical analyzers are directly built from Finite Automata (DFA/NFA). Parsers (LL, LR) are constructed from Context-Free Grammars. The entire front-end of a compiler is TOC in implementation. This dependency is the strongest in all of GATE CS.</div></div>
+    <div class="dep-row"><span class="dep-strong">DSA</span><span class="dep-arrow">→</span><span class="dep-strong">Compiler Design</span><div class="dep-why">Symbol tables use hash tables. Parse trees and ASTs are tree data structures. Runtime stack management uses stack DS. Code optimization uses graph algorithms (control flow graphs). Compiler design is applied DSA on top of TOC.</div></div>
+    <div class="dep-row"><span class="dep-strong">Discrete Mathematics</span><span class="dep-arrow">→</span><span class="dep-strong">DSA</span><div class="dep-why">Graph algorithms (BFS, DFS, Dijkstra, spanning trees) require formal graph theory from DM. Recurrence relations for complexity analysis come from DM. Counting arguments for algorithm analysis use combinatorics.</div></div>
+    <div class="dep-row"><span class="dep-strong">Computer Organisation</span><span class="dep-arrow">→</span><span class="dep-strong">Operating Systems</span><div class="dep-why">OS manages hardware resources — CPU scheduling requires understanding of how CPUs work, memory management requires knowing memory hierarchy from COA, and I/O management requires understanding bus and device concepts from COA.</div></div>
+    <div class="dep-row"><span class="dep-strong">Discrete Mathematics</span><span class="dep-arrow">→</span><span class="dep-strong">DBMS</span><div class="dep-why">Relational algebra is a direct application of set theory and formal relations from DM. Functional dependencies and normalization use relational mathematics. Without DM, relational model feels arbitrary.</div></div>
+  </div>
+
+  <div class="card">
+    <div class="ct">Conceptual Dependency Flow (End-to-End)</div>
+    <div class="flow"><span class="fn">Engg. Math</span><span class="fa">+</span><span class="fn">Discrete Math</span><span class="fa">→</span><span class="fn">DSA</span><div class="fwhy">DM provides graph theory and counting; Engg. Math provides recurrence solving and probability for hashing/randomized algorithms.</div></div>
+    <div class="flow"><span class="fn">Digital Logic</span><span class="fa">→</span><span class="fn">COA</span><span class="fa">→</span><span class="fn">OS</span><div class="fwhy">The hardware-to-OS chain: gates build circuits → circuits build CPU/memory → OS manages the CPU/memory. This is the systems stream.</div></div>
+    <div class="flow"><span class="fn">Discrete Math</span><span class="fa">→</span><span class="fn">TOC</span><span class="fa">→</span><span class="fn">Compiler Design</span><div class="fwhy">The formal language chain: sets/relations/logic → automata/grammars → compilers. This is the theory stream.</div></div>
+    <div class="flow"><span class="fn">DSA</span><span class="fa">+</span><span class="fn">TOC</span><span class="fa">→</span><span class="fn">Compiler Design</span><div class="fwhy">Compiler design converges both streams — it uses DSA for data structures and TOC for formal language processing.</div></div>
+    <div class="flow"><span class="fn">Discrete Math</span><span class="fa">→</span><span class="fn">DBMS</span><div class="fwhy">Set theory and formal relations underpin the relational model. This is a single-hop dependency.</div></div>
+    <div class="flow"><span class="fn">Engg. Math</span><span class="fa">+</span><span class="fn">OS</span><span class="fa">→</span><span class="fn">Computer Networks</span><div class="fwhy">Probability (Engg. Math) is needed for error detection/correction and queuing theory in CN. OS concepts help with transport layer and socket programming intuition.</div></div>
+  </div>
+
+  <div class="tip tt">Two subjects have NO prerequisites and can be started on day one: Digital Logic and Engineering Mathematics. Discrete Mathematics has only a soft dependency on Engg. Math and can also begin early. These three are your entry points into the entire GATE CS syllabus.</div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="sec" id="s2">
+  <div class="banner ba"><div class="blbl">Section 3</div><div class="btit">Recommended Preparation Order</div><div class="bsub">Logically sequenced — prerequisites always satisfied before the next subject begins</div></div>
+
+  <div class="card">
+    <div class="step"><div class="snum">1</div><div class="stxt"><div class="stitle">Digital Logic <span class="badge easy" style="font-size:10px;margin-left:6px">Easy</span></div><div class="sdescb">Start here because it has zero prerequisites, is the most concrete and visual subject in GATE CS (gates, circuits, K-maps), and directly unlocks COA. It also builds the habit of formal, precise problem-solving without heavy mathematical load. Ideal warm-up subject that builds confidence early.</div></div></div>
+    <div class="step"><div class="snum">2</div><div class="stxt"><div class="stitle">Engineering Mathematics <span class="badge mod" style="font-size:10px;margin-left:6px">Moderate</span></div><div class="sdescb">No hard prerequisites. Study in parallel or immediately after DL. Linear algebra (rank, eigen), probability (distributions, Bayes), and calculus are foundational for DSA analysis, CN (queuing, error detection), and some OS concepts. Starting early ensures you're never stuck later for lack of mathematical tools.</div></div></div>
+    <div class="step"><div class="snum">3</div><div class="stxt"><div class="stitle">Discrete Mathematics <span class="badge mod" style="font-size:10px;margin-left:6px">Moderate</span></div><div class="sdescb">The single most foundational CS subject. Unlocks TOC, DSA, DBMS, and partially CN. Must be completed before attempting TOC or advanced DSA topics. Graph theory from DM directly feeds into BFS/DFS/Dijkstra in DSA. Set theory feeds into DBMS relational algebra. Formal logic feeds into TOC. Cannot afford to skip or rush this.</div></div></div>
+    <div class="step"><div class="snum">4</div><div class="stxt"><div class="stitle">Computer Organisation & Architecture <span class="badge mod" style="font-size:10px;margin-left:6px">Moderate</span></div><div class="sdescb">Study immediately after Digital Logic is complete. DL → COA is the strongest single-hop dependency in GATE CS. COA translates circuit-level understanding into system-level understanding (CPU, memory, I/O, pipelining). Completing COA also unlocks OS, which cannot be understood properly without knowing how hardware manages resources.</div></div></div>
+    <div class="step"><div class="snum">5</div><div class="stxt"><div class="stitle">Data Structures & Algorithms <span class="badge hard" style="font-size:10px;margin-left:6px">Hard</span></div><div class="sdescb">Now that Discrete Math is complete, all prerequisites for DSA are satisfied. Begin with foundational structures (arrays, linked lists, stacks, queues), then move to trees, graphs, and finally algorithm paradigms (DP, greedy, divide & conquer). DSA is the highest-scoring section in GATE — it deserves the most time and must not be rushed. Expect 2–3 months of focused work.</div></div></div>
+    <div class="step"><div class="snum">6</div><div class="stxt"><div class="stitle">DBMS <span class="badge mod" style="font-size:10px;margin-left:6px">Moderate</span></div><div class="sdescb">With Discrete Math complete, relational algebra and set-theoretic foundations are already in place. DBMS is a moderate subject with very high scoring consistency — students who prepare it properly rarely lose marks. ER diagrams, SQL, normalization, and transactions can be covered in 4–5 weeks. Study alongside OS (see pairings).</div></div></div>
+    <div class="step"><div class="snum">7</div><div class="stxt"><div class="stitle">Operating Systems <span class="badge hard" style="font-size:10px;margin-left:6px">Hard</span></div><div class="sdescb">COA must be complete before OS. OS is the second-highest scoring subject after DSA. Process scheduling, synchronization (mutex, semaphores), deadlock, virtual memory, and file systems require both system-level thinking (from COA) and algorithmic thinking (from DSA). Numerical problems in memory management and scheduling are common in GATE and require practice.</div></div></div>
+    <div class="step"><div class="snum">8</div><div class="stxt"><div class="stitle">Computer Networks <span class="badge mod" style="font-size:10px;margin-left:6px">Moderate</span></div><div class="sdescb">Study after OS is complete. CN has a layer-by-layer structure (OSI/TCP-IP) that makes it relatively self-contained, but intuition for transport layer and socket concepts comes from OS. Probability from Engg. Math is needed for error detection (CRC, Hamming) and queuing. CN is moderately difficult and consistently yields 9–12 marks with proper preparation.</div></div></div>
+    <div class="step"><div class="snum">9</div><div class="stxt"><div class="stitle">Theory of Computation <span class="badge hard" style="font-size:10px;margin-left:6px">Hard</span></div><div class="sdescb">Discrete Mathematics must be complete before starting TOC. Though TOC is placed 9th here, it can begin earlier (after step 3) if running in parallel with COA/DSA. TOC is abstract and requires multiple revisits — finite automata, regular languages, CFGs, PDAs, Turing machines, and decidability must all be mastered before moving to Compiler Design. Allot 6–8 weeks.</div></div></div>
+    <div class="step"><div class="snum">10</div><div class="stxt"><div class="stitle">Compiler Design <span class="badge hard" style="font-size:10px;margin-left:6px">Hard</span></div><div class="sdescb">Study last, and only after both TOC and DSA are complete — it is the convergence of both. Lexical analysis uses FA from TOC. Parsing (LL(1), LR(0), SLR, CLR, LALR) uses CFGs from TOC. Symbol tables use hash maps from DSA. Code generation uses graph structures. Compiler Design has relatively fewer marks (5–8) than its complexity warrants — prioritize completing it well, not quickly.</div></div></div>
+  </div>
+  <div class="tip ta">Note on flexibility: Steps 2 and 3 (Engg. Math + Discrete Math) can be studied simultaneously. Step 9 (TOC) can be pulled forward to run alongside Steps 5–7 as long as Step 3 is complete. The rigid constraint is: DL before COA, DM before TOC, both TOC and DSA before Compiler Design.</div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="sec" id="s3">
+  <div class="banner bc"><div class="blbl">Section 4</div><div class="btit">Optimal Subject Pairings</div><div class="bsub">Each pair: one moderate + one hard · Parallel study over 2–3 months · Prerequisites respected</div></div>
+
+  <div style="background:var(--color-background-secondary);border-radius:10px;padding:.85rem 1rem;margin-bottom:14px;font-size:13px;color:var(--color-text-secondary);line-height:1.6">
+    <strong style="color:var(--color-text-primary)">Phase 0 — Standalone Foundation (4–6 weeks):</strong> Study Engineering Mathematics + Discrete Mathematics together first. Both are moderate, both have no hard prerequisites, and both unlock multiple subjects downstream. This phase is the prerequisite phase — it does not follow the easy+hard pairing rule because there are no hard subjects ready to be studied yet.
+  </div>
+
+  <div class="pair-card">
+    <div class="pair-head"><div class="pair-num">1</div><div class="pair-title">Digital Logic + Theory of Computation</div><span class="pair-months">Phase 1 · 8–10 weeks</span></div>
+    <div class="pair-subjects">
+      <div class="psub psub-e"><div class="psub-name">Digital Logic</div><div class="psub-tag">Easy · 6–9 marks</div></div>
+      <div class="psub psub-h"><div class="psub-name">Theory of Computation</div><div class="psub-tag">Hard · 8–11 marks</div></div>
+    </div>
+    <div class="pair-reason"><strong>Why this pair works:</strong> After Phase 0, Discrete Math is complete — satisfying the only hard prerequisite for TOC. Digital Logic has no prereqs and is self-contained and visual. These two subjects have zero conceptual overlap, which means studying one provides a genuine cognitive break from the other. DL is mechanical and circuit-oriented; TOC is abstract and mathematical. Switching between them reduces fatigue and improves retention. DL will be completed faster (~3 weeks), after which its study time transfers to strengthening TOC. This pair also unlocks the next pair: DL → COA and TOC → Compiler Design.</div>
+  </div>
+
+  <div class="pair-card">
+    <div class="pair-head"><div class="pair-num">2</div><div class="pair-title">Computer Organisation & Architecture + Data Structures & Algorithms</div><span class="pair-months">Phase 2 · 10–12 weeks</span></div>
+    <div class="pair-subjects">
+      <div class="psub psub-e"><div class="psub-name">COA</div><div class="psub-tag">Moderate · 8–11 marks</div></div>
+      <div class="psub psub-h"><div class="psub-name">DSA</div><div class="psub-tag">Hard · 15–20 marks</div></div>
+    </div>
+    <div class="pair-reason"><strong>Why this pair works:</strong> Both prerequisites are now satisfied — DL is done (unlocking COA) and DM is done (unlocking DSA). COA is structured and relatively predictable in GATE — pipelining, cache, and memory hierarchy follow fixed patterns. This makes it a reliable "moderate" companion to DSA, which is the most time-intensive subject in the entire syllabus. DSA should receive the majority of study time in this phase (60–70%) while COA is covered systematically on alternate days. Never reverse this ratio — DSA carries too much GATE weight to be treated as the secondary subject.</div>
+  </div>
+
+  <div class="pair-card">
+    <div class="pair-head"><div class="pair-num">3</div><div class="pair-title">DBMS + Operating Systems</div><span class="pair-months">Phase 3 · 8–10 weeks</span></div>
+    <div class="pair-subjects">
+      <div class="psub psub-e"><div class="psub-name">DBMS</div><div class="psub-tag">Moderate · 10–13 marks</div></div>
+      <div class="psub psub-h"><div class="psub-name">Operating Systems</div><div class="psub-tag">Hard · 10–14 marks</div></div>
+    </div>
+    <div class="pair-reason"><strong>Why this pair works:</strong> Prerequisites fully satisfied — DM done (unlocking DBMS) and COA done (unlocking OS). This is the most productive pairing in the strategy because both subjects are extremely high-scoring and neither depends on the other, allowing true parallel study with no confusion. DBMS is structured (ER → relational model → SQL → normalization → transactions follows a natural pedagogical order). OS is conceptually heavier but extremely rewarding — expect numerical problems in scheduling and memory management. Both subjects together cover 20–27 marks in GATE.</div>
+  </div>
+
+  <div class="pair-card">
+    <div class="pair-head"><div class="pair-num">4</div><div class="pair-title">Computer Networks + Compiler Design</div><span class="pair-months">Phase 4 · 8–10 weeks</span></div>
+    <div class="pair-subjects">
+      <div class="psub psub-e"><div class="psub-name">Computer Networks</div><div class="psub-tag">Moderate · 9–12 marks</div></div>
+      <div class="psub psub-h"><div class="psub-name">Compiler Design</div><div class="psub-tag">Hard · 5–8 marks</div></div>
+    </div>
+    <div class="pair-reason"><strong>Why this pair works:</strong> CN needs OS and Engg. Math (both complete). Compiler Design needs TOC and DSA (both complete after Phase 2). CN has a clean layer-by-layer structure making it the perfect moderate companion to the complex Compiler Design. CN should receive slightly more time (55–60%) given its higher marks potential. Compiler Design, while hard, has fewer marks — cover it thoroughly but efficiently. Do not spend disproportionate time on Compiler at the cost of CN. This is the final pairing — after Phase 4, all 10 GATE CS subjects are covered.</div>
+  </div>
+
+  <div class="tip tc">The total pairing plan spans approximately 34–38 weeks of active study (8.5–9.5 months) excluding Phase 0. With Phase 0, the full coverage takes 10–12 months, leaving 2–3 months for full-syllabus revision, mock tests, and PYQ practice in a 1–1.5 year timeline.</div>
+</div>
+
+<!-- SECTION 5 -->
+<div class="sec" id="s4">
+  <div class="banner bb"><div class="blbl">Section 5</div><div class="btit">Alternative Preparation Strategies</div><div class="bsub">Three valid approaches depending on your starting point and learning style</div></div>
+
+  <div class="alt-card">
+    <div class="alt-head"><span class="alt-badge" style="background:#EEEDFE;color:#3C3489">Strategy A</span><span class="alt-title">Math-First Approach (Theory-Heavy Students)</span></div>
+    <div class="alt-order">
+      <span class="ot" style="background:#EEEDFE;color:#3C3489">Engg. Math</span><span>→</span>
+      <span class="ot" style="background:#EEEDFE;color:#3C3489">Discrete Math</span><span>→</span>
+      <span class="ot" style="background:#EEEDFE;color:#3C3489">TOC</span><span>→</span>
+      <span class="ot" style="background:#EEEDFE;color:#3C3489">DSA</span><span>→</span>
+      <span class="ot" style="background:#EEEDFE;color:#3C3489">Digital Logic</span><span>→</span>
+      <span class="ot" style="background:#EEEDFE;color:#3C3489">COA</span><span>→</span>
+      <span class="ot" style="background:#EEEDFE;color:#3C3489">Compiler Design</span><span>→</span>
+      <span class="ot" style="background:#EEEDFE;color:#3C3489">DBMS</span><span>→</span>
+      <span class="ot" style="background:#EEEDFE;color:#3C3489">OS</span><span>→</span>
+      <span class="ot" style="background:#EEEDFE;color:#3C3489">CN</span>
+    </div>
+    <ul class="li">
+      <li><span class="dot dp"></span>Start with all mathematical foundations before touching any applied CS subject.</li>
+      <li><span class="dot dp"></span>TOC is tackled early (immediately after DM) while abstract thinking is fresh and confident.</li>
+      <li><span class="dot dp"></span>Compiler Design follows TOC + DSA naturally in this approach.</li>
+      <li><span class="dot dp"></span>Systems subjects (OS, CN) are deferred — they are more intuitive and can be crammed faster at the end.</li>
+      <li><span class="dot dp"></span><strong>Best for:</strong> Students comfortable with mathematics, students who found DM/TOC hard in college and want to conquer them early, students with 1.5-year timelines who can afford the deferral of OS/CN.</li>
+      <li><span class="dot dp"></span><strong>Risk:</strong> OS and CN near the end may feel rushed. Requires strong time discipline.</li>
+    </ul>
+  </div>
+
+  <div class="alt-card">
+    <div class="alt-head"><span class="alt-badge" style="background:#E1F5EE;color:#085041">Strategy B</span><span class="alt-title">Systems-First Approach (Practical / Applied Students)</span></div>
+    <div class="alt-order">
+      <span class="ot" style="background:#E1F5EE;color:#085041">Digital Logic</span><span>→</span>
+      <span class="ot" style="background:#E1F5EE;color:#085041">COA</span><span>→</span>
+      <span class="ot" style="background:#E1F5EE;color:#085041">OS</span><span>→</span>
+      <span class="ot" style="background:#E1F5EE;color:#085041">CN</span><span>→</span>
+      <span class="ot" style="background:#E1F5EE;color:#085041">DBMS</span><span>→</span>
+      <span class="ot" style="background:#E1F5EE;color:#085041">Engg. Math</span><span>→</span>
+      <span class="ot" style="background:#E1F5EE;color:#085041">Discrete Math</span><span>→</span>
+      <span class="ot" style="background:#E1F5EE;color:#085041">DSA</span><span>→</span>
+      <span class="ot" style="background:#E1F5EE;color:#085041">TOC</span><span>→</span>
+      <span class="ot" style="background:#E1F5EE;color:#085041">Compiler Design</span>
+    </div>
+    <ul class="li">
+      <li><span class="dot dt"></span>Covers the entire systems stack (hardware → OS → network → database) first as a coherent narrative.</li>
+      <li><span class="dot dt"></span>Students who enjoy seeing how computers work end-to-end find this approach highly motivating.</li>
+      <li><span class="dot dt"></span>OS is studied before Discrete Math — this is intentional; OS has softer DM dependency than TOC/DSA.</li>
+      <li><span class="dot dt"></span>TOC and Compiler Design are deliberately last — they are abstract and benefit from being studied with a "mature" GATE mindset after all concrete subjects are done.</li>
+      <li><span class="dot dt"></span><strong>Best for:</strong> Students who did well in OS/Networks/DBMS in college, students who find systems-level thinking more natural than formal mathematical reasoning, students who want early motivation wins.</li>
+      <li><span class="dot dt"></span><strong>Risk:</strong> OS without COA can be shallow — ensure COA is genuinely complete before OS. TOC + Compiler Design at the end requires strong discipline to not rush them.</li>
+    </ul>
+  </div>
+
+  <div class="alt-card">
+    <div class="alt-head"><span class="alt-badge" style="background:#FAEEDA;color:#633806">Strategy C</span><span class="alt-title">High-Weightage-First Approach (Rank-Focused / Shorter Timeline)</span></div>
+    <div class="alt-order">
+      <span class="ot" style="background:#FAEEDA;color:#633806">Discrete Math</span><span>→</span>
+      <span class="ot" style="background:#FAEEDA;color:#633806">DSA</span><span>→</span>
+      <span class="ot" style="background:#FAEEDA;color:#633806">OS</span><span>→</span>
+      <span class="ot" style="background:#FAEEDA;color:#633806">DBMS</span><span>→</span>
+      <span class="ot" style="background:#FAEEDA;color:#633806">CN</span><span>→</span>
+      <span class="ot" style="background:#FAEEDA;color:#633806">Digital Logic</span><span>→</span>
+      <span class="ot" style="background:#FAEEDA;color:#633806">COA</span><span>→</span>
+      <span class="ot" style="background:#FAEEDA;color:#633806">Engg. Math</span><span>→</span>
+      <span class="ot" style="background:#FAEEDA;color:#633806">TOC</span><span>→</span>
+      <span class="ot" style="background:#FAEEDA;color:#633806">Compiler Design</span>
+    </div>
+    <ul class="li">
+      <li><span class="dot da"></span>Subjects are tackled strictly in order of marks potential — highest mark subjects come first.</li>
+      <li><span class="dot da"></span>Discrete Math is elevated to position 1 because it enables DSA and has high weightage itself.</li>
+      <li><span class="dot da"></span>If the exam were tomorrow after completing only the first 5 subjects, a student would already cover 55–65 marks worth of syllabus.</li>
+      <li><span class="dot da"></span>DL and COA are studied after DBMS/CN — they are lower marks yield and their prerequisite chain is deferred.</li>
+      <li><span class="dot da"></span><strong>Best for:</strong> Students with only 10–12 months who cannot afford equal time for all subjects, students reappearing for GATE who already have a base, students specifically targeting high rank (top 200) where every mark in the big subjects matters enormously.</li>
+      <li><span class="dot da"></span><strong>Risk:</strong> OS is studied before COA in this strategy — requires extra effort to self-study the hardware concepts OS depends on. Engg. Math late means DSA is done without formal recurrence-solving tools — compensate by self-studying relevant parts of Engg. Math concurrently with DSA.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="ct">Comparison of All Strategies</div>
+    <div class="row"><span class="badge mod">Recommended</span><div><strong>Default Strategy (Sections 3 & 4)</strong> — Best for first-timers with 1–1.5 year timeline. Minimizes cognitive overload, respects all prerequisites, balances theory and practice. Lowest risk approach.</div></div>
+    <div class="row"><span class="badge" style="background:#EEEDFE;color:#3C3489">Strategy A</span><div><strong>Math-First</strong> — Best for strong math students. Handles the hardest abstract subjects (TOC, Compiler) early when energy is high. Risk: deferred OS/CN.</div></div>
+    <div class="row"><span class="badge easy">Strategy B</span><div><strong>Systems-First</strong> — Best for applied/practical learners. High early motivation. Risky only if TOC is procrastinated at the end.</div></div>
+    <div class="row"><span class="badge" style="background:#FAEEDA;color:#633806">Strategy C</span><div><strong>High-Weightage-First</strong> — Best for tight timelines or repeat aspirants. Maximum marks per hour invested early. Requires careful self-study of missed prerequisites.</div></div>
+  </div>
+
+  <div class="tip tb">Regardless of which strategy is chosen, three activities are non-negotiable throughout preparation: (1) Solving GATE PYQs topic-by-topic from GATE Overflow after finishing each subject. (2) Taking full mock tests in the final 2–3 months. (3) Revising weak topics within 72 hours of a mock test — not weeks later. The strategy determines the order. These three determine the score.</div>
+</div>
+</div>
+
+  </main>
+
+  <footer class="page-footer">
+    GATE CS 2026 Preparation Roadmap · Built for focused, structured preparation.
+  </footer>
+
+  <script>
+  function show(n){
+    document.querySelectorAll('.sec').forEach((s,i)=>s.classList.toggle('on',i===n));
+    document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('on',i===n));
+  }
+  </script>
+</body>
+</html>

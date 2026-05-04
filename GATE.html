@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GATE CS 2026 — Complete Preparation Guide</title>
+  <meta name="description"
+    content="Your complete GATE CS 2026 preparation hub — topic-wise reference, optimal roadmap, and curated YouTube channels.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #0f0c29 0%, #1a1440 35%, #24243e 100%);
+      color: #fff;
+      padding: 2rem 1.25rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* === Hero === */
+    .hero {
+      text-align: center;
+      margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #b8b5ff;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #ffffff 0%, #b8b5ff 50%, #7dd3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: rgba(255, 255, 255, 0.55);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* === Cards Grid === */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1rem, 2.5vw, 1.5rem);
+      max-width: 900px;
+      width: 100%;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.25rem, 3vw, 2rem);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: 20px 20px 0 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-roadmap::before {
+      background: linear-gradient(90deg, #534AB7, #7c74e0);
+    }
+
+    .card-topics::before {
+      background: linear-gradient(90deg, #185FA5, #4a9ade);
+    }
+
+    .card-yt::before {
+      background: linear-gradient(90deg, #c0392b, #e74c3c);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .card-roadmap .card-icon {
+      background: rgba(83, 74, 183, 0.15);
+    }
+
+    .card-topics .card-icon {
+      background: rgba(24, 95, 165, 0.15);
+    }
+
+    .card-yt .card-icon {
+      background: rgba(192, 57, 43, 0.15);
+    }
+
+    .card h2 {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .card-btn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.55rem 1.5rem;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover .card-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* === Footer === */
+    .footer {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.25);
+      text-align: center;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 700px) {
+      .cards {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+
+      .card {
+        padding: 1.75rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero">
+    <div class="badge">GATE CS 2026</div>
+    <h1>Complete Preparation Guide</h1>
+    <p>Everything you need — topic breakdowns, study roadmap, and the best YouTube channels — all in one place.</p>
+  </div>
+
+  <div class="cards">
+    <a href="Gate_roadmap.html" class="card card-roadmap">
+      <div class="card-icon">🎯</div>
+      <h2>Roadmap</h2>
+      <p>Optimal preparation order, subject pairings, dependencies, and alternative strategies.</p>
+      <span class="card-btn">Open Roadmap →</span>
+    </a>
+
+    <a href="Gate_topic.html" class="card card-topics">
+      <div class="card-icon">📚</div>
+      <h2>Topics</h2>
+      <p>Detailed breakdown of all 11 subjects — weightage, difficulty, time, and PYQ insights.</p>
+      <span class="card-btn">Open Topics →</span>
+    </a>
+
+    <a href="Gate_YT.html" class="card card-yt">
+      <div class="card-icon">▶️</div>
+      <h2>YouTube Guide</h2>
+      <p>Curated, ranked YouTube channels for every subject with playlist links.</p>
+      <span class="card-btn">Open YT Guide →</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    Built for focused, structured GATE CS preparation.
+  </div>
+
+</body>
+
+</html>
