@@ -1,0 +1,482 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.wrap{padding:1.5rem 0}
+.nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem}
+.tab{padding:7px 13px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all .2s;white-space:nowrap}
+.tab.on{background:#EEEDFE;border-color:#534AB7;color:#3C3489}
+.sec{display:none}.sec.on{display:block;animation:fi .22s ease}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.banner{border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem}
+.bp{background:#EEEDFE}.bt{background:#E1F5EE}.ba{background:#FAEEDA}.bc{background:#FAECE7}.bb{background:#E6F1FB}.bg{background:#F0EFEA}
+.blbl{font-size:11px;font-weight:500;letter-spacing:.06em;margin-bottom:3px}
+.bp .blbl{color:#534AB7}.bt .blbl{color:#0F6E56}.ba .blbl{color:#854F0B}.bc .blbl{color:#993C1D}.bb .blbl{color:#185FA5}.bg .blbl{color:#5C5A53}
+.btit{font-size:18px;font-weight:500;color:var(--color-text-primary)}.bsub{font-size:13px;color:var(--color-text-secondary);margin-top:2px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:1rem 1.25rem;margin-bottom:12px}
+.card:last-child{margin-bottom:0}
+.ct{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.li{list-style:none}
+.li li{font-size:13px;color:var(--color-text-primary);padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.li li:last-child{border-bottom:none}
+.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.dp{background:#534AB7}.dt{background:#0F6E56}.da{background:#854F0B}.dc{background:#993C1D}.db{background:#185FA5}.dg{background:#888780}
+.badge{font-size:11px;font-weight:500;padding:2px 8px;border-radius:10px;flex-shrink:0;white-space:nowrap}
+.easy{background:#E1F5EE;color:#085041}.mod{background:#E6F1FB;color:#0C447C}.hard{background:#FAECE7;color:#712B13}.revb{background:#F0EFEA;color:#5C5A53}
+.hi{background:#EEEDFE;color:#3C3489}.mid{background:#FAEEDA;color:#633806}
+.tip{background:var(--color-background-secondary);border-left:3px solid;border-radius:0 8px 8px 0;padding:.75rem 1rem;font-size:13px;color:var(--color-text-primary);margin-top:4px;line-height:1.7}
+.tp{border-color:#534AB7}.tt{border-color:#0F6E56}.ta{border-color:#854F0B}.tb{border-color:#185FA5}.tg{border-color:#888780}
+
+/* PAIR CARDS */
+.pair-card{border-radius:12px;padding:1rem 1.25rem;margin-bottom:12px;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.pair-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.pnum{width:28px;height:28px;border-radius:50%;font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pn0{background:#F0EFEA;color:#5C5A53}.pn1{background:#EEEDFE;color:#3C3489}.pn2{background:#E6F1FB;color:#0C447C}.pn3{background:#FAEEDA;color:#633806}.pn4{background:#E1F5EE;color:#085041}.pn5{background:#FAECE7;color:#712B13}
+.ptitle{font-size:14px;font-weight:500;color:var(--color-text-primary);flex:1}
+.pmeta{font-size:11px;color:var(--color-text-secondary);background:var(--color-background-secondary);padding:2px 8px;border-radius:8px;white-space:nowrap}
+.pair-subs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.psub{border-radius:8px;padding:.65rem .9rem}
+.pe{background:#E1F5EE;border:0.5px solid #9FE1CB}.pm{background:#E6F1FB;border:0.5px solid #A8CAF0}.ph{background:#FAECE7;border:0.5px solid #F5C4B3}.pr{background:#F0EFEA;border:0.5px solid #D4D2CB}
+.psnm{font-size:13px;font-weight:500;margin-bottom:2px}
+.pe .psnm{color:#085041}.pm .psnm{color:#0C447C}.ph .psnm{color:#712B13}.pr .psnm{color:#5C5A53}
+.pstag{font-size:11px}.pe .pstag{color:#0F6E56}.pm .pstag{color:#185FA5}.ph .pstag{color:#993C1D}.pr .pstag{color:#888780}
+.pair-body{border-top:0.5px solid var(--color-border-tertiary);padding-top:10px}
+.pair-row{display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:13px;line-height:1.5}
+.pair-row:last-child{margin-bottom:0}
+.pr-lbl{font-size:11px;font-weight:500;padding:2px 7px;border-radius:6px;flex-shrink:0;margin-top:1px}
+.college-lbl{background:#EEEDFE;color:#3C3489}.gate-lbl{background:#E1F5EE;color:#085041}.why-lbl{background:#FAEEDA;color:#633806}
+.pr-txt{color:var(--color-text-secondary)}
+
+/* TIMELINE */
+.tl-wrap{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:0}
+.tl-left{width:130px;flex-shrink:0;padding:0 12px 0 0;text-align:right;padding-top:14px}
+.tl-month{font-size:12px;font-weight:500;color:var(--color-text-primary);display:block}
+.tl-year{font-size:11px;color:var(--color-text-secondary)}
+.tl-center{display:flex;flex-direction:column;align-items:center;gap:0;width:24px;flex-shrink:0}
+.tl-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-top:14px;z-index:1}
+.tl-line{width:2px;flex:1;min-height:8px}
+.tl-right{flex:1;padding:10px 0 16px 14px}
+.tl-phase{font-size:11px;font-weight:500;padding:2px 8px;border-radius:8px;display:inline-block;margin-bottom:5px}
+.tl-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px}
+.tl-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.6}
+.tl-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.tl-tag{font-size:11px;padding:2px 8px;border-radius:6px;font-weight:500}
+
+/* Colors per phase */
+.c0{background:#F0EFEA}.c0t{color:#5C5A53}.c0d{background:#E0DED6}
+.c1{background:#EEEDFE}.c1t{color:#3C3489}.c1d{background:#CCC9F7}
+.c2{background:#E6F1FB}.c2t{color:#0C447C}.c2d{background:#B3D4F5}
+.c3{background:#FAEEDA}.c3t{color:#633806}.c3d{background:#F5D5A3}
+.c4{background:#E1F5EE}.c4t{color:#085041}.c4d{background:#A3DFCB}
+.c5{background:#FAECE7}.c5t{color:#712B13}.c5d{background:#F5B8A3}
+.c6{background:#F5EEFD}.c6t{color:#5B2D8E}.c6d{background:#D9B8F7}
+
+/* STRATEGY */
+.str-row{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:13px;line-height:1.6}
+.str-row:last-child{border-bottom:none}
+.str-num{width:24px;height:24px;border-radius:50%;background:#EEEDFE;color:#3C3489;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.str-body{flex:1}
+.str-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.str-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.6}
+.row{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:13px;line-height:1.5}
+.row:last-child{border-bottom:none}
+
+@media(max-width:500px){.g2,.pair-subs{grid-template-columns:1fr}.tl-left{width:80px;font-size:11px}}
+</style>
+
+<div class="wrap">
+<h2 class="sr-only">GATE CS Semester-Aligned Preparation Plan</h2>
+
+<div class="nav">
+  <div class="tab on" onclick="show(0)">1 · Subject Pairings</div>
+  <div class="tab" onclick="show(1)">2 · Month-by-Month Timeline</div>
+  <div class="tab" onclick="show(2)">3 · Strategy Explanation</div>
+</div>
+
+<!-- SECTION 1: PAIRINGS -->
+<div class="sec on" id="s0">
+  <div class="banner bp">
+    <div class="blbl">Section 1</div>
+    <div class="btit">Subject Pairings — Easy/Moderate + Hard</div>
+    <div class="bsub">6 phases · All prerequisites respected · Aligned with college semesters</div>
+  </div>
+
+  <!-- PHASE 0 -->
+  <div class="pair-card">
+    <div class="pair-top">
+      <div class="pnum pn0">0</div>
+      <div class="ptitle">Phase 0 — Foundation (Standalone, No Pair)</div>
+      <span class="pmeta">May 1 – June 20, 2026 · Summer Vacation</span>
+    </div>
+    <div class="pair-subs">
+      <div class="psub pm"><div class="psnm">Engineering Mathematics</div><div class="pstag">Moderate · 7–10 GATE marks</div></div>
+      <div class="psub pm"><div class="psnm">Discrete Mathematics</div><div class="pstag">Moderate · 10–13 GATE marks</div></div>
+    </div>
+    <div class="pair-body">
+      <div class="pair-row"><span class="pr-lbl why-lbl">Why</span><span class="pr-txt">Both are prerequisites for almost every other subject. No college exam pressure during summer — use this window fully. These two together form the mathematical backbone: Engg. Math (linear algebra, probability, calculus) + Discrete Math (graph theory, logic, set theory, relations). Completing them before Sem 3 begins means DBMS, DSA, and Digital Logic all have their foundations pre-built. This phase is the most high-leverage study window in the entire 1.5-year plan.</span></div>
+      <div class="pair-row"><span class="pr-lbl college-lbl">College</span><span class="pr-txt">Discrete Maths is a Sem 4 college subject — studying it here means you will already be exam-ready when it appears in college. Zero duplicate effort.</span></div>
+      <div class="pair-row"><span class="pr-lbl gate-lbl">GATE</span><span class="pr-txt">Unlocks: DSA, TOC, DBMS, CN, and all algorithm analysis. Every minute invested here multiplies across downstream subjects.</span></div>
+    </div>
+  </div>
+
+  <!-- PAIR 1 -->
+  <div class="pair-card">
+    <div class="pair-top">
+      <div class="pnum pn1">1</div>
+      <div class="ptitle">Pair 1 — Digital Logic + Data Structures</div>
+      <span class="pmeta">July – Sept 2026 · Sem 3 Phase A</span>
+    </div>
+    <div class="pair-subs">
+      <div class="psub pe"><div class="psnm">Digital Logic</div><div class="pstag">Easy · Sem 3 · 6–9 GATE marks</div></div>
+      <div class="psub ph"><div class="psnm">Data Structures</div><div class="pstag">Hard · Sem 3 · Part of 15–20 GATE marks</div></div>
+    </div>
+    <div class="pair-body">
+      <div class="pair-row"><span class="pr-lbl why-lbl">Why Paired</span><span class="pr-txt">Both are Sem 3 subjects — studying them together means a single focused study window serves both college exams and GATE simultaneously. Digital Logic is visual and mechanical (gates, K-maps, flip-flops) — a genuine cognitive break from the abstract, problem-solving-heavy Data Structures. Neither depends on the other, enabling true parallel study.</span></div>
+      <div class="pair-row"><span class="pr-lbl college-lbl">College Scope</span><span class="pr-txt">DL: Boolean algebra, combinational circuits, sequential circuits. DS: Arrays, Linked Lists, Stacks, Queues, Trees (Binary, BST), Graphs (BFS/DFS), Hashing. NOTE — Algorithms (sorting analysis, DP, greedy) are deliberately excluded here — they belong to Sem 5.</span></div>
+      <div class="pair-row"><span class="pr-lbl gate-lbl">GATE Scope</span><span class="pr-txt">DL: Complete topic — 100% of GATE DL syllabus is covered here. DS: All data structures without algorithm paradigms. Tree/graph traversals, BST operations, hashing — but NO DP/greedy/divide-and-conquer yet. That comes in Pair 4.</span></div>
+      <div class="pair-row"><span class="pr-lbl why-lbl">Time Split</span><span class="pr-txt">60% Data Structures (heavier GATE marks + harder) · 40% Digital Logic (faster to complete, ~4 weeks). Once DL is done, its time slot transfers to DS deepening.</span></div>
+    </div>
+  </div>
+
+  <!-- PAIR 2 -->
+  <div class="pair-card">
+    <div class="pair-top">
+      <div class="pnum pn2">2</div>
+      <div class="ptitle">Pair 2 — DBMS + Theory of Computation</div>
+      <span class="pmeta">Oct – Dec 2026 · Sem 3 Phase B + Pre-Sem 4</span>
+    </div>
+    <div class="pair-subs">
+      <div class="psub pm"><div class="psnm">DBMS</div><div class="pstag">Moderate · Sem 3 · 10–13 GATE marks</div></div>
+      <div class="psub ph"><div class="psnm">Theory of Computation</div><div class="pstag">Hard · Standalone* · 8–11 GATE marks</div></div>
+    </div>
+    <div class="pair-body">
+      <div class="pair-row"><span class="pr-lbl why-lbl">Why TOC Here?</span><span class="pr-txt">TOC is not in any semester in your list — it must be self-studied independently. Placing it here is optimal because: (1) Discrete Maths is complete (Phase 0) — the only hard prerequisite for TOC. (2) TOC must be done BEFORE Compiler Design (Sem 5, Pair 5). (3) Pairing it with DBMS keeps load balanced — DBMS is structured and predictable, providing relief from TOC's abstraction.</span></div>
+      <div class="pair-row"><span class="pr-lbl college-lbl">College Scope</span><span class="pr-txt">DBMS: ER diagrams, relational model, relational algebra, SQL (DDL/DML/DCL), normalization (1NF–BCNF), transactions, ACID, concurrency control, B+ tree indexing. This is full Sem 3 exam preparation.</span></div>
+      <div class="pair-row"><span class="pr-lbl gate-lbl">GATE Scope</span><span class="pr-txt">DBMS: Complete (100% GATE syllabus). TOC: Finite automata (DFA/NFA/ε-NFA), regular expressions, Pumping Lemma, CFGs, PDAs, Turing machines, decidability, P vs NP — complete GATE TOC syllabus.</span></div>
+      <div class="pair-row"><span class="pr-lbl why-lbl">Time Split</span><span class="pr-txt">50% DBMS · 50% TOC. Both are equally important for GATE. DBMS is aligned with Sem 3 end-semester exam (typically Nov–Dec) — prioritize it during exam weeks, then shift focus to TOC in December break.</span></div>
+    </div>
+  </div>
+
+  <!-- PAIR 3 -->
+  <div class="pair-card">
+    <div class="pair-top">
+      <div class="pnum pn3">3</div>
+      <div class="ptitle">Pair 3 — Computer Organisation & Architecture + Operating Systems</div>
+      <span class="pmeta">Jan – Mar 2027 · Sem 4 Phase A</span>
+    </div>
+    <div class="pair-subs">
+      <div class="psub pm"><div class="psnm">Computer Organisation & Architecture</div><div class="pstag">Moderate · Sem 4 · 8–11 GATE marks</div></div>
+      <div class="psub ph"><div class="psnm">Operating Systems</div><div class="pstag">Hard · Sem 4 · 10–14 GATE marks</div></div>
+    </div>
+    <div class="pair-body">
+      <div class="pair-row"><span class="pr-lbl why-lbl">Why Paired</span><span class="pr-txt">Both are Sem 4 subjects — perfect alignment. More importantly, this is the strongest prerequisite chain in GATE: Digital Logic (done in Pair 1) → COA → OS. All dependencies satisfied. COA builds the hardware model (CPU, memory hierarchy, pipelining) that OS then manages through scheduling, paging, and I/O. Studying them together in sequence (COA first, OS second within the pair) reinforces the conceptual chain powerfully.</span></div>
+      <div class="pair-row"><span class="pr-lbl college-lbl">College Scope</span><span class="pr-txt">COA: CPU design, ALU, instruction formats, addressing modes, memory hierarchy, cache, pipelining, I/O. OS: Process scheduling (FCFS, SJF, RR, Priority), synchronization (mutex, semaphore), deadlock (detection, prevention, avoidance), virtual memory (paging, segmentation), file systems. Full Sem 4 exam coverage.</span></div>
+      <div class="pair-row"><span class="pr-lbl gate-lbl">GATE Scope</span><span class="pr-txt">COA: Complete (100%). OS: Complete (100%). Together 18–25 marks — the single most impactful pair in the entire plan by marks yield.</span></div>
+      <div class="pair-row"><span class="pr-lbl why-lbl">Time Split</span><span class="pr-txt">40% COA (faster, more predictable) · 60% OS (harder, more numerical problems). Study COA through January, then OS through February–March. Keep COA notes handy during OS — you will refer back to memory hierarchy frequently.</span></div>
+    </div>
+  </div>
+
+  <!-- PAIR 4 -->
+  <div class="pair-card">
+    <div class="pair-top">
+      <div class="pnum pn4">4</div>
+      <div class="ptitle">Pair 4 — Algorithms + Computer Networks</div>
+      <span class="pmeta">Apr – Jun 2027 · Sem 4 End + Sem 5 Start</span>
+    </div>
+    <div class="pair-subs">
+      <div class="psub pm"><div class="psnm">Computer Networks</div><div class="pstag">Moderate · Sem 5 · 9–12 GATE marks</div></div>
+      <div class="psub ph"><div class="psnm">Algorithms</div><div class="pstag">Hard · Sem 5 · Completes 15–20 GATE marks with DS</div></div>
+    </div>
+    <div class="pair-body">
+      <div class="pair-row"><span class="pr-lbl why-lbl">Why Paired</span><span class="pr-txt">Data Structures (Pair 1) is complete — the essential prerequisite for Algorithms. Algorithms is the continuation of DSA and covers the paradigms (DP, greedy, divide & conquer, graph algorithms, amortized analysis, complexity classes) that were deliberately excluded from Pair 1. CN is layer-structured and predictable, making it an ideal moderate companion to the intensive Algorithms study.</span></div>
+      <div class="pair-row"><span class="pr-lbl college-lbl">College Scope</span><span class="pr-txt">Algorithms: Sorting (merge, quick, heap), BST operations, graph algorithms (Dijkstra, Bellman-Ford, Kruskal, Prim), DP (0-1 knapsack, LCS, matrix chain), greedy, NP-completeness. CN: OSI and TCP/IP models, data link (HDLC, Sliding window), IP addressing, subnetting, routing (RIP, OSPF, BGP), TCP/UDP, HTTP, DNS, network security basics.</span></div>
+      <div class="pair-row"><span class="pr-lbl gate-lbl">GATE Scope</span><span class="pr-txt">Algorithms: When combined with DS from Pair 1, completes the entire DSA section (highest single-section marks in GATE). CN: Complete (100%). Together these two pairs (Pair 1 + Pair 4) cover the full DSA section systematically.</span></div>
+      <div class="pair-row"><span class="pr-lbl why-lbl">Time Split</span><span class="pr-txt">65% Algorithms (highest GATE marks potential, builds on DS foundation) · 35% CN (structured, faster to complete). Algorithms requires substantial problem-solving practice — aim for 80+ algorithm problems during this phase.</span></div>
+    </div>
+  </div>
+
+  <!-- PAIR 5 -->
+  <div class="pair-card">
+    <div class="pair-top">
+      <div class="pnum pn5">5</div>
+      <div class="ptitle">Pair 5 — Compiler Design + Full Syllabus Revision</div>
+      <span class="pmeta">Jul – Oct 2027 · Sem 5 Phase B + Completion</span>
+    </div>
+    <div class="pair-subs">
+      <div class="psub ph"><div class="psnm">Compiler Design</div><div class="pstag">Hard · Sem 5 · 5–8 GATE marks</div></div>
+      <div class="psub pr"><div class="psnm">Full Revision + PYQ Mocks</div><div class="pstag">Integrated · All subjects · Essential for rank</div></div>
+    </div>
+    <div class="pair-body">
+      <div class="pair-row"><span class="pr-lbl why-lbl">Why Structured This Way</span><span class="pr-txt">Compiler Design has the most prerequisites of any GATE subject — it requires both TOC (done in Pair 2) and DSA (done in Pairs 1 + 4). Placing it last ensures all dependencies are satisfied. Its relatively lower marks (5–8) justify a focused but time-bounded study of 5–6 weeks. The remaining 6–8 weeks of this phase are dedicated to full-syllabus revision and mock tests — the activity that converts knowledge into rank.</span></div>
+      <div class="pair-row"><span class="pr-lbl college-lbl">College Scope</span><span class="pr-txt">Compiler Design: Lexical analysis (DFA-based scanners), top-down parsing (LL(1), recursive descent), bottom-up parsing (LR(0), SLR(1), CLR(1), LALR(1)), syntax-directed translation, type checking, symbol tables, intermediate code generation, basic code optimization.</span></div>
+      <div class="pair-row"><span class="pr-lbl gate-lbl">GATE Scope</span><span class="pr-txt">Compiler Design: Complete (100%). Revision phase: All 10 GATE CS subjects revisited via PYQs from GATE Overflow. Minimum 2 full mock tests per week. Error analysis after every mock — identify patterns in weak areas and revise within 48 hours.</span></div>
+      <div class="pair-row"><span class="pr-lbl why-lbl">Revision Priority</span><span class="pr-txt">Order of revision: DSA + Algorithms (highest marks) → OS → DBMS → CN → TOC → Engg. Math → Discrete Math → COA → Digital Logic → Compiler Design. Spend proportional time based on marks yield, not alphabetical or intuitive comfort.</span></div>
+    </div>
+  </div>
+
+  <div class="tip tp">The critical design principle across all pairs: DS and Algorithms are deliberately separated by 9 months (Pair 1 vs Pair 4). This is not a gap — DS builds data structure intuition, and returning to it with algorithm paradigms in Pair 4 creates a much deeper GATE-level mastery than studying both together in one rushed phase.</div>
+</div>
+
+<!-- SECTION 2: TIMELINE -->
+<div class="sec" id="s1">
+  <div class="banner bt">
+    <div class="blbl">Section 2</div>
+    <div class="btit">Month-by-Month Timeline</div>
+    <div class="bsub">May 2026 → Oct/Nov 2027 · Full GATE CS syllabus complete in 18 months</div>
+  </div>
+
+  <div class="tl-wrap">
+
+    <!-- Phase 0 -->
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">May</span><span class="tl-year">2026</span></div>
+      <div class="tl-center"><div class="tl-dot c0d"></div><div class="tl-line c0"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c0 c0t">Phase 0 — Summer Foundation</span>
+        <div class="tl-title">Engineering Mathematics — Start</div>
+        <div class="tl-desc">Begin linear algebra (matrices, rank, eigenvalues), calculus basics, probability distributions. Cover 50% of Engg. Math syllabus this month. Parallel light reading of Set Theory from Discrete Math.</div>
+        <div class="tl-tags"><span class="tl-tag c0 c0t">Engg. Math</span><span class="badge mod">Moderate</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">June</span><span class="tl-year">2026</span></div>
+      <div class="tl-center"><div class="tl-dot c0d"></div><div class="tl-line c0"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c0 c0t">Phase 0 — Summer Foundation</span>
+        <div class="tl-title">Discrete Mathematics — Complete + Engg. Math finish (by June 20)</div>
+        <div class="tl-desc">June 1–10: Complete Engg. Math (probability, statistics, numerical methods). June 10–20: Discrete Math deep dive — graph theory, logic, combinatorics, relations, functions. Both subjects DONE by June 20. Buffer: June 21–30 for rest and Sem 3 orientation.</div>
+        <div class="tl-tags"><span class="tl-tag c0 c0t">Discrete Math</span><span class="tl-tag c0 c0t">Engg. Math</span><span class="badge revb">Deadline: June 20</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">July</span><span class="tl-year">2026</span></div>
+      <div class="tl-center"><div class="tl-dot c1d"></div><div class="tl-line c1"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c1 c1t">Pair 1 — Sem 3 Phase A</span>
+        <div class="tl-title">Digital Logic + Data Structures — Start</div>
+        <div class="tl-desc">Digital Logic: Boolean algebra, logic gates, K-maps, minimization. Data Structures: Arrays, Linked Lists (singly, doubly, circular), Stacks, Queues, Deques. Sem 3 begins — study schedule aligned with college lecture pace.</div>
+        <div class="tl-tags"><span class="tl-tag c1 c1t">Digital Logic</span><span class="tl-tag c1 c1t">Data Structures</span><span class="badge easy">Easy + Hard</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Aug</span><span class="tl-year">2026</span></div>
+      <div class="tl-center"><div class="tl-dot c1d"></div><div class="tl-line c1"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c1 c1t">Pair 1 — Sem 3 Phase A</span>
+        <div class="tl-title">DL: Sequential Circuits · DS: Trees & Graphs</div>
+        <div class="tl-desc">DL: Flip-flops (SR, JK, D, T), registers, counters, state machines. DS: Binary Trees, BST (insertion, deletion, traversal), AVL Trees, Heaps, Priority Queues. Graph representation (adjacency matrix/list), BFS, DFS. DL should be nearly complete by end of August.</div>
+        <div class="tl-tags"><span class="tl-tag c1 c1t">Digital Logic</span><span class="tl-tag c1 c1t">Data Structures</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Sept</span><span class="tl-year">2026</span></div>
+      <div class="tl-center"><div class="tl-dot c1d"></div><div class="tl-line c1"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c1 c1t">Pair 1 — Sem 3 Phase A</span>
+        <div class="tl-title">DL: Complete + PYQs · DS: Hashing + Revision</div>
+        <div class="tl-desc">DL: Complete remaining topics, solve 5 years of DL PYQs from GATE Overflow. Mark DL as done. DS: Hashing (chaining, open addressing, collision resolution), Graph algorithms without paradigms (only traversals). DS PYQ practice for data structures. Mid-sem exams — revise college portions simultaneously.</div>
+        <div class="tl-tags"><span class="tl-tag c1 c1t">DL Complete ✓</span><span class="tl-tag c1 c1t">DS: 75%</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Oct</span><span class="tl-year">2026</span></div>
+      <div class="tl-center"><div class="tl-dot c2d"></div><div class="tl-line c2"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c2 c2t">Pair 2 — Sem 3 Phase B</span>
+        <div class="tl-title">DBMS — Start · TOC — Start</div>
+        <div class="tl-desc">DBMS: ER diagrams, entity-relationship model, relational model (schema, keys, constraints). TOC: Deterministic Finite Automata (DFA) — construction, minimization, language recognition. Run both simultaneously. 50-50 time split. Both subjects benefit from fresh Discrete Math foundation (Phase 0).</div>
+        <div class="tl-tags"><span class="tl-tag c2 c2t">DBMS</span><span class="tl-tag c2 c2t">TOC</span><span class="badge mod">Moderate + Hard</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Nov</span><span class="tl-year">2026</span></div>
+      <div class="tl-center"><div class="tl-dot c2d"></div><div class="tl-line c2"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c2 c2t">Pair 2 — Sem 3 Phase B</span>
+        <div class="tl-title">DBMS: SQL + Normalization · TOC: NFA, RegEx, CFG</div>
+        <div class="tl-desc">DBMS: Relational algebra, SQL (all types of queries, JOINs, subqueries, GROUP BY, HAVING), normalization (1NF, 2NF, 3NF, BCNF — practice 15+ problems). TOC: NFA to DFA conversion, Regular Expressions, Pumping Lemma for regular languages, Context-Free Grammars. End-semester exams — DBMS exam prep priority this month.</div>
+        <div class="tl-tags"><span class="tl-tag c2 c2t">DBMS: 75%</span><span class="tl-tag c2 c2t">TOC: 50%</span><span class="badge revb">End-sem Exams</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Dec</span><span class="tl-year">2026</span></div>
+      <div class="tl-center"><div class="tl-dot c2d"></div><div class="tl-line c2"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c2 c2t">Pair 2 — Sem 3 Phase B</span>
+        <div class="tl-title">DBMS: Complete + PYQs · TOC: PDAs, TMs, Decidability</div>
+        <div class="tl-desc">DBMS: Transactions (ACID, serializability, locking, 2PL), B+ tree indexing, complete PYQ practice. Mark DBMS DONE. TOC: Pushdown Automata (PDAs), Turing Machines, decidability and undecidability, P vs NP, NP-completeness. End December — both DBMS and TOC complete. Winter break: light revision of Pair 1 and Pair 2 subjects.</div>
+        <div class="tl-tags"><span class="tl-tag c2 c2t">DBMS Complete ✓</span><span class="tl-tag c2 c2t">TOC Complete ✓</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Jan</span><span class="tl-year">2027</span></div>
+      <div class="tl-center"><div class="tl-dot c3d"></div><div class="tl-line c3"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c3 c3t">Pair 3 — Sem 4 Phase A</span>
+        <div class="tl-title">COA — Start · OS — Start (light)</div>
+        <div class="tl-desc">Sem 4 begins. COA: Number systems, ALU design, basic computer organisation, instruction formats, addressing modes. OS: Introduction — process concepts, process states, PCB, context switching (conceptual only this month). January is COA-heavy (70% COA / 30% OS intro). DL→COA chain fully active.</div>
+        <div class="tl-tags"><span class="tl-tag c3 c3t">COA</span><span class="tl-tag c3 c3t">OS</span><span class="badge mod">Moderate + Hard</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Feb</span><span class="tl-year">2027</span></div>
+      <div class="tl-center"><div class="tl-dot c3d"></div><div class="tl-line c3"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c3 c3t">Pair 3 — Sem 4 Phase A</span>
+        <div class="tl-title">COA: Memory + Pipeline · OS: Scheduling + Synchronization</div>
+        <div class="tl-desc">COA: Memory hierarchy (cache — direct mapped, set associative, fully associative), virtual memory basics, pipelining (stages, hazards, forwarding, stalling), performance metrics. OS: CPU scheduling algorithms (FCFS, SJF, SRTN, RR, Priority) with numerical practice, process synchronization (critical section, mutex, semaphores, monitors), classical problems (Dining Philosophers, Readers-Writers, Producer-Consumer).</div>
+        <div class="tl-tags"><span class="tl-tag c3 c3t">COA: 80%</span><span class="tl-tag c3 c3t">OS: 50%</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Mar</span><span class="tl-year">2027</span></div>
+      <div class="tl-center"><div class="tl-dot c3d"></div><div class="tl-line c3"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c3 c3t">Pair 3 — Sem 4 Phase A</span>
+        <div class="tl-title">COA: Complete + PYQs · OS: Deadlock + Memory Management + File Systems</div>
+        <div class="tl-desc">COA: I/O organisation, DMA, interrupt handling, RISC vs CISC. PYQ practice and mark DONE. OS: Deadlock (conditions, detection, prevention, avoidance — Banker's algorithm), memory management (paging — page tables, TLB, page replacement algorithms: FIFO, LRU, Optimal), segmentation, file systems. OS numerical problems practice — essential for GATE.</div>
+        <div class="tl-tags"><span class="tl-tag c3 c3t">COA Complete ✓</span><span class="tl-tag c3 c3t">OS Complete ✓</span><span class="badge revb">Mid-sem buffer</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Apr</span><span class="tl-year">2027</span></div>
+      <div class="tl-center"><div class="tl-dot c4d"></div><div class="tl-line c4"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c4 c4t">Pair 4 — Sem 4 End / Sem 5 Bridge</span>
+        <div class="tl-title">Algorithms — Start · Computer Networks — Start</div>
+        <div class="tl-desc">Algorithms: Sorting algorithms with full analysis (merge sort T(n)=2T(n/2)+n, quick sort average/worst case, heap sort), asymptotic analysis (Big-O, Omega, Theta), recurrence relations (master theorem). CN: OSI model (all 7 layers — functions, protocols at each), Physical layer basics, Data Link layer (framing, error detection — CRC, Hamming code). DS knowledge from Pair 1 actively reinforces algorithm study.</div>
+        <div class="tl-tags"><span class="tl-tag c4 c4t">Algorithms</span><span class="tl-tag c4 c4t">CN</span><span class="badge hard">Hard + Moderate</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">May</span><span class="tl-year">2027</span></div>
+      <div class="tl-center"><div class="tl-dot c4d"></div><div class="tl-line c4"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c4 c4t">Pair 4 — Sem 5 Phase A</span>
+        <div class="tl-title">Algorithms: Graph Algorithms + DP · CN: Network + Transport Layer</div>
+        <div class="tl-desc">Algorithms: Graph algorithms (Dijkstra, Bellman-Ford, Floyd-Warshall, Prim, Kruskal, Topological Sort), dynamic programming (0-1 knapsack, LCS, matrix chain multiplication, optimal BST). CN: Network layer (IPv4, subnetting, VLSM, CIDR, ARP, ICMP), routing algorithms (Distance Vector — RIP, Link State — OSPF), Transport layer (TCP — 3-way handshake, flow control, congestion control; UDP). Sem 4 end-sem exams: revise OS + COA + Discrete Math.</div>
+        <div class="tl-tags"><span class="tl-tag c4 c4t">Algorithms: 65%</span><span class="tl-tag c4 c4t">CN: 65%</span><span class="badge revb">End-sem Exams</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Jun</span><span class="tl-year">2027</span></div>
+      <div class="tl-center"><div class="tl-dot c4d"></div><div class="tl-line c4"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c4 c4t">Pair 4 — Sem 5 Phase A</span>
+        <div class="tl-title">Algorithms: Greedy + NP · CN: Application Layer + Complete</div>
+        <div class="tl-desc">Algorithms: Greedy algorithms (activity selection, fractional knapsack, Huffman coding), divide and conquer (binary search, Strassen's matrix multiplication), NP-completeness (reduction techniques, NP-hard vs NP-complete). Full algorithm PYQ practice. CN: Application layer (HTTP, HTTPS, FTP, DNS, DHCP, SMTP), network security basics (RSA, DES, digital signatures). CN PYQs. Both Algorithms and CN DONE by end of June.</div>
+        <div class="tl-tags"><span class="tl-tag c4 c4t">Algorithms Complete ✓</span><span class="tl-tag c4 c4t">CN Complete ✓</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Jul</span><span class="tl-year">2027</span></div>
+      <div class="tl-center"><div class="tl-dot c5d"></div><div class="tl-line c5"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c5 c5t">Pair 5 — Sem 5 Phase B</span>
+        <div class="tl-title">Compiler Design — Start · Revision Cycle 1 Begins</div>
+        <div class="tl-desc">Compiler Design: Compiler phases overview, Lexical analysis (tokenization, DFA-based scanners — TOC connection active), top-down parsing (recursive descent, LL(1), FIRST and FOLLOW sets, predictive parsing table). Simultaneously begin Revision Cycle 1: revisit Digital Logic + Engg. Math PYQs (lowest priority subjects, fastest to revise).</div>
+        <div class="tl-tags"><span class="tl-tag c5 c5t">Compiler Design</span><span class="tl-tag c5 c5t">Revision Starts</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Aug</span><span class="tl-year">2027</span></div>
+      <div class="tl-center"><div class="tl-dot c5d"></div><div class="tl-line c5"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c5 c5t">Pair 5 — Sem 5 Phase B</span>
+        <div class="tl-title">Compiler Design: Bottom-up Parsing + SDT · Revision: DBMS + TOC</div>
+        <div class="tl-desc">Compiler Design: Bottom-up parsing in depth — LR(0), SLR(1), CLR(1), LALR(1) (most GATE-tested), handling shift-reduce and reduce-reduce conflicts. Syntax-directed translation (SDDs, S-attributed, L-attributed). Revision Cycle 1 continues: DBMS revision + TOC revision (PYQs for both). Mock test #1 — full syllabus minus Compiler Design.</div>
+        <div class="tl-tags"><span class="tl-tag c5 c5t">Compiler: 75%</span><span class="tl-tag c5 c5t">Mock Test #1</span><span class="badge revb">End-sem Exams Soon</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Sept</span><span class="tl-year">2027</span></div>
+      <div class="tl-center"><div class="tl-dot c5d"></div><div class="tl-line c5"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase c5 c5t">Pair 5 — Sem 5 Phase B</span>
+        <div class="tl-title">Compiler Design: Complete · Revision Cycle 2: OS + COA + CN</div>
+        <div class="tl-desc">Compiler Design: Intermediate code generation (3AC, quadruples, triples), code optimization (local, global, loop optimizations, DAG), runtime environments, symbol tables. Compiler PYQs — DONE. Revision Cycle 2: Heavy revision of OS and COA (highest exam frequency). CN revision. Mock test #2 — full 10-subject test. Sem 5 end-sem exam prep: Algorithms + CN + Compiler Design college revision.</div>
+        <div class="tl-tags"><span class="tl-tag c5 c5t">Compiler Complete ✓</span><span class="tl-tag c5 c5t">Mock Test #2</span><span class="badge revb">End-sem Exams</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-month">Oct/Nov</span><span class="tl-year">2027</span></div>
+      <div class="tl-center"><div class="tl-dot" style="background:#2E7D32;width:18px;height:18px;border:3px solid #A5D6A7"></div><div class="tl-line c4"></div></div>
+      <div class="tl-right">
+        <span class="tl-phase" style="background:#E8F5E9;color:#1B5E20">🎯 GOAL ACHIEVED — Full Syllabus Complete</span>
+        <div class="tl-title">Final Revision Sprint + Mock Test Series</div>
+        <div class="tl-desc">All 10 GATE CS subjects complete. 2 months of intensive mock testing (3 mocks/week), topic-wise PYQ revision, weak area analysis, and timed practice. Prioritize DSA + OS + DBMS in revision (maximum marks). GATE 2028 application opens around September — apply early. This window is pure exam-sharpening — no new content.</div>
+        <div class="tl-tags"><span class="tl-tag" style="background:#E8F5E9;color:#1B5E20">All 10 Subjects Done</span><span class="tl-tag" style="background:#E8F5E9;color:#1B5E20">Mock Test Series</span><span class="badge hi">GATE-Ready</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tip tt">Total active study duration: 18 months (May 2026 – Oct 2027). Zero wasted months — every phase serves both college exams and GATE simultaneously. The plan naturally aligns subject completion with semester exam cycles, meaning end-semester exam preparation requires no extra effort beyond what GATE prep already covers.</div>
+</div>
+
+<!-- SECTION 3: STRATEGY -->
+<div class="sec" id="s2">
+  <div class="banner ba">
+    <div class="blbl">Section 3</div>
+    <div class="btit">Strategy Explanation</div>
+    <div class="bsub">Why this plan works — the logic behind every design decision</div>
+  </div>
+
+  <div class="card">
+    <div class="ct">Core Design Principles</div>
+    <div class="str-row"><div class="str-num">1</div><div class="str-body"><div class="str-title">Zero Duplicate Effort — College + GATE Study = One Activity</div><div class="str-desc">Every subject is studied at GATE depth, which is always deeper than college exam depth. A student who masters DBMS normalization at GATE level will trivially clear any college exam on the same topic. The plan never says "study for college now, study for GATE later" — they are the same act. This is the single biggest efficiency gain in the entire plan.</div></div></div>
+    <div class="str-row"><div class="str-num">2</div><div class="str-body"><div class="str-title">DS and Algorithms Deliberately Separated by 9 Months</div><div class="str-desc">Most students study "DSA" as one block and end up with shallow understanding of both. This plan separates them: Pair 1 (July–Sept 2026) covers Data Structures deeply as a standalone subject — building intuition for trees, graphs, hashing. Pair 4 (Apr–Jun 2027) returns to Algorithms with this solid DS foundation — sorting analysis, DP, greedy, graph algorithms all land much more deeply when the data structures they operate on are already internalized. This separation is the plan's most important structural decision.</div></div></div>
+    <div class="str-row"><div class="str-num">3</div><div class="str-body"><div class="str-title">TOC Placed in Pair 2 — Not Near Compiler Design</div><div class="str-desc">The standard mistake is to study TOC and Compiler Design back-to-back right before GATE. This plan studies TOC in Oct–Dec 2026 (Pair 2), then lets it rest for 7–8 months before Compiler Design in Pair 5. This is intentional — TOC concepts need time to consolidate. When Compiler Design begins in July 2027, the student has seen TOC problems for months through PYQ practice and the automata foundations are genuinely solid, not freshly memorized.</div></div></div>
+    <div class="str-row"><div class="str-num">4</div><div class="str-body"><div class="str-title">Hardware-OS Chain Respected Without Exception</div><div class="str-desc">Digital Logic → COA → OS is the strongest prerequisite chain in systems subjects. The plan never breaks this: DL in Pair 1, COA starts only after DL is done (Pair 3), OS starts only after COA is well underway. Students who study OS before COA cannot build the correct mental model of how the OS manages hardware. Every COA topic in Pair 3 is reinforced by the OS topic studied alongside it.</div></div></div>
+    <div class="str-row"><div class="str-num">5</div><div class="str-body"><div class="str-title">Cognitive Contrast in Every Pair</div><div class="str-desc">Every easy/moderate subject is paired with a thematically different hard subject: DL (mechanical/visual) with DS (structural/algorithmic). DBMS (relational/structured) with TOC (abstract/mathematical). COA (hardware/systems) with OS (resource management). CN (layered/protocol) with Algorithms (mathematical/analytical). This contrast is not accidental — when your mind reaches its limit on an abstract topic, switching to a concrete topic provides real cognitive relief while keeping total study hours high.</div></div></div>
+    <div class="str-row"><div class="str-num">6</div><div class="str-body"><div class="str-title">Discrete Mathematics in Sem 4 College = Free Revision</div><div class="str-desc">Discrete Math appears as a Sem 4 college subject, but the plan completes it in Phase 0 (June 2026). When it appears in Sem 4 college, the student is not re-learning — they are revising content they mastered 6 months ago. College lectures become a structured free revision. This effectively gives the student one free subject in Sem 4, whose time budget is redirected entirely to OS and COA depth.</div></div></div>
+    <div class="str-row"><div class="str-num">7</div><div class="str-body"><div class="str-title">Revision Built Into the Plan — Not an Afterthought</div><div class="str-desc">Pair 5 (July–Oct 2027) is explicitly half-revision. Revision Cycle 1 (DL, Engg. Math, Discrete Math, DBMS, TOC) and Revision Cycle 2 (OS, COA, CN, DSA, Algorithms) are interwoven with Compiler Design study — not separate revision weeks bolted onto the end. Three full mock tests are scheduled before the completion deadline (Oct/Nov 2027), ensuring the plan delivers a GATE-ready student, not just a syllabus-complete student.</div></div></div>
+    <div class="str-row"><div class="str-num">8</div><div class="str-body"><div class="str-title">Realistic College Workload Accommodation</div><div class="str-desc">End-semester exam months (November 2026, May 2027, November 2027) are explicitly marked in the timeline. During these months, the plan naturally reduces GATE study velocity and increases college exam-aligned revision — which is already covered by the same study material. No month is overloaded with both a hard GATE subject and exam week intensity simultaneously.</div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="ct">Summary: Subject vs Phase Mapping</div>
+    <div class="g2" style="margin-bottom:0">
+      <ul class="li">
+        <li><span class="badge revb">Phase 0</span><div>Engg. Math + Discrete Math</div></li>
+        <li><span class="badge" style="background:#EEEDFE;color:#3C3489">Pair 1</span><div>Digital Logic + Data Structures (DS only)</div></li>
+        <li><span class="badge mod">Pair 2</span><div>DBMS + Theory of Computation</div></li>
+      </ul>
+      <ul class="li">
+        <li><span class="badge" style="background:#FAEEDA;color:#633806">Pair 3</span><div>COA + Operating Systems</div></li>
+        <li><span class="badge easy">Pair 4</span><div>Algorithms + Computer Networks</div></li>
+        <li><span class="badge hard">Pair 5</span><div>Compiler Design + Full Revision</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tip ta">The most important single activity not built into any pair but running throughout all phases: solve GATE PYQs on GATE Overflow for every topic within 1 week of completing it. Not after the full subject — after each topic. Pattern recognition accumulated over 18 months of topic-level PYQ practice is the deepest predictor of GATE rank. Everything else in this plan creates knowledge. PYQ practice converts that knowledge into marks.</div>
+</div>
+
+</div>
+
+<script>
+function show(n){
+  document.querySelectorAll('.sec').forEach((s,i)=>s.classList.toggle('on',i===n));
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('on',i===n));
+}
+</script>
