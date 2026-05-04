@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GATE CS 2026 — Master Topic-wise Reference</title>
+  <meta name="description" content="Detailed topic-wise breakdown of all 11 GATE CS subjects with weightage, difficulty, time estimates, recommended order, and PYQ insights.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === Design Tokens === */
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #F7F7F5;
+      --color-text-primary: #1a1a1a;
+      --color-text-secondary: #6b6b6b;
+      --color-text-tertiary: #999;
+      --color-border-tertiary: #e5e5e3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-background-primary: #1e1e1e;
+        --color-background-secondary: #272727;
+        --color-text-primary: #e8e8e8;
+        --color-text-secondary: #a0a0a0;
+        --color-text-tertiary: #777;
+        --color-border-tertiary: #383838;
+      }
+    }
+    /* === Global Reset === */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:18px}
+    body{
+      font-family:var(--font-sans);
+      background:var(--color-background-secondary);
+      color:var(--color-text-primary);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    /* === Page Header === */
+    .page-header{
+      text-align:center;
+      padding:clamp(2rem,5vw,3.5rem) 1.25rem clamp(1.5rem,3vw,2.5rem);
+      background:linear-gradient(135deg,#E6F1FB 0%,#EEEDFE 50%,#E1F5EE 100%);
+    }
+    .page-header h1{
+      font-size:clamp(1.4rem,4vw,2.1rem);
+      font-weight:700;
+      color:var(--color-text-primary);
+      margin-bottom:0.4rem;
+    }
+    .page-header p{
+      font-size:clamp(0.8rem,2vw,1rem);
+      color:var(--color-text-secondary);
+      max-width:580px;
+      margin:0 auto;
+    }
+    /* === Container === */
+    .container{
+      max-width:960px;
+      margin:0 auto;
+      padding:0 clamp(0.75rem,2vw,1.5rem);
+    }
+    /* === Page Footer === */
+    .page-footer{
+      text-align:center;
+      padding:1.5rem 1rem;
+      font-size:0.75rem;
+      color:var(--color-text-tertiary);
+      border-top:1px solid var(--color-border-tertiary);
+    }
+    /* === Content Styles === */
+    .root{padding:1rem 0}
+
+/* Subject pills */
+.pills{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:1.2rem}
+.pill{padding:8px 6px;border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);color:var(--color-text-secondary);text-align:center;line-height:1.35;transition:all .15s}
+.pill.on{border-color:var(--ac);background:var(--ab);color:var(--ac)}
+
+/* Panels */
+.pnl{display:none}.pnl.on{display:block;animation:fi .2s ease}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+/* Banner */
+.bnr{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:.8rem 1rem;border-radius:11px;margin-bottom:.9rem}
+.bnr-l .num{font-size:13px;font-weight:500;margin-bottom:2px;opacity:.75}
+.bnr-l .title{font-size:20px;font-weight:500;color:var(--color-text-primary)}
+.marks-tag{font-size:14px;font-weight:600;padding:5px 14px;border-radius:8px;color:#fff}
+
+/* Legend */
+.leg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.9rem;padding:.55rem .8rem;background:var(--color-background-secondary);border-radius:8px}
+.leg span{font-size:13px;color:var(--color-text-secondary);display:flex;align-items:center;gap:4px}
+.lc{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+/* Section label */
+.sl{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-secondary);margin:11px 0 5px}
+
+/* Table */
+.tbl{width:100%;border-collapse:collapse;border:0.5px solid var(--color-border-tertiary);border-radius:10px;overflow:hidden;margin-bottom:10px;background:var(--color-background-primary)}
+.tbl th{font-size:12px;font-weight:600;color:var(--color-text-secondary);padding:7px 8px;background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.tbl td{padding:8px 10px;border-bottom:0.5px solid var(--color-border-tertiary);vertical-align:top;font-size:14px;line-height:1.4;color:var(--color-text-primary)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:var(--color-background-secondary)}
+.tn{font-weight:500}
+.ts{font-size:13px;color:var(--color-text-secondary);margin-top:2px;line-height:1.4}
+.tags{display:flex;gap:3px;flex-wrap:wrap;margin-top:4px}
+
+/* Badges */
+.b{font-size:12px;font-weight:500;padding:2px 7px;border-radius:6px;white-space:nowrap;display:inline-block;line-height:1.4}
+/* Weightage */
+.wH{background:#EEEDFE;color:#3C3489}
+.wM{background:#E6F1FB;color:#0C447C}
+.wL{background:#F0EFEA;color:#5C5A53}
+/* Difficulty */
+.dE{background:#E1F5EE;color:#085041}
+.dM{background:#FAEEDA;color:#633806}
+.dH{background:#FAECE7;color:#712B13}
+/* Time */
+.tS{background:#E1F5EE;color:#085041}
+.tM{background:#FFF8E6;color:#7A5700}
+.tL{background:#FAECE7;color:#712B13}
+/* Dep */
+.depH{background:#EEEDFE;color:#3C3489}
+.depM{background:#FAEEDA;color:#633806}
+.depL{background:#F0EFEA;color:#5C5A53}
+/* Tags */
+.tf{background:#FFF3CD;color:#856404;font-size:12px;padding:1px 5px;border-radius:4px;font-weight:600}
+.tr2{background:#D4EDDA;color:#155724;font-size:12px;padding:1px 5px;border-radius:4px;font-weight:600}
+.td2{background:#F8D7DA;color:#721C24;font-size:12px;padding:1px 5px;border-radius:4px;font-weight:600}
+
+/* Order row */
+.orow{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-bottom:10px;padding:.6rem .8rem;background:var(--color-background-secondary);border-radius:9px}
+.ot{font-size:13px;font-weight:500;padding:3px 9px;border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary);border:0.5px solid var(--color-border-tertiary)}
+.oa{color:var(--color-text-tertiary);font-size:13px;font-weight:300}
+
+/* Insights grid */
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+.ic{border-radius:9px;padding:.7rem .85rem}
+.ic-g{background:#E8F5E9;border:0.5px solid #A5D6A7}
+.ic-r{background:#FFEBEE;border:0.5px solid #FFCDD2}
+.ic-y{background:#FFF8E6;border:0.5px solid #FFE082}
+.ic-b{background:#E3F2FD;border:0.5px solid #90CAF9}
+.ic h4{font-size:13px;font-weight:600;margin-bottom:6px}
+.ic-g h4{color:#1B5E20}.ic-r h4{color:#B71C1C}.ic-y h4{color:#7A5700}.ic-b h4{color:#0D47A1}
+.ic ul{list-style:none}
+.ic ul li{font-size:14px;color:var(--color-text-primary);padding:3px 0;border-bottom:0.5px solid rgba(0,0,0,.06);display:flex;gap:5px;align-items:flex-start;line-height:1.4}
+.ic ul li:last-child{border-bottom:none}
+.ic ul li::before{content:"·";font-weight:700;flex-shrink:0}
+
+/* Tip bar */
+.tip{border-left:3px solid var(--ac,#534AB7);background:var(--color-background-secondary);border-radius:0 8px 8px 0;padding:.75rem 1rem;font-size:14px;color:var(--color-text-primary);line-height:1.65;margin-top:5px}
+
+    @media(max-width:480px){.pills{grid-template-columns:repeat(2,1fr)}.ig{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>GATE CS 2026 — Topic-wise Reference</h1>
+    <p>Detailed breakdown of all 11 subjects · weightage · difficulty · time estimates · recommended order · PYQ insights</p>
+  </header>
+
+  <main class="container">
+  <div class="root">
+
+<div class="leg">
+  <span><span class="lc" style="background:#FFF3CD"></span>F = Foundational</span>
+  <span><span class="lc" style="background:#D4EDDA"></span>R = High-Return</span>
+  <span><span class="lc" style="background:#F8D7DA"></span>D = Difficult-Important</span>
+  <span><span class="lc" style="background:#EEEDFE"></span>High Wt.</span>
+  <span><span class="lc" style="background:#FAECE7"></span>Hard</span>
+  <span><span class="lc" style="background:#FAECE7;opacity:.5"></span>Long</span>
+</div>
+
+<div class="pills" id="pills">
+  <div class="pill on" style="--ac:#185FA5;--ab:#E6F1FB" onclick="sw(0)">Engg. Maths</div>
+  <div class="pill" style="--ac:#534AB7;--ab:#EEEDFE" onclick="sw(1)">Discrete Maths</div>
+  <div class="pill" style="--ac:#0F6E56;--ab:#E1F5EE" onclick="sw(2)">Data Structures</div>
+  <div class="pill" style="--ac:#E65100;--ab:#FFF3E0" onclick="sw(3)">Algorithms</div>
+  <div class="pill" style="--ac:#7B1FA2;--ab:#F3E5F5" onclick="sw(4)">Digital Logic</div>
+  <div class="pill" style="--ac:#2E7D32;--ab:#E8F5E9" onclick="sw(5)">CO &amp; Arch</div>
+  <div class="pill" style="--ac:#BF360C;--ab:#FBE9E7" onclick="sw(6)">Operating Systems</div>
+  <div class="pill" style="--ac:#0D47A1;--ab:#E3F2FD" onclick="sw(7)">DBMS</div>
+  <div class="pill" style="--ac:#006064;--ab:#E0F7FA" onclick="sw(8)">Networks</div>
+  <div class="pill" style="--ac:#4527A0;--ab:#EDE7F6" onclick="sw(9)">TOC</div>
+  <div class="pill" style="--ac:#558B2F;--ab:#F9FBE7" onclick="sw(10)">Compiler Design</div>
+</div>
+
+<!-- ====== PANELS ====== -->
+
+<!-- 0: ENGG MATHS -->
+<div class="pnl on" id="p0">
+<div class="bnr" style="background:#E6F1FB;--ac:#185FA5">
+  <div class="bnr-l"><div class="num" style="color:#185FA5">Subject 1 / 11</div><div class="title">Engineering Mathematics</div></div>
+  <span class="marks-tag" style="background:#185FA5">7 – 10 marks</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">Linear Algebra <span class="tf">F</span><span class="tr2">R</span></div><div class="ts">Matrices, rank, determinant, system of equations (Gauss elimination, Cramer's rule), eigenvalues/vectors, Cayley-Hamilton, diagonalisation, orthogonality</div></td><td><span class="b wH">High · 3–4 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">15–18 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Probability &amp; Statistics <span class="tr2">R</span></div><div class="ts">Conditional probability, Bayes' theorem, random variables, distributions (Binomial, Poisson, Normal, Uniform), expectation, variance, covariance, correlation, joint distributions</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">12–15 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Calculus</div><div class="ts">Limits, continuity, differentiability, partial derivatives, maxima/minima (single + multi-variable), definite/improper integrals, mean value theorem, Taylor series</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tM">10–12 h</span></td><td><span class="b depL">Low</span></td></tr>
+<tr><td><div class="tn">Numerical Methods</div><div class="ts">Bisection method, Newton-Raphson, numerical integration (Trapezoidal, Simpson's 1/3), LU decomposition, iterative methods</div></td><td><span class="b wL">Low · 0–1 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">5–7 h</span></td><td><span class="b depL">Low</span></td></tr>
+<tr><td><div class="tn">Graph Theory (Maths) <span class="tf">F</span></div><div class="ts">Basic definitions, degree sequences, connectivity, Euler/Hamiltonian paths, planarity (Kuratowski), graph colouring — overlaps with Discrete Math</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">5–7 h</span></td><td><span class="b depH">High</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · Linear Algebra</span><span class="oa">→</span><span class="ot">2 · Probability</span><span class="oa">→</span><span class="ot">3 · Statistics</span><span class="oa">→</span><span class="ot">4 · Calculus</span><span class="oa">→</span><span class="ot">5 · Numerical Methods</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>Linear Algebra — eigenvalues appear every year; 3 problem types</li><li>Bayes' theorem — formula-driven, fast marks</li><li>Matrix rank/system of equations — predictable pattern</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>Eigenvalue decomposition + Cayley-Hamilton applications</li><li>Joint distributions and conditional expectation</li><li>Numerical method error propagation</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>Linear algebra (parametric systems, multiple unknowns)</li><li>Probability distribution problems (setup is slow)</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>Confusing rank with nullity (rank + nullity = n)</li><li>Missing cases in Bayes' multi-event setup</li><li>Not verifying Gauss-Jordan pivot selection</li><li>Skipping Numerical Methods — usually 1 easy mark</li></ul></div>
+</div>
+<div class="tip" style="--ac:#185FA5">PYQ Trend: Linear Algebra appears in 85%+ of GATE CS papers. Focus on 3 eigenvalue problem types: characteristic equation solving, Cayley-Hamilton theorem application, and diagonalisability check. Numerical Methods — low ROI, skip if time-constrained.</div>
+</div>
+
+<!-- 1: DISCRETE MATHS -->
+<div class="pnl" id="p1">
+<div class="bnr" style="background:#EEEDFE;--ac:#534AB7">
+  <div class="bnr-l"><div class="num" style="color:#534AB7">Subject 2 / 11</div><div class="title">Discrete Mathematics</div></div>
+  <span class="marks-tag" style="background:#534AB7">10 – 13 marks</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">Propositional Logic <span class="tf">F</span><span class="tr2">R</span></div><div class="ts">Truth tables, connectives (AND/OR/NOT/XOR/NAND/NOR/XNOR), tautology, contradiction, satisfiability, logical equivalence, inference rules (MP, MT, hypothetical syllogism), normal forms (CNF, DNF)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">10–12 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Predicate Logic <span class="td2">D</span></div><div class="ts">Predicates, quantifiers (∀, ∃), nested quantifiers, scope, free/bound variables, validity, satisfiability in FOL, prenex normal form</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tM">8–10 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Set Theory &amp; Relations <span class="tf">F</span></div><div class="ts">Set operations, power sets, Cartesian product, relations (reflexive, symmetric, anti-symmetric, transitive), equivalence relations, partial orders, Hasse diagrams, closures (reflexive/symmetric/transitive)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tM">10–12 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Functions</div><div class="ts">Injective, surjective, bijective, composition, inverse, floor/ceiling, cardinality, countable/uncountable sets, Cantor's theorem</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">6–8 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Graph Theory <span class="tr2">R</span><span class="td2">D</span></div><div class="ts">Graph types, degree sequences, handshaking lemma, connectivity, bipartite graphs, trees (spanning, rooted), Euler paths/circuits, Hamiltonian paths, planar graphs (Euler formula: V–E+F=2), graph colouring, isomorphism</div></td><td><span class="b wH">High · 3–4 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tL">15–18 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Combinatorics <span class="tr2">R</span></div><div class="ts">Permutations, combinations, repetition, pigeonhole principle, inclusion-exclusion (2 and 3 sets), derangements, recurrence relations (homogeneous, particular solution), generating functions</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">12–14 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Algebraic Structures</div><div class="ts">Groups (axioms, subgroups, cyclic groups, cosets, Lagrange's theorem), rings, fields, lattices, Boolean algebra as algebraic structure</div></td><td><span class="b wL">Low · 1–2 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tM">10–12 h</span></td><td><span class="b depL">Low</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · Set Theory</span><span class="oa">→</span><span class="ot">2 · Logic</span><span class="oa">→</span><span class="ot">3 · Predicate Logic</span><span class="oa">→</span><span class="ot">4 · Functions</span><span class="oa">→</span><span class="ot">5 · Graph Theory</span><span class="oa">→</span><span class="ot">6 · Combinatorics</span><span class="oa">→</span><span class="ot">7 · Algebra</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>Propositional Logic — tautology/equivalence every year</li><li>Graph theory: degree sequences, planarity, spanning trees</li><li>Inclusion-exclusion counting problems</li><li>Recurrence relation solving</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>Predicate logic — quantifier scope confusion</li><li>Algebraic structures — abstract, low marks return</li><li>Generating functions — hard to build intuition</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>Graph Theory — many property combinations</li><li>Combinatorics — creative problem types yearly</li><li>Predicate logic proofs</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>Confusing partial order (anti-symmetric) with total order</li><li>Wrong inclusion-exclusion for 3+ set problems</li><li>Euler path ≠ Euler circuit — different conditions (2 vs 0 odd-degree vertices)</li><li>Forgetting algebraic structures entirely — risks 1–2 free marks</li></ul></div>
+</div>
+<div class="tip" style="--ac:#534AB7">Key distinction: DM Graph Theory tests structural properties (planarity, colouring, isomorphism). DSA Algorithms tests graph traversal algorithms (Dijkstra, BFS). GATE separates these — study them independently in each subject context.</div>
+</div>
+
+<!-- 2: DATA STRUCTURES -->
+<div class="pnl" id="p2">
+<div class="bnr" style="background:#E1F5EE;--ac:#0F6E56">
+  <div class="bnr-l"><div class="num" style="color:#0F6E56">Subject 3 / 11</div><div class="title">Data Structures</div></div>
+  <span class="marks-tag" style="background:#0F6E56">8–12 marks (combined DSA: 15–20)</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">Arrays &amp; Strings <span class="tf">F</span></div><div class="ts">1D/2D arrays, address calculation formulae, row-major vs column-major, string operations, searching, matrix representations (sparse, triangular)</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">5–7 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Linked Lists <span class="tf">F</span></div><div class="ts">Singly, doubly, circular linked lists — insertion, deletion, reversal, Floyd's cycle detection, merging sorted lists, finding middle element</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">7–9 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Stacks &amp; Queues <span class="tr2">R</span></div><div class="ts">Stack operations, infix→postfix/prefix conversion, postfix evaluation, balanced parentheses. Queue types: circular queue, deque, priority queue. Stack using queue and vice versa</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">7–9 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Trees <span class="tf">F</span><span class="tr2">R</span><span class="td2">D</span></div><div class="ts">Binary tree (traversals: pre/in/post/level, properties, complete/full/perfect), BST (search, insert, delete — 3 cases, predecessor/successor), AVL (rotations: LL/RR/LR/RL, height after operations), Red-Black trees (concept), B-trees, B+ trees (order, split/merge), Segment trees</div></td><td><span class="b wH">High · 4–5 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">22–26 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Heaps <span class="tr2">R</span></div><div class="ts">Min-heap, max-heap, heapify (up/down), insert, extract-min/max, delete, heap sort, heap build from array (O(n)), k-th largest element pattern</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">8–10 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Hashing <span class="tr2">R</span></div><div class="ts">Hash functions, chaining, open addressing (linear probing, quadratic probing, double hashing), load factor, expected number of probes, clustering, perfect hashing concept</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">10–12 h</span></td><td><span class="b depL">Low</span></td></tr>
+<tr><td><div class="tn">Graphs (Representation) <span class="tf">F</span></div><div class="ts">Adjacency matrix (space O(V²)), adjacency list (space O(V+E)), incidence matrix, BFS tree, DFS tree, back/cross/forward edges, time complexity tradeoffs</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">6–8 h</span></td><td><span class="b depH">High</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · Arrays</span><span class="oa">→</span><span class="ot">2 · Linked Lists</span><span class="oa">→</span><span class="ot">3 · Stacks/Queues</span><span class="oa">→</span><span class="ot">4 · Trees</span><span class="oa">→</span><span class="ot">5 · Heaps</span><span class="oa">→</span><span class="ot">6 · Hashing</span><span class="oa">→</span><span class="ot">7 · Graph Repr.</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>Trees — highest repeat frequency in GATE DS section</li><li>Stacks — infix/postfix always 1–2 marks</li><li>Hashing — collision resolution numericals</li><li>Heaps — extract/insert operation trace</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>AVL rotations — LL/RR/LR/RL confusion under exam pressure</li><li>B-tree split conditions and minimum keys</li><li>BST deletion: 3-case logic — easy to misapply</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>Trees — 5 variants each with unique operations</li><li>Hashing — 3 open addressing methods with probe formulas</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>AVL balance factor: always (left height − right height)</li><li>Not preserving BST property after every step of deletion</li><li>Heap: building in O(n) vs inserting n elements O(n log n) — different!</li><li>B-tree vs B+tree — B+tree stores data only in leaves; tested in DBMS too</li></ul></div>
+</div>
+<div class="tip" style="--ac:#0F6E56">Trees are cross-subject — master them once and gain marks in DS, DBMS (B+ trees for indexing), OS (directory trees, free block lists), and Compiler Design (parse trees, ASTs). Highest ROI topic in the entire GATE CS syllabus.</div>
+</div>
+
+<!-- 3: ALGORITHMS -->
+<div class="pnl" id="p3">
+<div class="bnr" style="background:#FFF3E0;--ac:#E65100">
+  <div class="bnr-l"><div class="num" style="color:#E65100">Subject 4 / 11</div><div class="title">Algorithms</div></div>
+  <span class="marks-tag" style="background:#E65100">7–10 marks (combined DSA: 15–20)</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">Asymptotic Analysis <span class="tf">F</span><span class="tr2">R</span></div><div class="ts">Big-O, Ω, Θ, o, ω notations; comparing functions; best/average/worst case analysis; asymptotic tight bounds; limits approach (L'Hôpital)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">7–9 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Recurrence Relations <span class="tf">F</span><span class="tr2">R</span></div><div class="ts">Substitution method, recursion tree method, Master theorem (all 3 cases + extended case 2), Akra-Bazzi (awareness), solving T(n)=aT(n/b)+f(n)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">7–9 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Sorting Algorithms <span class="tr2">R</span></div><div class="ts">Merge sort, Quicksort (partition, pivot, randomised, average O(n log n) / worst O(n²)), Heapsort, Insertion/Selection/Bubble, Counting/Radix/Bucket sort, stability, lower bound Ω(n log n) proof, external sorting</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">12–15 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Graph Algorithms <span class="tr2">R</span><span class="td2">D</span></div><div class="ts">BFS/DFS (applications: cycle detection, topological sort, SCCs — Kosaraju/Tarjan), Dijkstra (non-negative weights), Bellman-Ford (negative weights, negative cycle detection), Floyd-Warshall (all-pairs), Prim's MST, Kruskal's MST, articulation points, bridges</div></td><td><span class="b wH">High · 3–5 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">20–25 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Dynamic Programming <span class="td2">D</span></div><div class="ts">Overlapping subproblems, optimal substructure, memoisation vs tabulation. Problems: 0-1 knapsack, unbounded knapsack, LCS, LIS, matrix chain multiplication, optimal BST, edit distance, coin change (count + min), subset sum, longest palindromic subsequence</div></td><td><span class="b wH">High · 2–4 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">20–25 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Greedy Algorithms <span class="tr2">R</span></div><div class="ts">Activity selection, fractional knapsack, Huffman encoding (tree construction, prefix codes), job scheduling with deadlines, greedy vs DP characterisation</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">7–9 h</span></td><td><span class="b depL">Low</span></td></tr>
+<tr><td><div class="tn">Divide &amp; Conquer</div><div class="ts">Binary search (and variants: first/last occurrence, rotated array), merge sort analysis, Strassen's matrix multiplication, maximum subarray (Kadane's = DP variant), closest pair of points</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">6–8 h</span></td><td><span class="b depL">Low</span></td></tr>
+<tr><td><div class="tn">P, NP, Complexity <span class="td2">D</span></div><div class="ts">P, NP, NP-hard, NP-complete, polynomial-time reduction, certificate verification, SAT (Cook-Levin), 3-CNF SAT, Vertex Cover, Clique, Hamiltonian Cycle, TSP — know which is which</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tM">10–12 h</span></td><td><span class="b depL">Low</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · Asymptotic</span><span class="oa">→</span><span class="ot">2 · Recurrences</span><span class="oa">→</span><span class="ot">3 · Sorting</span><span class="oa">→</span><span class="ot">4 · D&amp;C</span><span class="oa">→</span><span class="ot">5 · Greedy</span><span class="oa">→</span><span class="ot">6 · Graph Algos</span><span class="oa">→</span><span class="ot">7 · DP</span><span class="oa">→</span><span class="ot">8 · NP</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>Recurrences — Master theorem applied directly every year</li><li>Huffman coding — greedy tree construction, guaranteed pattern</li><li>Sorting complexity table — comparison often 2 marks</li><li>Graph algorithms — Dijkstra/MST numericals always appear</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>DP — problem identification (recognising which subproblem to define) is harder than the recurrence itself</li><li>NP-completeness reductions — needs formal proof reasoning</li><li>Amortised analysis (aggregate, accounting, potential)</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>Dynamic Programming — 10+ distinct problem types, each unique</li><li>Graph algorithms — 8 algorithms with overlapping but distinct properties</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>Applying Master Theorem when f(n) has log factors — use extended case</li><li>Quicksort worst case O(n²) when sorted input + fixed pivot</li><li>Prim builds MST by cheapest edge to tree; Kruskal by globally cheapest non-cycle edge</li><li>NP-hard ≠ NP-complete (NP-complete must also be in NP)</li></ul></div>
+</div>
+<div class="tip" style="--ac:#E65100">GATE DP questions pick ONE specific problem — not generic DP design. Master these 8 by tracing manually: 0-1 knapsack, LCS, LIS, matrix chain, edit distance, coin change, subset sum, optimal BST. Tracing > coding for GATE.</div>
+</div>
+
+<!-- 4: DIGITAL LOGIC -->
+<div class="pnl" id="p4">
+<div class="bnr" style="background:#F3E5F5;--ac:#7B1FA2">
+  <div class="bnr-l"><div class="num" style="color:#7B1FA2">Subject 5 / 11</div><div class="title">Digital Logic</div></div>
+  <span class="marks-tag" style="background:#7B1FA2">6 – 9 marks</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">Number Systems &amp; Codes <span class="tf">F</span><span class="tr2">R</span></div><div class="ts">Binary, octal, hex conversions; BCD, Gray code, Excess-3; 1s complement, 2s complement (overflow detection); IEEE 754 single/double precision (sign, exponent, mantissa, special values: 0, ∞, NaN, denormalised)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">7–9 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Boolean Algebra <span class="tf">F</span><span class="tr2">R</span></div><div class="ts">Boolean postulates, De Morgan's, duality principle, SOP/POS canonical forms, minterms/maxterms, Boolean function simplification using theorems</div></td><td><span class="b wH">High · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">6–8 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Karnaugh Maps <span class="tr2">R</span></div><div class="ts">2/3/4/5 variable K-maps, prime implicants, essential prime implicants, minimal SOP/POS expressions, don't-care conditions, Quine-McCluskey (concept level)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">10–12 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Combinational Circuits <span class="tr2">R</span></div><div class="ts">Half adder, full adder, ripple carry adder, subtractor, comparator, MUX (2:1 to 16:1), DEMUX, encoder/priority encoder, decoder, ROM/PLA/PLD-based implementations, implementing any Boolean function using MUX</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">12–14 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Sequential Circuits <span class="td2">D</span></div><div class="ts">SR, JK, D, T flip-flops (characteristic equations, excitation tables), state tables, state diagrams, state minimisation, Mealy vs Moore machines (output logic), synchronous counters, shift registers (SISO/SIPO/PISO/PIPO)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">18–22 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Logic Families</div><div class="ts">TTL vs CMOS: propagation delay, fan-in, fan-out, noise margin, power consumption — conceptual only for GATE</div></td><td><span class="b wL">Low · 0–1 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">2–3 h</span></td><td><span class="b depL">Low</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · Number Systems</span><span class="oa">→</span><span class="ot">2 · Boolean Algebra</span><span class="oa">→</span><span class="ot">3 · K-Maps</span><span class="oa">→</span><span class="ot">4 · Combinational Circuits</span><span class="oa">→</span><span class="ot">5 · Sequential Circuits</span><span class="oa">→</span><span class="ot">6 · Logic Families</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>Number systems — binary/hex arithmetic is fast marks</li><li>K-map simplification — completely predictable question type</li><li>MUX implementation of Boolean functions — always tested</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>State machine design with don't-cares — multiple valid answers</li><li>JK flip-flop excitation table derivation under time pressure</li><li>Asynchronous sequential circuits — race hazards</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>Sequential circuits — Mealy/Moore state minimisation</li><li>5-variable K-maps with don't-cares</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>K-map grouping — must use largest possible power-of-2 groups</li><li>IEEE 754: forgetting biased exponent (bias = 127 for single)</li><li>2s complement overflow: + + = − or − − = + signals overflow</li><li>Mealy: output depends on state AND input; Moore: only on state</li></ul></div>
+</div>
+<div class="tip" style="--ac:#7B1FA2">Number Systems + K-Maps + Combinational Circuits alone covers ~60% of DL marks and are the easiest to prepare. Sequential circuits have the highest difficulty but also highest marks potential. Flip-flop excitation table questions appear in nearly every GATE paper.</div>
+</div>
+
+<!-- 5: COA -->
+<div class="pnl" id="p5">
+<div class="bnr" style="background:#E8F5E9;--ac:#2E7D32">
+  <div class="bnr-l"><div class="num" style="color:#2E7D32">Subject 6 / 11</div><div class="title">Computer Organization &amp; Architecture</div></div>
+  <span class="marks-tag" style="background:#2E7D32">8 – 12 marks</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">Data Representation <span class="tf">F</span></div><div class="ts">Integer arithmetic (2s complement add/subtract/multiply), overflow detection, floating point arithmetic (IEEE 754 add/subtract), BCD arithmetic, fixed-point representation</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">5–7 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Instruction Set Architecture</div><div class="ts">Instruction formats (0/1/2/3-address), addressing modes (immediate, direct, indirect, register, indexed, base+offset, auto-increment/decrement), RISC vs CISC (key differences), assembly-level concepts</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">7–9 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">CPU Organisation</div><div class="ts">ALU design, control unit (hardwired vs microprogrammed), datapath, register file, micro-operations, RTL notation, instruction cycle phases (fetch-decode-execute)</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">7–9 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Pipelining <span class="tr2">R</span><span class="td2">D</span></div><div class="ts">Pipeline stages, throughput, speedup, CPI, pipeline efficiency; hazards: structural (resource conflict), data (RAW/WAW/WAR — RAW most common in GATE), control (branch); forwarding/bypassing paths, stall cycles calculation, branch prediction (static/dynamic), pipeline flushing</div></td><td><span class="b wH">High · 3–4 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">18–22 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Memory Organisation <span class="tr2">R</span><span class="td2">D</span></div><div class="ts">Memory hierarchy, SRAM/DRAM; cache organisation: direct mapped, set associative (k-way), fully associative; replacement policies (LRU, FIFO, Optimal, LFU); write policies (write-back, write-through, write-allocate, no-write-allocate); AMAT = hit time + miss rate × miss penalty; multi-level cache AMAT</div></td><td><span class="b wH">High · 3–4 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">20–24 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">I/O Organisation</div><div class="ts">I/O techniques: programmed I/O (polling), interrupt-driven I/O, DMA (modes, cycle stealing), interrupt handling, priority interrupts (daisy chain, parallel), vectored interrupts</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">6–8 h</span></td><td><span class="b depL">Low</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · Data Repr.</span><span class="oa">→</span><span class="ot">2 · ISA</span><span class="oa">→</span><span class="ot">3 · CPU Org.</span><span class="oa">→</span><span class="ot">4 · Pipelining</span><span class="oa">→</span><span class="ot">5 · Cache/Memory</span><span class="oa">→</span><span class="ot">6 · I/O</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>Cache AMAT calculation — completely numerical, formulaic</li><li>Pipeline speedup and CPI — 2–3 marks every year</li><li>Addressing modes — fast once pattern is memorised</li><li>Cache mapping (direct-mapped tag/index/offset)</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>Data hazard forwarding — which stage sends to which</li><li>Multi-level cache AMAT (local vs global miss rate)</li><li>Microprogrammed control unit — horizontal vs vertical</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>Pipelining — hazard analysis requires full instruction trace</li><li>Cache — multiple mapping types × multiple write policies</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>Stall cycle count: RAW with no forwarding = (latency–1) stalls; with forwarding = 0 for most cases</li><li>Cache: tag bits = address bits − index bits − offset bits</li><li>Local miss rate ≠ global miss rate (GATE tests both)</li><li>Confusing pipeline throughput (instructions/cycle) with latency</li></ul></div>
+</div>
+<div class="tip" style="--ac:#2E7D32">Pipelining + Cache = 6–8 marks in every GATE paper — these two topics alone justify 45% of COA study time. Always practice AMAT with actual address calculations (not just formulas) and pipeline Gantt charts with data hazards.</div>
+</div>
+
+<!-- 6: OS -->
+<div class="pnl" id="p6">
+<div class="bnr" style="background:#FBE9E7;--ac:#BF360C">
+  <div class="bnr-l"><div class="num" style="color:#BF360C">Subject 7 / 11</div><div class="title">Operating Systems</div></div>
+  <span class="marks-tag" style="background:#BF360C">10 – 14 marks</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">Process Management <span class="tf">F</span></div><div class="ts">Process vs thread (differences, advantages of threads), process states (5-state model), PCB contents, context switch overhead, user-level vs kernel-level threads, fork() semantics and output tracing</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">6–8 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">CPU Scheduling <span class="tr2">R</span></div><div class="ts">FCFS (convoy effect), SJF (non-preemptive), SRTN (preemptive SJF), Round Robin (time quantum effect), Priority (preemptive/non-preemptive, starvation, ageing), Multilevel Queue, Multilevel Feedback Queue. Metrics: turnaround time, waiting time, response time, CPU utilisation, throughput. Gantt chart construction</div></td><td><span class="b wH">High · 3–4 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">14–17 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Process Synchronisation <span class="td2">D</span><span class="tr2">R</span></div><div class="ts">Critical section (mutual exclusion, progress, bounded waiting), Peterson's solution, hardware sync (test-and-set, compare-and-swap), mutex locks, semaphores (counting/binary), monitors. Classical problems: Producer-Consumer (bounded buffer), Readers-Writers (both versions), Dining Philosophers, Sleeping Barber</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">18–22 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Deadlocks <span class="tr2">R</span></div><div class="ts">4 necessary conditions (Mutual Exclusion, Hold &amp; Wait, No Preemption, Circular Wait), resource allocation graph (cycle = deadlock for single-instance), Banker's algorithm (safety algorithm + resource request), deadlock detection (multi-instance), recovery strategies</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">12–14 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Memory Management <span class="td2">D</span><span class="tr2">R</span></div><div class="ts">Contiguous allocation (fixed/variable partition, internal/external fragmentation), paging (page table structure, multi-level paging — 2-level/3-level, inverted page table), TLB (hit ratio, EAT formula), segmentation, combined paging+segmentation. Address translation step-by-step</div></td><td><span class="b wH">High · 3–4 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">20–24 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Virtual Memory &amp; Page Replacement <span class="tr2">R</span></div><div class="ts">Demand paging, page fault handling, page replacement algorithms (FIFO — Belady's anomaly, LRU, Optimal, Clock/Second-chance, LFU), thrashing, working set model, prepaging</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">15–18 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">File Systems</div><div class="ts">File attributes, file operations, directory structures (single-level, two-level, tree, acyclic graph), file allocation methods (contiguous, linked, FAT, indexed — single/double/triple indirect), i-nodes, free space management (bitmap, linked list)</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">8–10 h</span></td><td><span class="b depL">Low</span></td></tr>
+<tr><td><div class="tn">Disk Scheduling &amp; I/O</div><div class="ts">FCFS, SSTF (shortest seek), SCAN (elevator), C-SCAN, LOOK, C-LOOK — seek time calculation for given request queue</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">4–5 h</span></td><td><span class="b depL">Low</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · Process Mgmt.</span><span class="oa">→</span><span class="ot">2 · Scheduling</span><span class="oa">→</span><span class="ot">3 · Synchronisation</span><span class="oa">→</span><span class="ot">4 · Deadlocks</span><span class="oa">→</span><span class="ot">5 · Memory Mgmt.</span><span class="oa">→</span><span class="ot">6 · Virtual Memory</span><span class="oa">→</span><span class="ot">7 · File Systems</span><span class="oa">→</span><span class="ot">8 · Disk Scheduling</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>CPU scheduling — Gantt charts with all algorithms</li><li>Page replacement traces — FIFO/LRU/Optimal comparisons</li><li>Banker's algorithm — systematic steps, full marks</li><li>TLB effective access time formula</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>Semaphore-based solutions — subtle logic bugs in classical problems</li><li>Multi-level page table address translation (3-level)</li><li>Thrashing and working set model — abstract</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>Memory management (multiple paging variants)</li><li>Process synchronisation (classical problem solutions)</li><li>Virtual memory + page replacement together</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>Not handling preemption in SRTN at each new arrival</li><li>EAT formula: EAT = h×t_TLB + (1+p)×t_mem (h=hit rate, p=page fault rate)</li><li>Banker's: Need matrix = Max − Allocation (not Max)</li><li>Belady's anomaly — only FIFO can exhibit it, not LRU or Optimal</li></ul></div>
+</div>
+<div class="tip" style="--ac:#BF360C">OS is the most numerical subject after COA. Every major topic has calculation-based questions — GATE 2024 had 4 OS numericals. Practise 6+ Gantt chart problems per algorithm and 5+ page replacement traces before attempting PYQs.</div>
+</div>
+
+<!-- 7: DBMS -->
+<div class="pnl" id="p7">
+<div class="bnr" style="background:#E3F2FD;--ac:#0D47A1">
+  <div class="bnr-l"><div class="num" style="color:#0D47A1">Subject 8 / 11</div><div class="title">Database Management Systems</div></div>
+  <span class="marks-tag" style="background:#0D47A1">10 – 13 marks</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">ER Model <span class="tf">F</span><span class="tr2">R</span></div><div class="ts">Entity types, attribute types (simple/composite/multivalued/derived), relationships, cardinality constraints (1:1, 1:N, M:N), participation (total/partial), weak entities (partial key), ISA hierarchy (specialisation/generalisation), ER → relational schema conversion rules</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tM">9–11 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Relational Model <span class="tf">F</span></div><div class="ts">Schema, tuples, domains; key types: super key, candidate key, primary key, foreign key, alternate key; integrity constraints (entity integrity, referential integrity); relational algebra (σ, π, ×, ⋈ natural/theta/equi join, ∪, ∩, −, ÷, ρ)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">12–14 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">SQL <span class="tr2">R</span></div><div class="ts">DDL (CREATE/ALTER/DROP), DML (INSERT/UPDATE/DELETE/SELECT); all JOIN types (INNER, LEFT OUTER, RIGHT OUTER, FULL OUTER, NATURAL, SELF); GROUP BY with HAVING; ORDER BY; nested/correlated subqueries; aggregate functions (COUNT, SUM, AVG, MIN, MAX); views; NULL handling</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">14–17 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Normalization <span class="td2">D</span><span class="tr2">R</span></div><div class="ts">Functional dependencies, Armstrong's axioms (completeness/soundness), attribute closure (F⁺), minimal cover/canonical cover, finding ALL candidate keys, 1NF/2NF/3NF/BCNF definitions, 4NF (multivalued dependencies), lossless-join decomposition (test), dependency-preserving decomposition (test), 3NF synthesis algorithm, BCNF decomposition</div></td><td><span class="b wH">High · 3–4 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">20–24 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Transactions &amp; Concurrency <span class="td2">D</span></div><div class="ts">ACID properties (definitions, examples); transaction states; schedules: serial, conflict-equivalent, conflict-serialisable (precedence graph — cycle = not serialisable), view-serialisable; 2-Phase Locking (2PL, strict 2PL, rigorous 2PL); timestamp ordering; deadlock in DBMS</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">18–22 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Indexing &amp; File Organisation <span class="tr2">R</span></div><div class="ts">Dense vs sparse index; primary, secondary, clustering indexes; B+ tree (insertion, deletion, order/degree, min/max keys per node, height calculation, searching); extendible hashing; sequential/random file organisation; index selection tradeoffs</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">13–15 h</span></td><td><span class="b depL">Low</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · ER Model</span><span class="oa">→</span><span class="ot">2 · Relational Model + RA</span><span class="oa">→</span><span class="ot">3 · SQL</span><span class="oa">→</span><span class="ot">4 · Normalization</span><span class="oa">→</span><span class="ot">5 · B+ Tree / Indexing</span><span class="oa">→</span><span class="ot">6 · Transactions</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>Normalisation — BCNF decomposition asked every single year</li><li>Relational algebra — converting SQL queries to RA expression</li><li>B+ tree height and search operations</li><li>ACID properties — quick 1-mark conceptual</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>Conflict serializability — subtle edge direction in precedence graph</li><li>Canonical cover computation — easy to miss extraneous FDs</li><li>View serializability vs conflict serializability</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>Normalisation — needs 20+ practice problems to build speed</li><li>Transactions — tracing concurrent schedules step-by-step</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>Decomposition test: must verify BOTH lossless join AND dep. preservation separately</li><li>Every BCNF is 3NF, not vice versa — GATE specifically tests this boundary</li><li>Candidate key finding: compute closure of every possible attribute subset</li><li>SQL NULL: NULL ≠ NULL in comparisons — always use IS NULL</li></ul></div>
+</div>
+<div class="tip" style="--ac:#0D47A1">Normalization is tested as a 3–5 mark cluster almost every year. Always find ALL candidate keys before attempting normal forms — students who guess one candidate key and proceed lose the entire question. Practice closure computation on 15+ FD sets.</div>
+</div>
+
+<!-- 8: NETWORKS -->
+<div class="pnl" id="p8">
+<div class="bnr" style="background:#E0F7FA;--ac:#006064">
+  <div class="bnr-l"><div class="num" style="color:#006064">Subject 9 / 11</div><div class="title">Computer Networks</div></div>
+  <span class="marks-tag" style="background:#006064">9 – 12 marks</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">Network Models <span class="tf">F</span></div><div class="ts">OSI 7-layer model (each layer: name, function, PDU name, key protocols), TCP/IP 4-layer model, layer-to-layer mapping, encapsulation/decapsulation, service vs protocol distinction</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">4–6 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Data Link Layer <span class="tr2">R</span><span class="td2">D</span></div><div class="ts">Framing; error detection: CRC (polynomial long division, generator polynomial), Hamming code (error correction bits, SECDED); ARQ protocols: Stop-and-Wait (efficiency = 1/(1+2a)), Go-Back-N (window=2^n–1 for efficiency=1), Selective Repeat (window=2^(n-1)); ALOHA (pure/slotted — throughput), CSMA/CD, CSMA/CA; MAC addressing; Ethernet frame</div></td><td><span class="b wH">High · 3–4 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">18–22 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Network Layer <span class="td2">D</span><span class="tr2">R</span></div><div class="ts">IPv4 structure, subnetting (CIDR notation, network/broadcast/host address calculation), VLSM, NAT; routing algorithms: Distance Vector (Bellman-Ford — count-to-infinity problem, split horizon), Link State (Dijkstra — OSPF); ARP, RARP, ICMP; IPv6 basics (address format, no checksum)</div></td><td><span class="b wH">High · 3–4 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">18–22 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Transport Layer <span class="tr2">R</span></div><div class="ts">TCP: 3-way handshake, 4-way termination, sliding window (rwnd), congestion control (slow start — cwnd doubles, AIMD — additive increase/multiplicative decrease, ssthresh), flow control; UDP: features and use cases; port numbers, multiplexing/demultiplexing</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">11–13 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Application Layer</div><div class="ts">HTTP (persistent/non-persistent, pipelining, methods GET/POST/PUT/DELETE, status codes), DNS (hierarchy, iterative vs recursive resolution, record types A/MX/CNAME/NS), FTP (control/data connections), SMTP/POP3/IMAP, DHCP, SNMP</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">5–6 h</span></td><td><span class="b depL">Low</span></td></tr>
+<tr><td><div class="tn">Network Security</div><div class="ts">Symmetric (DES, AES, 3DES), asymmetric (RSA — key usage: encrypt with public, sign with private), digital signatures, certificates, PKI, SSL/TLS handshake concept, firewalls, IPSec</div></td><td><span class="b wL">Low · 0–1 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">3–4 h</span></td><td><span class="b depL">Low</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · OSI/TCP-IP</span><span class="oa">→</span><span class="ot">2 · Data Link Layer</span><span class="oa">→</span><span class="ot">3 · Network Layer</span><span class="oa">→</span><span class="ot">4 · Transport Layer</span><span class="oa">→</span><span class="ot">5 · Application Layer</span><span class="oa">→</span><span class="ot">6 · Security</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>Subnetting/CIDR — numerical, fully predictable</li><li>Sliding window efficiency formulas — 1-line calculation</li><li>CRC remainder — polynomial long division practice</li><li>TCP congestion control state trace</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>VLSM subnetting — variable block sizes, error-prone</li><li>Distance Vector routing with count-to-infinity propagation</li><li>Selective Repeat vs Go-Back-N edge cases (window wrap)</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>Data Link layer — many protocol variants with overlapping rules</li><li>Network layer — subnetting + routing algorithm combined problems</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>Sliding Repeat window: 2^(n-1) NOT 2^n — most common error</li><li>Subnetting: broadcast = last address, usable = total − 2</li><li>CRC: append (degree of generator) zeros before dividing</li><li>Propagation delay vs transmission delay — different formulas</li></ul></div>
+</div>
+<div class="tip" style="--ac:#006064">Subnetting + Sliding Window Protocols = 5–6 marks by formula alone after practice. Master these first. Network Security — 0–1 mark; skip deep study, memorise key concepts only (RSA usage, symmetric vs asymmetric, digital signature purpose).</div>
+</div>
+
+<!-- 9: TOC -->
+<div class="pnl" id="p9">
+<div class="bnr" style="background:#EDE7F6;--ac:#4527A0">
+  <div class="bnr-l"><div class="num" style="color:#4527A0">Subject 10 / 11</div><div class="title">Theory of Computation</div></div>
+  <span class="marks-tag" style="background:#4527A0">8 – 11 marks</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">DFA &amp; Regular Languages <span class="tf">F</span><span class="tr2">R</span></div><div class="ts">DFA (construction, language recognition, state minimisation using table-filling/Myhill-Nerode), NFA to DFA conversion (subset construction), ε-NFA to NFA to DFA, equivalence of DFA and NFA, properties of regular languages (closure under union/intersection/complement/concatenation/Kleene star)</div></td><td><span class="b wH">High · 3–4 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tL">15–18 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Regular Expressions <span class="tr2">R</span></div><div class="ts">RE syntax, RE to NFA (Thompson's construction), DFA to RE (Arden's lemma, state elimination method), equivalence with DFA, identifying language from RE, constructing RE for given language, algebraic laws of RE</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">10–12 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Pumping Lemma (RL) <span class="tr2">R</span></div><div class="ts">Statement of Pumping Lemma for regular languages, proof structure for non-regularity (choose string, apply lemma, derive contradiction for ALL possible splits), standard non-regular languages ({a^n b^n}, {ww})</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">5–7 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Context-Free Grammars <span class="td2">D</span><span class="tr2">R</span></div><div class="ts">CFG definition, leftmost/rightmost derivations, parse trees, ambiguity (inherently ambiguous languages), normal forms: CNF (Chomsky — every rule A→BC or A→a), GNF (Greibach — every rule starts with terminal), CFL closure properties (closed under union/concat/Kleene; NOT under intersection/complement), Ogden's lemma (awareness)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">18–22 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Pushdown Automata</div><div class="ts">PDA definition, transition function, instantaneous description, acceptance by final state vs empty stack (equivalence), DPDA vs NPDA (DPDAs ⊂ NPDAs for CFLs), PDA ↔ CFG construction</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tM">11–13 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Turing Machines <span class="td2">D</span></div><div class="ts">TM formal definition, TM design for specific languages (a^n b^n, palindromes), variants (multi-tape TM, non-deterministic TM, 2-stack PDA = TM power), Church-Turing thesis, universal TM concept</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tM">11–13 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Decidability &amp; Complexity <span class="td2">D</span></div><div class="ts">Decidable vs undecidable vs partially decidable; halting problem (undecidable — proof by diagonalisation); Rice's theorem (statement + application); Post's Correspondence Problem; recursive vs recursively enumerable languages; P, NP, co-NP (from TOC perspective)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">14–17 h</span></td><td><span class="b depH">High</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · DFA/NFA</span><span class="oa">→</span><span class="ot">2 · Regular Expressions</span><span class="oa">→</span><span class="ot">3 · Pumping Lemma</span><span class="oa">→</span><span class="ot">4 · CFG</span><span class="oa">→</span><span class="ot">5 · PDA</span><span class="oa">→</span><span class="ot">6 · Turing Machines</span><span class="oa">→</span><span class="ot">7 · Decidability</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>DFA construction — mechanical, high-scoring once practised</li><li>Decidability: Rice's theorem — 1–2 mark conceptual every year</li><li>Regular expression identification — pattern matching</li><li>CFL closure property questions — quick marks</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>PDA construction — non-intuitive stack behaviour</li><li>ε-NFA to DFA with ε-closure — state explosion</li><li>Decidability proofs — requires mathematical maturity</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>CFG — CNF/GNF transformations are mechanical but slow</li><li>Decidability — requires genuine conceptual depth</li><li>TM design for complex languages</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>DFA: every state MUST have a transition for EVERY input symbol (no missing transitions)</li><li>Pumping Lemma: must show contradiction for ALL possible splits (y), not just one</li><li>CFLs are NOT closed under intersection (∩L₁L₂ may not be CFL) — frequently tested</li><li>Rice's theorem applies ONLY to non-trivial semantic properties of RE languages</li></ul></div>
+</div>
+<div class="tip" style="--ac:#4527A0">TOC has the steepest initial learning curve. Invest heavily upfront in DFA/NFA (3–4 marks, high predictability) — everything builds on it. Decidability questions are almost always conceptual 1-mark: memorise Rice's theorem and 6 standard decidable/undecidable language examples.</div>
+</div>
+
+<!-- 10: COMPILER DESIGN -->
+<div class="pnl" id="p10">
+<div class="bnr" style="background:#F9FBE7;--ac:#558B2F">
+  <div class="bnr-l"><div class="num" style="color:#558B2F">Subject 11 / 11</div><div class="title">Compiler Design</div></div>
+  <span class="marks-tag" style="background:#558B2F">5 – 8 marks</span>
+</div>
+<div class="sl">Topic-wise Breakdown</div>
+<table class="tbl">
+<tr><th>Topic &amp; Subtopics</th><th>Weightage</th><th>Difficulty</th><th>Time</th><th>Dep.</th></tr>
+<tr><td><div class="tn">Compiler Phases Overview <span class="tf">F</span></div><div class="ts">6 phases: lexical analysis → syntax analysis → semantic analysis → intermediate code generation → code optimisation → code generation. Front-end vs back-end. Symbol table as shared data structure. Error types at each phase</div></td><td><span class="b wL">Low · 0–1 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">2–3 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Lexical Analysis <span class="tr2">R</span></div><div class="ts">Tokens, lexemes, patterns; regular expressions for token classes (identifiers, keywords, numbers); DFA-based scanner design; handling keywords as identifiers with lookup; LEX tool concepts; longest match rule; lexical errors</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dE">Easy</span></td><td><span class="b tS">5–7 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">FIRST &amp; FOLLOW Sets <span class="tf">F</span><span class="tr2">R</span></div><div class="ts">FIRST(α) computation (terminals, ε-productions), FOLLOW(A) computation (end of string $, propagation rules), complete algorithm for any grammar — prerequisite for ALL parsing topics</div></td><td><span class="b wH">High · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">7–9 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Top-Down Parsing — LL(1) <span class="td2">D</span><span class="tr2">R</span></div><div class="ts">Recursive descent parsing, predictive parsing, LL(1) parsing table construction, LL(1) grammar conditions (no ambiguity, no left recursion, left-factored), left recursion elimination (direct + indirect), left factoring, parsing table conflicts (not LL(1))</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">16–20 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Bottom-Up Parsing — LR <span class="td2">D</span><span class="tr2">R</span></div><div class="ts">Shift-reduce parsing concept, handle, viable prefix; LR(0) items and canonical collection; SLR(1) parsing table (uses FOLLOW sets for reduce); CLR(1)/LR(1) items with lookaheads; LALR(1) (merge CLR(1) states with same core — conflicts possible); shift-reduce and reduce-reduce conflicts; parsing power: LR(1) = LALR(1) > SLR > LR(0)</div></td><td><span class="b wH">High · 2–3 m</span></td><td><span class="b dH">Hard</span></td><td><span class="b tL">20–24 h</span></td><td><span class="b depH">High</span></td></tr>
+<tr><td><div class="tn">Semantic Analysis &amp; SDT</div><div class="ts">Attribute grammars; synthesised attributes (computed bottom-up, S-attributed — usable in LR parsers); inherited attributes (computed top-down, L-attributed — usable in LL parsers); annotated parse tree; syntax-directed definitions vs syntax-directed translation schemes</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">9–11 h</span></td><td><span class="b depM">Medium</span></td></tr>
+<tr><td><div class="tn">Intermediate Code &amp; Optimisation</div><div class="ts">Three-address code (TAC), quadruples/triples, DAG for basic block; code optimisations: constant folding/propagation, dead code elimination, common subexpression elimination; loop optimisations: code motion, strength reduction, loop unrolling; data flow analysis concept</div></td><td><span class="b wM">Medium · 1–2 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tM">9–11 h</span></td><td><span class="b depL">Low</span></td></tr>
+<tr><td><div class="tn">Runtime &amp; Code Generation</div><div class="ts">Activation records, stack frame layout, static vs dynamic scoping, parameter passing (by value/reference/value-result), symbol table organisation (hashing, scoped lookup), register allocation concept</div></td><td><span class="b wL">Low · 0–1 m</span></td><td><span class="b dM">Moderate</span></td><td><span class="b tS">4–5 h</span></td><td><span class="b depL">Low</span></td></tr>
+</table>
+<div class="sl">Recommended Order</div>
+<div class="orow"><span class="ot">1 · Phases Overview</span><span class="oa">→</span><span class="ot">2 · Lexical Analysis</span><span class="oa">→</span><span class="ot">3 · FIRST/FOLLOW</span><span class="oa">→</span><span class="ot">4 · LL(1) Parsing</span><span class="oa">→</span><span class="ot">5 · LR(0)/SLR(1)</span><span class="oa">→</span><span class="ot">6 · CLR(1)/LALR(1)</span><span class="oa">→</span><span class="ot">7 · SDT</span><span class="oa">→</span><span class="ot">8 · IR &amp; Optimisation</span></div>
+<div class="ig">
+<div class="ic ic-g"><h4>🟢 Most Scoring</h4><ul><li>FIRST/FOLLOW computation — mechanical, high-accuracy marks</li><li>SLR/LALR table construction — pattern-based, predictable</li><li>S-attributed vs L-attributed — fast 1-mark conceptual</li><li>Lexical analysis token identification questions</li></ul></div>
+<div class="ic ic-r"><h4>🔴 Difficult Areas</h4><ul><li>LALR(1) vs CLR(1) — lookahead set merging and conflict identification</li><li>Inherited attribute computation order — direction-dependent</li><li>Indirect left recursion elimination — multi-step algorithm</li></ul></div>
+<div class="ic ic-y"><h4>⏱ Time-Consuming</h4><ul><li>Bottom-up parsing — must master all 4 variants (LR0, SLR, CLR, LALR)</li><li>LL(1) — left recursion removal + left factoring before table construction</li></ul></div>
+<div class="ic ic-b"><h4>⚠ Common Mistakes</h4><ul><li>FOLLOW: propagate FOLLOW of LHS through ε-productions at end of RHS</li><li>SLR uses FOLLOW sets; CLR/LALR use computed lookahead sets (finer)</li><li>LALR can have R-R conflicts that CLR doesn't — happens when merging states</li><li>Ambiguous grammar → can never be LL(1) or LR(1); directly implies conflict</li></ul></div>
+</div>
+<div class="tip" style="--ac:#558B2F">GATE tests Compiler Design almost exclusively at the parsing level. 70% of marks come from LL(1) and LALR(1). Master FIRST/FOLLOW computation absolutely perfectly — it is the gateway to every parsing question. LALR(1) table construction from scratch is the single most reliable 2–3 mark question in this subject.</div>
+</div>
+
+</div>
+  </main>
+
+  <footer class="page-footer">
+    GATE CS 2026 Topic-wise Reference · Built for focused, structured preparation.
+  </footer>
+
+  <script>
+  const AC=['#185FA5','#534AB7','#0F6E56','#E65100','#7B1FA2','#2E7D32','#BF360C','#0D47A1','#006064','#4527A0','#558B2F'];
+  function sw(n){
+    document.querySelectorAll('.pnl').forEach((p,i)=>p.classList.toggle('on',i===n));
+    document.querySelectorAll('.pill').forEach((t,i)=>t.classList.toggle('on',i===n));
+  }
+  </script>
+</body>
+</html>
