@@ -82,7 +82,7 @@
     /* === Cards Grid === */
     .cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: clamp(1rem, 2.5vw, 1.5rem);
       max-width: 900px;
       width: 100%;
@@ -140,6 +140,10 @@
     .card-yt::before {
       background: linear-gradient(90deg, #c0392b, #e74c3c);
     }
+    
+    .card-plan::before {
+      background: linear-gradient(90deg, #0F6E56, #2ecc71);
+    }
 
     .card-icon {
       font-size: 2.5rem;
@@ -164,7 +168,11 @@
     .card-yt .card-icon {
       background: rgba(192, 57, 43, 0.15);
     }
-
+    
+    .card-plan .card-icon {
+      background: rgba(15, 110, 86, 0.15);
+   }
+    
     .card h2 {
       font-size: clamp(1.1rem, 2.5vw, 1.35rem);
       font-weight: 700;
