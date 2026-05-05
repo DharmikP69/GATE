@@ -173,6 +173,14 @@
       background: rgba(15, 110, 86, 0.15);
     }
 
+    .card-marks::before {
+      background: linear-gradient(90deg, #2c3e50, #4a6fa5);
+    }
+
+    .card-marks .card-icon {
+      background: rgba(44, 62, 80, 0.15);
+    }
+
     .card h2 {
       font-size: clamp(1.1rem, 2.5vw, 1.35rem);
       font-weight: 700;
@@ -260,7 +268,15 @@
       <p>Month-by-month timeline aligned with your college semesters, subject pairings, and strategy.</p>
       <span class="card-btn">Open Plan →</span>
     </a>
+
+    <a href="preview.html" class="card card-marks">
+      <div class="card-icon">📊</div>
+      <h2>Marks & Weightage</h2>
+      <p>Subject-wise marks distribution and difficulty levels based on previous year trends.</p>
+      <span class="card-btn">View Table →</span>
+    </a>
   </div>
+
 
   <div class="footer">
     Built for focused, structured GATE CS preparation.
