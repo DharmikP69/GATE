@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GATE CSE Preparation Hub - GitHub Repository Collection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -61,13 +64,16 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--bg);
         }
+
         ::-webkit-scrollbar-thumb {
             background: var(--border);
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary);
         }
@@ -190,7 +196,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
             pointer-events: none;
@@ -354,7 +360,8 @@
             transition: var(--transition);
         }
 
-        .subject-tag:hover, .subject-tag.active {
+        .subject-tag:hover,
+        .subject-tag.active {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
@@ -446,9 +453,9 @@
 
         .repo-badges {
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.5rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.4rem;
         }
 
         .repo-title {
@@ -738,6 +745,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -745,9 +753,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0.5;
             }
@@ -775,7 +786,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .filter-tags, .subject-filters {
+            .filter-tags,
+            .subject-filters {
                 justify-content: flex-start;
                 overflow-x: auto;
                 flex-wrap: nowrap;
@@ -792,7 +804,8 @@
                 font-size: 0.8rem;
             }
 
-            .repo-table th, .repo-table td {
+            .repo-table th,
+            .repo-table td {
                 padding: 0.75rem 0.5rem;
             }
         }
@@ -809,6 +822,7 @@
             0% {
                 background-position: 200% 0;
             }
+
             100% {
                 background-position: -200% 0;
             }
@@ -846,6 +860,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
@@ -875,7 +890,8 @@
                 Curated GitHub Collection
             </div>
             <h1>GATE CSE Preparation Resources</h1>
-            <p>A comprehensive collection of high-quality GitHub repositories for GATE Computer Science & Engineering preparation. Notes, books, papers, roadmaps, and more.</p>
+            <p>A comprehensive collection of high-quality GitHub repositories for GATE Computer Science & Engineering
+                preparation. Notes, books, papers, roadmaps, and more.</p>
             <div class="hero-stats">
                 <div class="stat">
                     <div class="stat-value">13+</div>
@@ -897,39 +913,59 @@
     <section class="controls">
         <div class="search-bar">
             <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="Search repositories, subjects, or materials..." onkeyup="filterRepos()">
+            <input type="text" id="searchInput" placeholder="Search repositories, subjects, or materials..."
+                onkeyup="filterRepos()">
         </div>
 
         <div class="filter-tags" id="categoryFilters">
             <div class="filter-tag active" data-category="all" onclick="filterByCategory('all')">All</div>
             <div class="filter-tag" data-category="Notes" onclick="filterByCategory('Notes')">Notes</div>
-            <div class="filter-tag" data-category="Comprehensive" onclick="filterByCategory('Comprehensive')">Comprehensive</div>
+            <div class="filter-tag" data-category="Comprehensive" onclick="filterByCategory('Comprehensive')">
+                Comprehensive</div>
             <div class="filter-tag" data-category="Roadmap" onclick="filterByCategory('Roadmap')">Roadmaps</div>
-            <div class="filter-tag" data-category="Books & Papers" onclick="filterByCategory('Books & Papers')">Books & Papers</div>
-            <div class="filter-tag" data-category="Interview Prep" onclick="filterByCategory('Interview Prep')">Interview Prep</div>
-            <div class="filter-tag" data-category="Competitive Programming" onclick="filterByCategory('Competitive Programming')">Competitive Programming</div>
-            <div class="filter-tag" data-category="Open Source Books" onclick="filterByCategory('Open Source Books')">Open Source Books</div>
-            <div class="filter-tag" data-category="Tools & Analytics" onclick="filterByCategory('Tools & Analytics')">Tools</div>
-            <div class="filter-tag" data-category="Data Science & AI" onclick="filterByCategory('Data Science & AI')">Data Science & AI</div>
-            <div class="filter-tag" data-category="Curated Resources" onclick="filterByCategory('Curated Resources')">Curated</div>
+            <div class="filter-tag" data-category="Books & Papers" onclick="filterByCategory('Books & Papers')">Books &
+                Papers</div>
+            <div class="filter-tag" data-category="Interview Prep" onclick="filterByCategory('Interview Prep')">
+                Interview Prep</div>
+            <div class="filter-tag" data-category="Competitive Programming"
+                onclick="filterByCategory('Competitive Programming')">Competitive Programming</div>
+            <div class="filter-tag" data-category="Open Source Books" onclick="filterByCategory('Open Source Books')">
+                Open Source Books</div>
+            <div class="filter-tag" data-category="Tools & Analytics" onclick="filterByCategory('Tools & Analytics')">
+                Tools</div>
+            <div class="filter-tag" data-category="Data Science & AI" onclick="filterByCategory('Data Science & AI')">
+                Data Science & AI</div>
+            <div class="filter-tag" data-category="Curated Resources" onclick="filterByCategory('Curated Resources')">
+                Curated</div>
         </div>
 
         <div class="subject-filters" id="subjectFilters">
             <div class="subject-tag active" data-subject="all" onclick="filterBySubject('all')">All Subjects</div>
-            <div class="subject-tag" data-subject="Data Structures" onclick="filterBySubject('Data Structures')">Data Structures</div>
+            <div class="subject-tag" data-subject="Data Structures" onclick="filterBySubject('Data Structures')">Data
+                Structures</div>
             <div class="subject-tag" data-subject="Algorithms" onclick="filterBySubject('Algorithms')">Algorithms</div>
-            <div class="subject-tag" data-subject="Operating Systems" onclick="filterBySubject('Operating Systems')">Operating Systems</div>
-            <div class="subject-tag" data-subject="Computer Networks" onclick="filterBySubject('Computer Networks')">Computer Networks</div>
+            <div class="subject-tag" data-subject="Operating Systems" onclick="filterBySubject('Operating Systems')">
+                Operating Systems</div>
+            <div class="subject-tag" data-subject="Computer Networks" onclick="filterBySubject('Computer Networks')">
+                Computer Networks</div>
             <div class="subject-tag" data-subject="DBMS" onclick="filterBySubject('DBMS')">DBMS</div>
-            <div class="subject-tag" data-subject="Theory of Computation" onclick="filterBySubject('Theory of Computation')">Theory of Computation</div>
-            <div class="subject-tag" data-subject="Compiler Design" onclick="filterBySubject('Compiler Design')">Compiler Design</div>
-            <div class="subject-tag" data-subject="Computer Organization" onclick="filterBySubject('Computer Organization')">Computer Organization</div>
-            <div class="subject-tag" data-subject="Digital Logic" onclick="filterBySubject('Digital Logic')">Digital Logic</div>
-            <div class="subject-tag" data-subject="Discrete Mathematics" onclick="filterBySubject('Discrete Mathematics')">Discrete Math</div>
-            <div class="subject-tag" data-subject="Engineering Mathematics" onclick="filterBySubject('Engineering Mathematics')">Engg Math</div>
+            <div class="subject-tag" data-subject="Theory of Computation"
+                onclick="filterBySubject('Theory of Computation')">Theory of Computation</div>
+            <div class="subject-tag" data-subject="Compiler Design" onclick="filterBySubject('Compiler Design')">
+                Compiler Design</div>
+            <div class="subject-tag" data-subject="Computer Organization"
+                onclick="filterBySubject('Computer Organization')">Computer Organization</div>
+            <div class="subject-tag" data-subject="Digital Logic" onclick="filterBySubject('Digital Logic')">Digital
+                Logic</div>
+            <div class="subject-tag" data-subject="Discrete Mathematics"
+                onclick="filterBySubject('Discrete Mathematics')">Discrete Math</div>
+            <div class="subject-tag" data-subject="Engineering Mathematics"
+                onclick="filterBySubject('Engineering Mathematics')">Engg Math</div>
             <div class="subject-tag" data-subject="Aptitude" onclick="filterBySubject('Aptitude')">Aptitude</div>
-            <div class="subject-tag" data-subject="C Programming" onclick="filterBySubject('C Programming')">C Programming</div>
-            <div class="subject-tag" data-subject="Software Engineering" onclick="filterBySubject('Software Engineering')">Software Engineering</div>
+            <div class="subject-tag" data-subject="C Programming" onclick="filterBySubject('C Programming')">C
+                Programming</div>
+            <div class="subject-tag" data-subject="Software Engineering"
+                onclick="filterBySubject('Software Engineering')">Software Engineering</div>
         </div>
     </section>
 
@@ -983,7 +1019,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>Made with <i class="fas fa-heart" style="color: var(--danger);"></i> for GATE CSE Aspirants | Data sourced from GitHub</p>
+        <p>Made with <i class="fas fa-heart" style="color: var(--danger);"></i> for GATE CSE Aspirants | Data sourced
+            from GitHub</p>
         <p style="margin-top: 0.5rem; font-size: 0.8rem;">Last updated: May 2026</p>
     </footer>
 
@@ -1169,7 +1206,7 @@
             let filtered = repositories.filter(repo => {
                 const matchCategory = currentCategory === 'all' || repo.category === currentCategory;
                 const matchSubject = currentSubject === 'all' || repo.subjects.some(s => s.toLowerCase().includes(currentSubject.toLowerCase()));
-                const matchSearch = searchTerm === '' || 
+                const matchSearch = searchTerm === '' ||
                     repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                     repo.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                     repo.subjects.some(s => s.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -1326,7 +1363,7 @@
 
         // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1336,4 +1373,5 @@
         });
     </script>
 </body>
+
 </html>
