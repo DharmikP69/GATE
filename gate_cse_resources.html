@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GATE CSE YouTube Resources</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep:     #0d0f14;
+      --bg-card:     #13161e;
+      --bg-row:      #181c27;
+      --bg-row-alt:  #1a1f2e;
+      --border:      #252a3a;
+      --accent:      #ff6b35;
+      --accent-soft: rgba(255,107,53,0.12);
+      --gold:        #f5c542;
+      --gold-soft:   rgba(245,197,66,0.12);
+      --blue:        #4ea1ff;
+      --blue-soft:   rgba(78,161,255,0.12);
+      --green:       #4ecb8d;
+      --green-soft:  rgba(78,203,141,0.12);
+      --purple:      #b58fff;
+      --purple-soft: rgba(181,143,255,0.12);
+      --pink:        #ff7eb3;
+      --pink-soft:   rgba(255,126,179,0.12);
+      --text-main:   #e8ecf4;
+      --text-sub:    #8892a4;
+      --text-dim:    #55607a;
+      --font-mono:   'Space Mono', monospace;
+      --font-body:   'DM Sans', sans-serif;
+      --radius:      10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      padding: 0 0 60px;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0d0f14 0%, #111626 60%, #151a28 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 52px 40px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -100px;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(255,107,53,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 10%;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(78,161,255,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      margin-top: 14px;
+      font-size: 15px;
+      color: var(--text-sub);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .stat-num {
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── LEGEND ── */
+    .legend-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+    }
+    .legend-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .legend-title {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-right: 4px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* ── MAIN ── */
+    .main { max-width: 1100px; margin: 0 auto; padding: 40px 40px 0; }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 38px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+    }
+    .section-tag {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-left: auto;
+    }
+
+    /* ── TABLE ── */
+    .table-wrap {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead th {
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      padding: 11px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    thead th:last-child { text-align: center; }
+
+    tbody tr {
+      background: var(--bg-row);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s ease;
+    }
+    tbody tr:nth-child(even) { background: var(--bg-row-alt); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #1e2436; }
+
+    td {
+      padding: 14px 18px;
+      vertical-align: middle;
+      font-size: 14px;
+    }
+
+    .channel-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ch-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+    }
+    .ch-name {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+    .ch-note {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .playlist-name {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.4;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+    }
+
+    .btn-watch {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      padding: 8px 16px;
+      border-radius: 7px;
+      text-decoration: none;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+    .btn-watch:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+    }
+    .btn-watch svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Color themes for each subject */
+    .c-orange  { background:var(--accent);  color:#fff; }
+    .c-orange-s{ background:var(--accent-soft); color:var(--accent); border-color:rgba(255,107,53,0.25); }
+    .c-gold    { background:var(--gold);    color:#0d0f14; }
+    .c-gold-s  { background:var(--gold-soft);   color:var(--gold);   border-color:rgba(245,197,66,0.25); }
+    .c-blue    { background:var(--blue);    color:#0d0f14; }
+    .c-blue-s  { background:var(--blue-soft);    color:var(--blue);   border-color:rgba(78,161,255,0.25); }
+    .c-green   { background:var(--green);   color:#0d0f14; }
+    .c-green-s { background:var(--green-soft);   color:var(--green);  border-color:rgba(78,203,141,0.25); }
+    .c-purple  { background:var(--purple);  color:#0d0f14; }
+    .c-purple-s{ background:var(--purple-soft);  color:var(--purple); border-color:rgba(181,143,255,0.25); }
+    .c-pink    { background:var(--pink);    color:#0d0f14; }
+    .c-pink-s  { background:var(--pink-soft);    color:var(--pink);   border-color:rgba(255,126,179,0.25); }
+
+    .icon-orange { background:var(--accent-soft); color:var(--accent); }
+    .icon-gold   { background:var(--gold-soft);   color:var(--gold); }
+    .icon-blue   { background:var(--blue-soft);   color:var(--blue); }
+    .icon-green  { background:var(--green-soft);  color:var(--green); }
+    .icon-purple { background:var(--purple-soft); color:var(--purple); }
+    .icon-pink   { background:var(--pink-soft);   color:var(--pink); }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 50px;
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer p {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .footer strong { color: var(--text-sub); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero, .legend-bar { padding: 36px 20px; }
+      .main { padding: 28px 16px 0; }
+      .footer { padding: 24px 16px; }
+      thead th:nth-child(3), td:nth-child(3) { display: none; }
+      .hero-stats { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ───────────────── HERO ───────────────── -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">&#9679; Free Resources &nbsp;/&nbsp; GATE CSE Preparation</div>
+    <h1>Best YouTube Playlists<br/>for <span>GATE Computer Science</span></h1>
+    <p class="hero-sub">
+      Curated top 1–2 channels per subject — selected for teaching quality, syllabus completeness,
+      student trust, and consistency. All playlists are free &amp; direct-linked.
+    </p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">12</span><span class="stat-label">Subjects</span></div>
+      <div class="stat"><span class="stat-num">24</span><span class="stat-label">Playlists</span></div>
+      <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Trusted Channels</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free on YouTube</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ───────────────── LEGEND ───────────────── -->
+<div class="legend-bar">
+  <div class="legend-inner">
+    <span class="legend-title">Channels:</span>
+    <span class="chip"><span class="dot" style="background:var(--accent)"></span>Gate Smashers</span>
+    <span class="chip"><span class="dot" style="background:var(--gold)"></span>Abdul Bari</span>
+    <span class="chip"><span class="dot" style="background:var(--blue)"></span>Ravindrababu Ravula</span>
+    <span class="chip"><span class="dot" style="background:var(--green)"></span>Neso Academy</span>
+    <span class="chip"><span class="dot" style="background:var(--purple)"></span>Amit Khurana</span>
+    <span class="chip"><span class="dot" style="background:var(--pink)"></span>GATE Wallah / BYJU'S</span>
+  </div>
+</div>
+
+<!-- ───────────────── MAIN ───────────────── -->
+<main class="main">
+
+  <!-- 1. Data Structures -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Data Structures</h2>
+      <span class="section-tag c-gold" style="color:#0d0f14">Core Subject</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-gold">AB</div>
+                <div><div class="ch-name">Abdul Bari</div><div class="ch-note">YouTube Educator</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Mastering Data Structures &amp; Algorithms using C and C++</div>
+              <span class="badge c-gold-s">Complete Course</span></td>
+            <td><span class="badge c-gold-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-gold" href="https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2. Algorithms -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Algorithms</h2>
+      <span class="section-tag c-gold" style="color:#0d0f14">Core Subject</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-gold">AB</div>
+                <div><div class="ch-name">Abdul Bari</div><div class="ch-note">YouTube Educator</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Mastering Data Structures &amp; Algorithms using C and C++</div>
+              <span class="badge c-gold-s">Full DSA + Algorithms</span></td>
+            <td><span class="badge c-gold-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-gold" href="https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-blue">RR</div>
+                <div><div class="ch-name">Ravindrababu Ravula</div><div class="ch-note">Ex-IISc, GATE Expert</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Algorithms — GATE Computer Science Classes</div>
+              <span class="badge c-blue-s">GATE-Focused</span></td>
+            <td><span class="badge c-blue-s">Secondary</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-blue-s" href="https://www.youtube.com/playlist?list=PLEbnTDJUr_IeHYw_sfBOJ6gk5pie0yP-0" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3. Operating Systems -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Operating Systems</h2>
+      <span class="section-tag c-orange" style="color:#fff">High Weightage</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-orange">GS</div>
+                <div><div class="ch-name">Gate Smashers</div><div class="ch-note">2.45M+ Learners</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Operating System (Complete Playlist)</div>
+              <span class="badge c-orange-s">Full Syllabus</span></td>
+            <td><span class="badge c-orange-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-orange" href="https://www.youtube.com/playlist?list=PLxCzCOWd7aiGz9donHRrE9I3Mwn6XdP8p" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 4. DBMS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Database Management Systems (DBMS)</h2>
+      <span class="section-tag c-orange" style="color:#fff">High Weightage</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-orange">GS</div>
+                <div><div class="ch-name">Gate Smashers</div><div class="ch-note">Varun Bajaj</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">DBMS (Database Management System) — Complete Playlist</div>
+              <span class="badge c-orange-s">Full Syllabus + PYQs</span></td>
+            <td><span class="badge c-orange-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-orange" href="https://www.youtube.com/playlist?list=PLxCzCOWd7aiFAN6I8CuViBuCdJgiOkT2Y" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5. Computer Networks -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Computer Networks</h2>
+      <span class="section-tag c-orange" style="color:#fff">High Weightage</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-green">NA</div>
+                <div><div class="ch-name">Neso Academy</div><div class="ch-note">Engineering &amp; CS</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Computer Networks — Complete Course</div>
+              <span class="badge c-green-s">Concept-First</span></td>
+            <td><span class="badge c-green-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-green" href="https://www.youtube.com/playlist?list=PLE-RdVsYEV0txw-eSP-1eyXPrQyxkNOdR" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-orange">GS</div>
+                <div><div class="ch-name">Gate Smashers</div><div class="ch-note">GATE-Oriented</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Computer Networks (Complete Playlist)</div>
+              <span class="badge c-orange-s">GATE + PYQs</span></td>
+            <td><span class="badge c-orange-s">Secondary</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-orange-s" href="https://www.youtube.com/playlist?list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 6. Theory of Computation -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Theory of Computation (TOC)</h2>
+      <span class="section-tag c-blue" style="color:#0d0f14">Theory</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-purple">AK</div>
+                <div><div class="ch-name">Amit Khurana</div><div class="ch-note">GATE CS Lectures</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Theory of Computation (TOC) for GATE — Complete Playlist</div>
+              <span class="badge c-purple-s">Full Syllabus</span></td>
+            <td><span class="badge c-purple-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-purple-s" href="https://www.youtube.com/playlist?list=PLC36xJgs4dxGvebewU4z2CZYo-8nB93E7" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-blue">RR</div>
+                <div><div class="ch-name">Ravindrababu Ravula</div><div class="ch-note">Ex-IISc, GATE Expert</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Theory of Computation — GATE CS Classes</div>
+              <span class="badge c-blue-s">Deep Concepts</span></td>
+            <td><span class="badge c-blue-s">Secondary</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-blue-s" href="https://www.youtube.com/playlist?list=PLEbnTDJUr_IdIgFSFSxl7V6V-5zSbCzZJ" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 7. Compiler Design -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Compiler Design</h2>
+      <span class="section-tag c-blue" style="color:#0d0f14">Theory</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-blue">RR</div>
+                <div><div class="ch-name">Ravindrababu Ravula</div><div class="ch-note">Ex-IISc, GATE Expert</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Compiler Design — GATE Computer Science Classes</div>
+              <span class="badge c-blue-s">Most Recommended</span></td>
+            <td><span class="badge c-blue-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-blue-s" href="https://www.youtube.com/playlist?list=PLEbnTDJUr_IcPtUXFy2b1sGRPsLFMghhS" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-pink">GW</div>
+                <div><div class="ch-name">GATE Wallah</div><div class="ch-note">Mallesham Deva Sir</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Compiler Design | GATE (CSE/IT) Exam | Mallesham Deva Sir</div>
+              <span class="badge c-pink-s">Structured &amp; Exam-Ready</span></td>
+            <td><span class="badge c-pink-s">Secondary</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-pink-s" href="https://www.youtube.com/playlist?list=PLG9aCp4uE-s1NGf_6tQbDBsjLRjquKBE1" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 8. Digital Logic -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Digital Logic</h2>
+      <span class="section-tag c-green" style="color:#0d0f14">Hardware</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-green">NA</div>
+                <div><div class="ch-name">Neso Academy</div><div class="ch-note">Engineering &amp; CS</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Digital Electronics — Complete Course</div>
+              <span class="badge c-green-s">Concept-First</span></td>
+            <td><span class="badge c-green-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-green" href="https://www.youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-purple">AK</div>
+                <div><div class="ch-name">Amit Khurana</div><div class="ch-note">GATE CS Lectures</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Digital Logic for GATE — Complete Playlist</div>
+              <span class="badge c-purple-s">GATE-Focused</span></td>
+            <td><span class="badge c-purple-s">Secondary</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-purple-s" href="https://www.youtube.com/playlist?list=PLC36xJgs4dxEErKQZ7xFxat8oh4OepU34" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 9. Computer Organization & Architecture -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2 class="section-title">Computer Organization &amp; Architecture</h2>
+      <span class="section-tag c-green" style="color:#0d0f14">Hardware</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-orange">GS</div>
+                <div><div class="ch-name">Gate Smashers</div><div class="ch-note">Varun Bajaj</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Computer Organization and Architecture (Complete Playlist)</div>
+              <span class="badge c-orange-s">Full Syllabus</span></td>
+            <td><span class="badge c-orange-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-orange" href="https://www.youtube.com/playlist?list=PLxCzCOWd7aiHMonh3G6QNKq53C6oNXGrX" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-pink">GW</div>
+                <div><div class="ch-name">GATE Wallah</div><div class="ch-note">Mallesham Deva Sir</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Computer Organization &amp; Architecture (COA) | GATE CSE/IT</div>
+              <span class="badge c-pink-s">Structured Series</span></td>
+            <td><span class="badge c-pink-s">Secondary</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-pink-s" href="https://www.youtube.com/playlist?list=PLG9aCp4uE-s3WzvFW1nI-7hHWNC8s2RdI" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 10. Discrete Mathematics -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2 class="section-title">Discrete Mathematics</h2>
+      <span class="section-tag c-purple" style="color:#0d0f14">Mathematics</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-purple">AK</div>
+                <div><div class="ch-name">Amit Khurana</div><div class="ch-note">GATE CS Lectures</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Discrete Mathematics for GATE — Complete Playlist</div>
+              <span class="badge c-purple-s">GATE-Focused</span></td>
+            <td><span class="badge c-purple-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-purple-s" href="https://www.youtube.com/playlist?list=PLC36xJgs4dxEYmhzVBW7nBdftFZ4xmiF1" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-pink">GW</div>
+                <div><div class="ch-name">GATE Wallah</div><div class="ch-note">Vishal Rawtiya Sir</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Discrete Mathematics For GATE | DM by Vishal Rawtiya Sir | GATE 2026/27</div>
+              <span class="badge c-pink-s">Updated 2026</span></td>
+            <td><span class="badge c-pink-s">Secondary</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-pink-s" href="https://www.youtube.com/playlist?list=PLOG_8OlGMp70_7BdpRXns-verLibt9pdZ" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 11. Engineering Mathematics -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2 class="section-title">Engineering Mathematics</h2>
+      <span class="section-tag c-purple" style="color:#0d0f14">Mathematics</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-pink">BY</div>
+                <div><div class="ch-name">BYJU'S GATE Prep</div><div class="ch-note">Gradeup / PW</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Engineering Mathematics for GATE 2025 — Complete Series</div>
+              <span class="badge c-pink-s">Full Syllabus</span></td>
+            <td><span class="badge c-pink-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-pink-s" href="https://www.youtube.com/playlist?list=PLynLXReWAxdFOOFtv23VhfbfjKTyvIyQA" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-pink">GW</div>
+                <div><div class="ch-name">GATE Wallah</div><div class="ch-note">Physics Wallah GATE</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">Engineering Mathematics | All Branches | GATE Crash Course</div>
+              <span class="badge c-pink-s">Quick Revision</span></td>
+            <td><span class="badge c-pink-s">Secondary</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-pink-s" href="https://www.youtube.com/playlist?list=PLvTTv60o7qj-q4idV59uKIkBPOxe-govX" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 12. General Aptitude -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <h2 class="section-title">General Aptitude</h2>
+      <span class="section-tag c-gold" style="color:#0d0f14">Easy Marks</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px">Channel</th>
+            <th>Playlist Title</th>
+            <th style="width:100px">Type</th>
+            <th style="width:160px">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-pink">GW</div>
+                <div><div class="ch-name">GATE Wallah</div><div class="ch-note">Physics Wallah GATE</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">General Aptitude | All Branches | GATE 2025 Series</div>
+              <span class="badge c-pink-s">Verbal + Numerical</span></td>
+            <td><span class="badge c-pink-s">Primary ★</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-pink-s" href="https://www.youtube.com/playlist?list=PLvTTv60o7qj9YJU93vxkf570EQOfPnhwP" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="channel-cell">
+                <div class="ch-icon icon-pink">GW</div>
+                <div><div class="ch-name">GATE Wallah</div><div class="ch-note">Free Crash Course</div></div>
+              </div>
+            </td>
+            <td><div class="playlist-name">General Aptitude: For All Branches | GATE Free Crash Course</div>
+              <span class="badge c-pink-s">Quick Practice</span></td>
+            <td><span class="badge c-pink-s">Secondary</span></td>
+            <td style="text-align:center">
+              <a class="btn-watch c-pink-s" href="https://www.youtube.com/playlist?list=PLvTTv60o7qj-PgF3DhvvTK6_-g_FU8wCT" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Watch
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<!-- ───────────────── FOOTER ───────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p>
+      All playlists are free on YouTube. Links verified as of <strong>May 2026</strong>.
+      Playlist availability may change — if a link breaks, search the playlist title directly on YouTube.
+    </p>
+    <p style="margin-top:8px">
+      <strong>Recommended strategy:</strong> Use Primary (★) playlists as your main source · Supplement with Secondary for alternate explanation styles ·
+      Always solve <strong>GATE PYQs</strong> from <a href="https://gateoverflow.in" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Gate Overflow</a> after each topic.
+    </p>
+    <p style="margin-top:12px;color:var(--text-dim);font-size:11px;font-family:var(--font-mono)">
+      gate_cse_resources.html &nbsp;·&nbsp; Compiled for GATE CSE Aspirants &nbsp;·&nbsp; Free &amp; Open
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
