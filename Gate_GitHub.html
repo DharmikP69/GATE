@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE CSE Preparation Hub - GitHub Repository Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --bg: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --text: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .navbar {
+            background: rgba(248, 250, 252, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: var(--primary-light);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Search & Filter Section */
+        .controls {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
+        }
+
+        .search-bar {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .filter-tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .filter-tag:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .filter-tag.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .subject-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .subject-tag {
+            padding: 0.35rem 0.75rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 100px;
+            color: var(--primary-light);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .subject-tag:hover, .subject-tag.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        .results-count {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Repository Cards Grid */
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .repo-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .repo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .repo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .repo-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .repo-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .repo-title:hover {
+            color: var(--primary);
+        }
+
+        .repo-title i {
+            color: var(--primary);
+        }
+
+        .repo-stars {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+            padding: 0.35rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .repo-category {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .repo-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .repo-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.65rem;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-tag i {
+            font-size: 0.75rem;
+        }
+
+        .repo-subjects {
+            margin-bottom: 1rem;
+        }
+
+        .subjects-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .subjects-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .subject-chip {
+            padding: 0.25rem 0.6rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .repo-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            color: var(--text);
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .difficulty-beginner {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+        }
+
+        .difficulty-intermediate {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
+        .difficulty-advanced {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+
+        .difficulty-all {
+            background: rgba(99, 102, 241, 0.15);
+            color: #6366f1;
+        }
+
+        /* Table View */
+        .table-view {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .table-view.active {
+            display: block;
+        }
+
+        .repo-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .repo-table th {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .repo-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .repo-table tr:hover td {
+            background: var(--bg-card-hover);
+        }
+
+        .repo-table a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .repo-table a:hover {
+            text-decoration: underline;
+        }
+
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--bg-secondary);
+            padding: 0.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+
+        .view-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .view-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .repo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-tags, .subject-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 0.5rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .repo-table {
+                font-size: 0.8rem;
+            }
+
+            .repo-table th, .repo-table td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-card-hover) 50%, var(--bg-secondary) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: var(--radius-sm);
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            color: var(--text);
+            font-size: 0.8rem;
+            border-radius: var(--radius-sm);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            z-index: 100;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+            bottom: calc(100% + 8px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>GATE CSE Hub</span>
+            </a>
+            <div class="nav-links">
+                <a href="#repositories">Repositories</a>
+                <a href="#subjects">Subjects</a>
+                <a href="#roadmaps">Roadmaps</a>
+                <a href="#books">Books</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i>
+                Curated GitHub Collection
+            </div>
+            <h1>GATE CSE Preparation Resources</h1>
+            <p>A comprehensive collection of high-quality GitHub repositories for GATE Computer Science & Engineering preparation. Notes, books, papers, roadmaps, and more.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">13+</div>
+                    <div class="stat-label">Repositories</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">15+</div>
+                    <div class="stat-label">Subjects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Free</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Filters -->
+    <section class="controls">
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search repositories, subjects, or materials..." onkeyup="filterRepos()">
+        </div>
+
+        <div class="filter-tags" id="categoryFilters">
+            <div class="filter-tag active" data-category="all" onclick="filterByCategory('all')">All</div>
+            <div class="filter-tag" data-category="Notes" onclick="filterByCategory('Notes')">Notes</div>
+            <div class="filter-tag" data-category="Comprehensive" onclick="filterByCategory('Comprehensive')">Comprehensive</div>
+            <div class="filter-tag" data-category="Roadmap" onclick="filterByCategory('Roadmap')">Roadmaps</div>
+            <div class="filter-tag" data-category="Books & Papers" onclick="filterByCategory('Books & Papers')">Books & Papers</div>
+            <div class="filter-tag" data-category="Interview Prep" onclick="filterByCategory('Interview Prep')">Interview Prep</div>
+            <div class="filter-tag" data-category="Competitive Programming" onclick="filterByCategory('Competitive Programming')">Competitive Programming</div>
+            <div class="filter-tag" data-category="Open Source Books" onclick="filterByCategory('Open Source Books')">Open Source Books</div>
+            <div class="filter-tag" data-category="Tools & Analytics" onclick="filterByCategory('Tools & Analytics')">Tools</div>
+            <div class="filter-tag" data-category="Data Science & AI" onclick="filterByCategory('Data Science & AI')">Data Science & AI</div>
+            <div class="filter-tag" data-category="Curated Resources" onclick="filterByCategory('Curated Resources')">Curated</div>
+        </div>
+
+        <div class="subject-filters" id="subjectFilters">
+            <div class="subject-tag active" data-subject="all" onclick="filterBySubject('all')">All Subjects</div>
+            <div class="subject-tag" data-subject="Data Structures" onclick="filterBySubject('Data Structures')">Data Structures</div>
+            <div class="subject-tag" data-subject="Algorithms" onclick="filterBySubject('Algorithms')">Algorithms</div>
+            <div class="subject-tag" data-subject="Operating Systems" onclick="filterBySubject('Operating Systems')">Operating Systems</div>
+            <div class="subject-tag" data-subject="Computer Networks" onclick="filterBySubject('Computer Networks')">Computer Networks</div>
+            <div class="subject-tag" data-subject="DBMS" onclick="filterBySubject('DBMS')">DBMS</div>
+            <div class="subject-tag" data-subject="Theory of Computation" onclick="filterBySubject('Theory of Computation')">Theory of Computation</div>
+            <div class="subject-tag" data-subject="Compiler Design" onclick="filterBySubject('Compiler Design')">Compiler Design</div>
+            <div class="subject-tag" data-subject="Computer Organization" onclick="filterBySubject('Computer Organization')">Computer Organization</div>
+            <div class="subject-tag" data-subject="Digital Logic" onclick="filterBySubject('Digital Logic')">Digital Logic</div>
+            <div class="subject-tag" data-subject="Discrete Mathematics" onclick="filterBySubject('Discrete Mathematics')">Discrete Math</div>
+            <div class="subject-tag" data-subject="Engineering Mathematics" onclick="filterBySubject('Engineering Mathematics')">Engg Math</div>
+            <div class="subject-tag" data-subject="Aptitude" onclick="filterBySubject('Aptitude')">Aptitude</div>
+            <div class="subject-tag" data-subject="C Programming" onclick="filterBySubject('C Programming')">C Programming</div>
+            <div class="subject-tag" data-subject="Software Engineering" onclick="filterBySubject('Software Engineering')">Software Engineering</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content" id="repositories">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fab fa-github"></i>
+                Repositories
+            </h2>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <span class="results-count" id="resultsCount">Showing all repositories</span>
+                <div class="view-toggle">
+                    <button class="view-btn active" onclick="toggleView('grid')" title="Grid View">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-btn" onclick="toggleView('table')" title="Table View">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid View -->
+        <div class="repo-grid" id="repoGrid"></div>
+
+        <!-- Table View -->
+        <div class="table-view" id="tableView">
+            <table class="repo-table">
+                <thead>
+                    <tr>
+                        <th>Repository</th>
+                        <th>Category</th>
+                        <th>Subjects</th>
+                        <th>Material Type</th>
+                        <th>Difficulty</th>
+                        <th>Stars</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No repositories found</h3>
+            <p>Try adjusting your search or filters</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with <i class="fas fa-heart" style="color: var(--danger);"></i> for GATE CSE Aspirants | Data sourced from GitHub</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Last updated: May 2026</p>
+    </footer>
+
+    <script>
+        // Repository Data
+        const repositories = [
+            {
+                name: "GATE-CSE-notes",
+                owner: "Priyanshuu-2109",
+                url: "https://github.com/Priyanshuu-2109/GATE-CSE-notes",
+                description: "Handwritten notes by Priyanshu (MTech CSE, IIT Guwahati, GATE 2024 AIR 379). Comprehensive notes covering all GATE CSE subjects with detailed explanations.",
+                subjects: ["Engineering Mathematics", "Discrete Mathematics", "Digital Logic", "Computer Organization and Architecture", "Data Structures", "Algorithms", "Theory of Computation", "Compiler Design", "Operating System", "Database Management System", "Computer Networks"],
+                material_types: ["Handwritten Notes", "Structured Notes"],
+                stars: "Popular",
+                difficulty: "Intermediate",
+                last_updated: "2024-12-05",
+                category: "Notes"
+            },
+            {
+                name: "JourneyToDoor",
+                owner: "nihalpawar4",
+                url: "https://github.com/nihalpawar4/JourneyToDoor",
+                description: "Comprehensive GATE 2024 CSE preparation repository with study materials, practice questions, previous year papers, coding resources, and personal updates.",
+                subjects: ["Data Structures & Algorithms", "Operating Systems", "Computer Networks", "DBMS", "Theory of Computation", "Compiler Design", "Computer Organization", "Digital Logic", "Mathematics"],
+                material_types: ["Study Materials", "Practice Questions", "Previous Year Papers", "Coding Resources", "Useful Links"],
+                stars: "Growing",
+                difficulty: "Beginner to Intermediate",
+                last_updated: "2023-07-23",
+                category: "Comprehensive"
+            },
+            {
+                name: "Gate-CS-IT-PrepResource",
+                owner: "BlessenJoelG",
+                url: "https://github.com/BlessenJoelG/Gate-CS-IT-PrepResource",
+                description: "Structured study roadmap with week-by-week planning for GATE CS/IT preparation including core subjects and practice schedules.",
+                subjects: ["Data Structures & Algorithms", "Operating Systems", "DBMS", "Computer Networks", "Theory of Computation", "Compiler Design", "CS Math"],
+                material_types: ["Roadmap", "Study Plan", "Weekly Schedule"],
+                stars: "Moderate",
+                difficulty: "Beginner",
+                last_updated: "Active",
+                category: "Roadmap"
+            },
+            {
+                name: "GATE Stuff",
+                owner: "dufferzafar",
+                url: "https://gist.github.com/dufferzafar/ac948c91e7ecdcb37f6649358ac2d523",
+                description: "Curated collection of textbooks and notes for GATE CSE including standard reference books and previous year papers.",
+                subjects: ["Computer Organization", "Digital Design", "Algorithms", "Data Structures", "Theory of Computation", "Operating Systems", "Networks"],
+                material_types: ["Textbooks", "PDFs", "Previous Year Papers", "Notes"],
+                stars: "Popular Gist",
+                difficulty: "Intermediate",
+                last_updated: "2024-01-11",
+                category: "Books & Papers"
+            },
+            {
+                name: "GATE-2022",
+                owner: "mayurpai",
+                url: "https://github.com/mayurpai/GATE-2022",
+                description: "Collection of all GATE CSE resources gathered under one roof with organized folders and comprehensive coverage.",
+                subjects: ["All GATE CSE Subjects"],
+                material_types: ["Notes", "Books", "PDFs", "Questions", "Solutions"],
+                stars: "13 stars",
+                difficulty: "All Levels",
+                last_updated: "2020-06-16",
+                category: "Comprehensive"
+            },
+            {
+                name: "Complete-Placement-Preparation",
+                owner: "anushka23g",
+                url: "https://github.com/anushka23g/Complete-Placement-Preparation",
+                description: "Complete material for coding rounds and technical interviews including 500 most asked DSA questions in FAANG interviews.",
+                subjects: ["Data Structures & Algorithms", "OOPS", "Operating Systems", "DBMS", "Networks", "System Design"],
+                material_types: ["Interview Questions", "DSA Problems", "PDFs", "Markdown Notes"],
+                stars: "Highly Popular",
+                difficulty: "Intermediate to Advanced",
+                last_updated: "2020-12-25",
+                category: "Interview Prep"
+            },
+            {
+                name: "campus-placement-prep",
+                owner: "Pratham567",
+                url: "https://github.com/Pratham567/campus-placement-prep",
+                description: "Comprehensive placement preparation guide with competitive programming resources, graph theory, and practice platforms.",
+                subjects: ["Graph Theory", "Data Structures", "Algorithms", "OOPs", "Competitive Programming"],
+                material_types: ["Practice Problems", "Video Links", "Platform Recommendations", "Study Guides"],
+                stars: "Popular",
+                difficulty: "Intermediate",
+                last_updated: "2020-12-30",
+                category: "Competitive Programming"
+            },
+            {
+                name: "CS Books & Resources",
+                owner: "Besnn",
+                url: "https://github.com/Besnn/computer-science-and-computer-engineering-books-and-resources",
+                description: "Free access books and resources for computer engineering and science students with comprehensive subject coverage.",
+                subjects: ["Math", "Theory", "Physics", "Computer Architecture", "Operating Systems", "Networks", "Algorithms", "Databases", "AI", "Cryptography", "Programming Languages"],
+                material_types: ["Free Textbooks", "PDFs", "Online Books", "Course Notes"],
+                stars: "Popular",
+                difficulty: "Beginner to Advanced",
+                last_updated: "2020-11-15",
+                category: "Open Source Books"
+            },
+            {
+                name: "CS-and-Programming-Books",
+                owner: "Pavith19",
+                url: "https://github.com/Pavith19/CS-and-Programming-Books",
+                description: "Largest collection of free CS books with code examples and project guidelines for learners and developers.",
+                subjects: ["Programming", "Computer Science", "Software Engineering", "Data Science"],
+                material_types: ["Free Books", "Code Examples", "Project Guidelines", "PDFs"],
+                stars: "Growing",
+                difficulty: "All Levels",
+                last_updated: "2024-08-10",
+                category: "Open Source Books"
+            },
+            {
+                name: "free-programming-books",
+                owner: "EbookFoundation",
+                url: "https://github.com/EbookFoundation/free-programming-books",
+                description: "Massive curated list of free programming books covering all computer science subjects and programming languages.",
+                subjects: ["All CS Subjects", "Programming Languages", "AI", "Computer Vision", "Containers", "Web Development"],
+                material_types: ["Free Books", "PDFs", "EPUBs", "Online Resources"],
+                stars: "300k+ stars",
+                difficulty: "All Levels",
+                last_updated: "Active (2012-present)",
+                category: "Open Source Books"
+            },
+            {
+                name: "GateQuest Analyzer",
+                owner: "cybergeekgyan",
+                url: "https://github.com/cybergeekgyan/GateQuestAnalyzer",
+                description: "Deep learning-based tool to analyze past GATE CS papers, identify patterns, and generate practice questions with difficulty ranking.",
+                subjects: ["All GATE CSE Subjects", "Question Pattern Analysis"],
+                material_types: ["Question Analysis", "Pattern Recognition", "Practice Question Generator", "Difficulty Ranker"],
+                stars: "Niche",
+                difficulty: "Advanced",
+                last_updated: "2023-08-06",
+                category: "Tools & Analytics"
+            },
+            {
+                name: "dsai-gate",
+                owner: "DS-AI-GATE",
+                url: "https://github.com/DS-AI-GATE/dsai-gate",
+                description: "Comprehensive resources for GATE Data Science and AI including probability, linear algebra, calculus, programming, ML, and AI notes.",
+                subjects: ["Probability & Statistics", "Linear Algebra", "Calculus", "Programming & Algorithms", "DBMS", "Machine Learning", "Artificial Intelligence"],
+                material_types: ["Notes", "Code Snippets", "MCQ Exercises", "Course Videos", "Books", "Articles"],
+                stars: "Growing",
+                difficulty: "Intermediate",
+                last_updated: "2023-08-22",
+                category: "Data Science & AI"
+            },
+            {
+                name: "GATE Resources - CSE & Data Science",
+                owner: "madhurimarawat",
+                url: "https://gist.github.com/madhurimarawat/376ed280655bbd1a8d712741f282a08c",
+                description: "Curated collection of best free GATE preparation resources including NPTEL lectures, PhysicsWallah notes, YouTube playlists, and Telegram groups.",
+                subjects: ["All GATE CSE Subjects", "Data Science", "Engineering Mathematics", "Aptitude"],
+                material_types: ["Video Lectures", "Handwritten Notes", "Previous Papers", "Study Plans", "Community Links"],
+                stars: "Popular Gist",
+                difficulty: "Beginner to Intermediate",
+                last_updated: "2026-05-04",
+                category: "Curated Resources"
+            }
+        ];
+
+        let currentCategory = 'all';
+        let currentSubject = 'all';
+        let currentView = 'grid';
+        let searchTerm = '';
+
+        function getDifficultyClass(difficulty) {
+            if (difficulty.includes('Beginner') && !difficulty.includes('Advanced')) return 'difficulty-beginner';
+            if (difficulty.includes('Advanced')) return 'difficulty-advanced';
+            if (difficulty.includes('All')) return 'difficulty-all';
+            return 'difficulty-intermediate';
+        }
+
+        function renderRepos() {
+            const grid = document.getElementById('repoGrid');
+            const tableBody = document.getElementById('tableBody');
+            const noResults = document.getElementById('noResults');
+            const resultsCount = document.getElementById('resultsCount');
+
+            let filtered = repositories.filter(repo => {
+                const matchCategory = currentCategory === 'all' || repo.category === currentCategory;
+                const matchSubject = currentSubject === 'all' || repo.subjects.some(s => s.toLowerCase().includes(currentSubject.toLowerCase()));
+                const matchSearch = searchTerm === '' || 
+                    repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    repo.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    repo.subjects.some(s => s.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                    repo.material_types.some(m => m.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                    repo.category.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchCategory && matchSubject && matchSearch;
+            });
+
+            resultsCount.textContent = `Showing ${filtered.length} of ${repositories.length} repositories`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                tableBody.innerHTML = '';
+                noResults.style.display = 'block';
+                document.getElementById('tableView').classList.remove('active');
+                return;
+            }
+
+            noResults.style.display = 'none';
+
+            // Grid View
+            grid.innerHTML = filtered.map((repo, index) => `
+                <div class="repo-card animate-in" style="animation-delay: ${index * 0.05}s">
+                    <span class="difficulty-badge ${getDifficultyClass(repo.difficulty)}">${repo.difficulty}</span>
+                    <div class="repo-header">
+                        <a href="${repo.url}" target="_blank" class="repo-title">
+                            <i class="fab fa-github"></i>
+                            ${repo.name}
+                        </a>
+                        <span class="repo-stars"><i class="fas fa-star"></i> ${repo.stars}</span>
+                    </div>
+                    <span class="repo-category">${repo.category}</span>
+                    <p class="repo-description">${repo.description}</p>
+                    <div class="repo-meta">
+                        <span class="meta-tag"><i class="fas fa-user"></i> ${repo.owner}</span>
+                        <span class="meta-tag"><i class="fas fa-calendar"></i> ${repo.last_updated}</span>
+                        <span class="meta-tag"><i class="fas fa-layer-group"></i> ${repo.material_types.length} types</span>
+                    </div>
+                    <div class="repo-subjects">
+                        <div class="subjects-label">Subjects Covered</div>
+                        <div class="subjects-list">
+                            ${repo.subjects.slice(0, 6).map(s => `<span class="subject-chip">${s}</span>`).join('')}
+                            ${repo.subjects.length > 6 ? `<span class="subject-chip">+${repo.subjects.length - 6} more</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="repo-actions">
+                        <a href="${repo.url}" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-github"></i> View Repository
+                        </a>
+                        <button class="btn btn-secondary tooltip" data-tooltip="Copy Link" onclick="copyLink('${repo.url}')">
+                            <i class="fas fa-link"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Table View
+            tableBody.innerHTML = filtered.map(repo => `
+                <tr>
+                    <td>
+                        <a href="${repo.url}" target="_blank">${repo.name}</a>
+                        <br><small style="color: var(--text-muted)">${repo.owner}</small>
+                    </td>
+                    <td><span class="repo-category" style="font-size: 0.7rem;">${repo.category}</span></td>
+                    <td>${repo.subjects.slice(0, 3).join(', ')}${repo.subjects.length > 3 ? '...' : ''}</td>
+                    <td>${repo.material_types.slice(0, 2).join(', ')}</td>
+                    <td><span class="difficulty-badge ${getDifficultyClass(repo.difficulty)}" style="position: static;">${repo.difficulty}</span></td>
+                    <td>${repo.stars}</td>
+                    <td><a href="${repo.url}" target="_blank" class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;"><i class="fab fa-github"></i> Open</a></td>
+                </tr>
+            `).join('');
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('#categoryFilters .filter-tag').forEach(tag => {
+                tag.classList.toggle('active', tag.dataset.category === category);
+            });
+            renderRepos();
+        }
+
+        function filterBySubject(subject) {
+            currentSubject = subject;
+            document.querySelectorAll('#subjectFilters .subject-tag').forEach(tag => {
+                tag.classList.toggle('active', tag.dataset.subject === subject);
+            });
+            renderRepos();
+        }
+
+        function filterRepos() {
+            searchTerm = document.getElementById('searchInput').value;
+            renderRepos();
+        }
+
+        function toggleView(view) {
+            currentView = view;
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.view-btn').classList.add('active');
+
+            if (view === 'grid') {
+                document.getElementById('repoGrid').style.display = 'grid';
+                document.getElementById('tableView').classList.remove('active');
+            } else {
+                document.getElementById('repoGrid').style.display = 'none';
+                document.getElementById('tableView').classList.add('active');
+            }
+        }
+
+        function copyLink(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                const btn = event.target.closest('button');
+                const original = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                btn.style.background = 'var(--secondary)';
+                btn.style.color = 'white';
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                }, 2000);
+            });
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.getAttribute('data-theme') === 'light') {
+                html.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.getElementById('theme-icon').classList.remove('fa-moon');
+            document.getElementById('theme-icon').classList.add('fa-sun');
+        }
+
+        // Initial render
+        renderRepos();
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
