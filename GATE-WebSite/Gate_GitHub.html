@@ -433,9 +433,22 @@
 
         .repo-header {
             display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .repo-header-top {
+            display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
+        }
+
+        .repo-badges {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .repo-title {
@@ -478,7 +491,6 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
         }
 
         .repo-description {
@@ -589,9 +601,7 @@
         }
 
         .difficulty-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
+            display: inline-block;
             padding: 0.25rem 0.6rem;
             border-radius: 100px;
             font-size: 0.7rem;
@@ -1183,15 +1193,19 @@
             // Grid View
             grid.innerHTML = filtered.map((repo, index) => `
                 <div class="repo-card animate-in" style="animation-delay: ${index * 0.05}s">
-                    <span class="difficulty-badge ${getDifficultyClass(repo.difficulty)}">${repo.difficulty}</span>
                     <div class="repo-header">
-                        <a href="${repo.url}" target="_blank" class="repo-title">
-                            <i class="fab fa-github"></i>
-                            ${repo.name}
-                        </a>
-                        <span class="repo-stars"><i class="fas fa-star"></i> ${repo.stars}</span>
+                        <div class="repo-header-top">
+                            <a href="${repo.url}" target="_blank" class="repo-title">
+                                <i class="fab fa-github"></i>
+                                ${repo.name}
+                            </a>
+                        </div>
+                        <div class="repo-badges">
+                            <span class="repo-category">${repo.category}</span>
+                            <span class="repo-stars"><i class="fas fa-star"></i> ${repo.stars}</span>
+                            <span class="difficulty-badge ${getDifficultyClass(repo.difficulty)}">${repo.difficulty}</span>
+                        </div>
                     </div>
-                    <span class="repo-category">${repo.category}</span>
                     <p class="repo-description">${repo.description}</p>
                     <div class="repo-meta">
                         <span class="meta-tag"><i class="fas fa-user"></i> ${repo.owner}</span>
